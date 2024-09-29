@@ -1,0 +1,21 @@
+openapi: 3.0.0
+info:
+  title: Sample API
+  description: A simple API example
+  version: 1.0.0
+servers:
+  - url: https://your-api-server.com
+paths:
+  /items:
+    get:
+      summary: Get a list of items
+      operationId: getItems
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
