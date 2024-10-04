@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/kiki0518/API.git"
+    "url": "git+https://github.com/commonground-project/backend.git"
   },
   "author": "Your Name",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/kiki0518/API/issues"
+    "url": "https://github.com/commonground-project/backend/issues"
   },
-  "homepage": "https://github.com/kiki0518/API#readme",
+  "homepage": "https://github.com/commonground-project/backend#readme",
   "dependencies": {
     "swagger-cli": "^4.0.4",
     "swagger-ui-dist": "^5.17.14"
