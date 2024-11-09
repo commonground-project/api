@@ -1,10 +1,14 @@
 mkdir -p public
 cp -R node_modules/swagger-ui-dist/* public/
 cp openapi.yaml public/swagger.yaml
+cp -r definitions public/definitions
+cp -r parameters public/parameters
+cp -r schemas public/schemas
 echo "window.onload = function() { window.ui = SwaggerUIBundle({ url: './swagger.yaml', dom_id: '#swagger-ui' }); };" > public/swagger-initializer.js
 sed -i 's|<title>Swagger UI</title>|<title>API Documentation</title>|' public/index.html
 
-http-server public -p 8080 &
+cd ./public
+python3 -m http.server 8080 &
 SERVER_PID=$!
 
 cleanup() {
