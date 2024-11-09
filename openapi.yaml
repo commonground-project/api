@@ -5,7 +5,6 @@ info:
   version: 1.0.0
 servers:
   - url: https://your-api-server.com
-  - url: https://pr-server.com
 paths:
   # Fact
   /facts:
@@ -15,15 +14,28 @@ paths:
       operationId: getFactsList
       tags:
         - Fact
+      parameters:
+        - $ref: "./parameters/sort.yaml"
+        - $ref: "./parameters/page.yaml"
+        - $ref: "./parameters/size.yaml"
       responses:
         '200':
           description: Successful response
           content:
             application/json:
               schema:
-                type: array
-                items:
-                  $ref: "./schemas/fact.yaml"
+                type: object
+                properties:
+                  embedded:
+                    type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: "./schemas/response/fact.yaml"
+                  page:
+                    $ref: "./schemas/response/page.yaml"
+
     post:
       summary: Create a new fact
       description: This endpoint is used to create a new fact for user
@@ -36,14 +48,14 @@ paths:
           description: New created fact
           required: true
           schema:
-            $ref: "./schemas/fact.yaml"
+            $ref: "./schemas/request/fact.yaml"
       responses:
-        '201':
+        '200':
           description: Successful response
           content:
             application/json:
               schema:
-                $ref: "./definitions/dataCreated.yaml"
+                $ref: "./schemas/response/fact.yaml"
 
   /facts/{id}:
     get:
@@ -60,7 +72,7 @@ paths:
           content:
             application/json:
               schema:
-                $ref: "./schemas/fact.yaml"
+                $ref: "./schemas/response/fact.yaml"
         '404':
           $ref: "./definitions/dataNotFound.yaml"
 
@@ -77,7 +89,7 @@ paths:
           description: Updates of fact
           required: true
           schema:
-            $ref: "./schemas/fact.yaml"
+            $ref: "./schemas/request/fact.yaml"
       responses:
         '200':
           $ref: "./definitions/requestSuccess.yaml"
@@ -91,17 +103,16 @@ paths:
       parameters:
         - $ref: "./parameters/requestId.yaml"
       responses:
-        '204':
-          $ref: "./definitions/processSuccess.yaml"
 
-  #Reference
-  /references:
+  /facts/{id}/references:
     get:
-      summary: List references
-      description: This endpoint returns all references
-      operationId: getReferencesList
+      summary: List references of specific fact
+      description: This endpoint returns references of specific fact by fact id
+      operationId: GetFactReferences
       tags:
-        - Reference
+        - Fact
+      parameters:
+        - $ref: "./parameters/requestId.yaml"
       responses:
         '200':
           description: Successful response
@@ -110,71 +121,38 @@ paths:
               schema:
                 type: array
                 items:
-                  $ref: "./schemas/reference.yaml"
+                  $ref: "./schemas/response/reference.yaml"
     post:
-      summary: Create a new reference
-      description: This endpoint is used to create a new reference for user
-      operationId: CreateFact
+      summary: Add references to specific fact
+      description: This endpoint is used to add new reference to specific fact by fact id
+      operationId: AddReferences
       tags:
-        - Reference
+        - Fact
       parameters:
+        - $ref: "./parameters/requestId.yaml"
         - name: reference
           in: body
           description: New created fact
           required: true
           schema:
-            $ref: "./schemas/reference.yaml"
-      responses:
-        '201':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: "./definitions/dataCreated.yaml"
-
-  /references/{id}:
-    get:
-      summary: Get specific reference information
-      description: This endpoint returns specific fact information by reference id
-      operationId: GetReference
-      tags:
-        - Reference
-      parameters:
-        - $ref: "./parameters/requestId.yaml"
+            type: array
+            items:
+              $ref: "./schemas/request/reference.yaml"
       responses:
         '200':
           description: Successful response
           content:
             application/json:
               schema:
-                $ref: "./schemas/reference.yaml"
-        '404':
-          $ref: "./definitions/dataNotFound.yaml"
-
-    put:
-      summary: Update properties for a selected reference
-      description: This endpoint is used to update properties of specific reference by reference id
-      operationId: UpdateReference
-      tags:
-        - Reference
-      parameters:
-        - $ref: "./parameters/requestId.yaml"
-        - name: reference
-          in: body
-          description: Updates of reference
-          required: true
-          schema:
-            $ref: "./schemas/reference.yaml"
-      responses:
-        '200':
-          $ref: "./definitions/requestSuccess.yaml"
-
+                type: array
+                items:
+                  $ref: "./schemas/response/reference.yaml"
     delete:
       summary: Delete selected reference
       description: This endpoint is used to delete specific reference by reference id
       operationId: DeletedReference
       tags:
-        - Reference
+        - Fact
       parameters:
         - $ref: "./parameters/requestId.yaml"
       responses:
