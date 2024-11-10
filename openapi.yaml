@@ -6,10 +6,118 @@ info:
 servers:
   - url: https://your-api-server.com
 paths:
-  /items:
+  # Fact
+  /facts:
     get:
-      summary: Get a list of items
-      operationId: getItems
+      summary: List facts
+      description: This endpoint returns all facts
+      operationId: getFactsList
+      tags:
+        - Fact
+      parameters:
+        - $ref: "./parameters/sort.yaml"
+        - $ref: "./parameters/page.yaml"
+        - $ref: "./parameters/size.yaml"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  embedded:
+                    type: object
+                    properties:
+                      data:
+                        type: array
+                        items:
+                          $ref: "./schemas/response/fact.yaml"
+                  page:
+                    $ref: "./schemas/response/page.yaml"
+
+    post:
+      summary: Create a new fact
+      description: This endpoint is used to create a new fact for user
+      operationId: createFact
+      tags:
+        - Fact
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "./schemas/request/fact.yaml"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas/response/fact.yaml"
+
+  /facts/{id}:
+    get:
+      summary: Get specific fact information
+      description: This endpoint returns specific fact information by fact id
+      operationId: getFact
+      tags:
+        - Fact
+      parameters:
+        - $ref: "./parameters/requestId.yaml"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas/response/fact.yaml"
+        '404':
+          $ref: "./definitions/errorOccurred.yaml"
+
+    put:
+      summary: Update properties for a selected fact
+      description: This endpoint is used to update properties of specific fact by fact id
+      operationId: updateFact
+      tags:
+        - Fact
+      parameters:
+        - $ref: "./parameters/requestId.yaml"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "./schemas/request/fact.yaml"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas/response/fact.yaml"
+
+    delete:
+      summary: Delete selected fact
+      description: This endpoint is used to delete specific fact by fact id
+      operationId: deletedFact
+      tags:
+        - Fact
+      parameters:
+        - $ref: "./parameters/requestId.yaml"
+      responses:
+        204:
+          $ref: "./definitions/processSuccess.yaml"
+
+  /facts/{id}/references:
+    get:
+      summary: List references of specific fact
+      description: This endpoint returns references of specific fact by fact id
+      operationId: getFactReferences
+      tags:
+        - Fact
+      parameters:
+        - $ref: "./parameters/requestId.yaml"
       responses:
         '200':
           description: Successful response
@@ -18,4 +126,40 @@ paths:
               schema:
                 type: array
                 items:
-                  type: string
+                  $ref: "./schemas/response/reference.yaml"
+    post:
+      summary: Add references to specific fact
+      description: This endpoint is used to add new reference to specific fact by fact id
+      operationId: addReferences
+      tags:
+        - Fact
+      parameters:
+        - $ref: "./parameters/requestId.yaml"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "./schemas/request/reference.yaml"
+      responses:
+        '200':
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "./schemas/response/reference.yaml"
+    delete:
+      summary: Delete selected reference
+      description: This endpoint is used to delete specific reference by reference id
+      operationId: deletedReference
+      tags:
+        - Fact
+      parameters:
+        - $ref: "./parameters/requestId.yaml"
+      responses:
+        '204':
+          $ref: "./definitions/processSuccess.yaml"

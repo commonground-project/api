@@ -1,0 +1,16 @@
+type: object
+properties:
+  id:
+    type: string
+    format: uuid
+  create_at:
+    type: string
+    format: date-time
+  url:
+    type: string
+    format: uri
+  favicon:
+    type: string
+    format: byte
+  title:
+    type: string
