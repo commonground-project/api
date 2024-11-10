@@ -4,6 +4,7 @@ cp openapi.yaml public/swagger.yaml
 cp -r definitions public/definitions
 cp -r parameters public/parameters
 cp -r schemas public/schemas
+cp -r paths public/paths
 echo "window.onload = function() { window.ui = SwaggerUIBundle({ url: './swagger.yaml', dom_id: '#swagger-ui' }); };" > public/swagger-initializer.js
 sed -i 's|<title>Swagger UI</title>|<title>API Documentation</title>|' public/index.html
 
