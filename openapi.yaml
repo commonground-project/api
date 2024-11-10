@@ -1,6 +1,6 @@
 openapi: 3.0.0
 info:
-  title: Sample API
+  title: CommonGround API
   description: A simple API example
   version: 1.0.0
 servers:
