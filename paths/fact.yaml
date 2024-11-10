@@ -6,9 +6,9 @@ Facts:
     tags:
       - Fact
     parameters:
-      - $ref: "../parameters/sort.yaml"
-      - $ref: "../parameters/page.yaml"
-      - $ref: "../parameters/size.yaml"
+      - $ref: "../parameters/sort.yaml#/Sort"
+      - $ref: "../parameters/page.yaml#/Page"
+      - $ref: "../parameters/size.yaml#/Size"
     responses:
       '200':
         description: Successful response
@@ -58,7 +58,7 @@ Fact:
     tags:
       - Fact
     parameters:
-      - $ref: "../parameters/requestId.yaml"
+      - $ref: "../parameters/requestId.yaml#/RequestId"
     responses:
       '200':
         description: Successful response
@@ -76,7 +76,7 @@ Fact:
     tags:
       - Fact
     parameters:
-      - $ref: "../parameters/requestId.yaml"
+      - $ref: "../parameters/requestId.yaml#/RequestId"
     requestBody:
       required: true
       content:
@@ -101,7 +101,7 @@ Fact:
     tags:
       - Fact
     parameters:
-      - $ref: "../parameters/requestId.yaml"
+      - $ref: "../parameters/requestId.yaml#/RequestId"
     responses:
       204:
         $ref: "../definitions/processSuccess.yaml"
@@ -114,7 +114,7 @@ FactReferences:
     tags:
       - Fact
     parameters:
-      - $ref: "../parameters/requestId.yaml"
+      - $ref: "../parameters/requestId.yaml#/RequestId"
     responses:
       '200':
         description: Successful response
@@ -131,7 +131,7 @@ FactReferences:
     tags:
       - Fact
     parameters:
-      - $ref: "../parameters/requestId.yaml"
+      - $ref: "../parameters/requestId.yaml#/RequestId"
     requestBody:
       required: true
       content:
@@ -160,7 +160,7 @@ FactReferences:
     tags:
       - Fact
     parameters:
-      - $ref: "../parameters/requestId.yaml"
+      - $ref: "../parameters/requestId.yaml#/RequestId"
     responses:
       '204':
         $ref: "../definitions/processSuccess.yaml"

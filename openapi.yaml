@@ -6,6 +6,27 @@ info:
 servers:
   - url: https://your-api-server.com
 paths:
+  # ViewPoint
+  /viewpoints:
+    $ref: "./paths/viewpoint.yaml#/ViewPoints"
+  /viewpoint/{id}:
+    $ref: "./paths/viewpoint.yaml#/ViewPoint"
+  /viewpoint/{id}/likes:
+    $ref: "./paths/viewpoint.yaml#/ViewPointLikes"
+  /viewpoint/{id}/like/me:
+    $ref: "./paths/viewpoint.yaml#/ViewPointLikeMe"
+  /viewpoint/{id}/reasonables:
+    $ref: "./paths/viewpoint.yaml#/ViewPointReasonables"
+  /viewpoint/{id}/reasonable/me:
+    $ref: "./paths/viewpoint.yaml#/ViewPointReasonableMe"
+  /viewpoint/{id}/dislikes:
+    $ref: "./paths/viewpoint.yaml#/ViewPointDislikes"
+  /viewpoint/{id}/dislike/me:
+    $ref: "./paths/viewpoint.yaml#/ViewPointDislikeMe"
+  /viewpoint/{id}/facts:
+    $ref: "./paths/viewpoint.yaml#/ViewPointFacts"
+  /viewpoint/{id}/fact/{factId}:
+    $ref: "./paths/viewpoint.yaml#/ViewPointFact"
   # Fact
   /facts:
     $ref: "./paths/fact.yaml#/Facts"
