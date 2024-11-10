@@ -39,16 +39,15 @@ paths:
     post:
       summary: Create a new fact
       description: This endpoint is used to create a new fact for user
-      operationId: CreateFact
+      operationId: createFact
       tags:
         - Fact
-      parameters:
-        - name: fact
-          in: body
-          description: New created fact
-          required: true
-          schema:
-            $ref: "./schemas/request/fact.yaml"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "./schemas/request/fact.yaml"
       responses:
         '200':
           description: Successful response
@@ -61,7 +60,7 @@ paths:
     get:
       summary: Get specific fact information
       description: This endpoint returns specific fact information by fact id
-      operationId: GetFact
+      operationId: getFact
       tags:
         - Fact
       parameters:
@@ -74,41 +73,47 @@ paths:
               schema:
                 $ref: "./schemas/response/fact.yaml"
         '404':
-          $ref: "./definitions/dataNotFound.yaml"
+          $ref: "./definitions/errorOccurred.yaml"
 
     put:
       summary: Update properties for a selected fact
       description: This endpoint is used to update properties of specific fact by fact id
-      operationId: UpdateFact
+      operationId: updateFact
       tags:
         - Fact
       parameters:
         - $ref: "./parameters/requestId.yaml"
-        - name: fact
-          in: body
-          description: Updates of fact
-          required: true
-          schema:
-            $ref: "./schemas/request/fact.yaml"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "./schemas/request/fact.yaml"
       responses:
         '200':
-          $ref: "./definitions/requestSuccess.yaml"
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "./schemas/response/fact.yaml"
 
     delete:
       summary: Delete selected fact
       description: This endpoint is used to delete specific fact by fact id
-      operationId: DeletedFact
+      operationId: deletedFact
       tags:
         - Fact
       parameters:
         - $ref: "./parameters/requestId.yaml"
       responses:
+        204:
+          $ref: "./definitions/processSuccess.yaml"
 
   /facts/{id}/references:
     get:
       summary: List references of specific fact
       description: This endpoint returns references of specific fact by fact id
-      operationId: GetFactReferences
+      operationId: getFactReferences
       tags:
         - Fact
       parameters:
@@ -125,19 +130,19 @@ paths:
     post:
       summary: Add references to specific fact
       description: This endpoint is used to add new reference to specific fact by fact id
-      operationId: AddReferences
+      operationId: addReferences
       tags:
         - Fact
       parameters:
         - $ref: "./parameters/requestId.yaml"
-        - name: reference
-          in: body
-          description: New created fact
-          required: true
-          schema:
-            type: array
-            items:
-              $ref: "./schemas/request/reference.yaml"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "./schemas/request/reference.yaml"
       responses:
         '200':
           description: Successful response
@@ -150,7 +155,7 @@ paths:
     delete:
       summary: Delete selected reference
       description: This endpoint is used to delete specific reference by reference id
-      operationId: DeletedReference
+      operationId: deletedReference
       tags:
         - Fact
       parameters:
