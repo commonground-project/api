@@ -7,7 +7,7 @@ cp -r schemas public/schemas
 echo "window.onload = function() { window.ui = SwaggerUIBundle({ url: './swagger.yaml', dom_id: '#swagger-ui' }); };" > public/swagger-initializer.js
 sed -i 's|<title>Swagger UI</title>|<title>API Documentation</title>|' public/index.html
 
-cd ./public
+cd ./public || exit
 python3 -m http.server 8080 &
 SERVER_PID=$!
 
