@@ -9,7 +9,7 @@ paths:
   # Fact
   /facts:
     $ref: "./paths/fact.yaml#/Facts"
-  /facts/{id}:
+  /fact/{id}:
     $ref: "./paths/fact.yaml#/Fact"
-  /facts/{id}/references:
+  /fact/{id}/references:
     $ref: "./paths/fact.yaml#/FactReferences"
