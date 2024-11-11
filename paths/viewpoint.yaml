@@ -37,12 +37,12 @@ ViewPoint:
     parameters:
       - $ref: "../parameters/requestId.yaml#/RequestId"
     responses:
-    '200':
-      description: Successful response
-      content:
-      application/json:
-        schema:
-          $ref: "../schemas/viewpoint.yaml#/ViewPoint"
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/viewpoint.yaml#/ViewPoint"
   put:
     summary: Update a viewpoint
     description: This endpoint is used to update a viewpoint
@@ -63,12 +63,12 @@ ViewPoint:
               content:
                 type: string
     responses:
-    '200':
-      description: Successful response
-      content:
-        application/json:
-          schema:
-            $ref: "../schemas/viewpoint.yaml#/ViewPoint"
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/viewpoint.yaml#/ViewPoint"
   delete:
     summary: Delete a viewpoint
     description: This endpoint is used to delete a viewpoint
@@ -78,8 +78,8 @@ ViewPoint:
     parameters:
       - $ref: "../parameters/requestId.yaml#/RequestId"
     responses:
-    '204':
-      description: No content
+      '204':
+        description: No content
 
 ViewPointLikes:
   get:
@@ -93,22 +93,22 @@ ViewPointLikes:
       - $ref: "../parameters/page.yaml#/Page"
       - $ref: "../parameters/size.yaml#/Size"
     responses:
-    '200':
-      description: Successful response
-      content:
-      application/json:
-        schema:
-        type: object
-        properties:
-          embedded:
-          type: object
-          properties:
-            data:
-            type: array
-            items:
-              $ref: "../schemas/user.yaml#/SimpleUser"
-          page:
-            $ref: "../schemas/page.yaml#/Page"
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                embedded:
+                  type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: "../schemas/user.yaml#/SimpleUser"
+                page:
+                  $ref: "../schemas/page.yaml#/Page"
 
 ViewPointLikeMe:
   post:
@@ -139,22 +139,22 @@ ViewPointReasonables:
       - $ref: "../parameters/page.yaml#/Page"
       - $ref: "../parameters/size.yaml#/Size"
     responses:
-    '200':
-      description: Successful response
-      content:
-      application/json:
-        schema:
-        type: object
-        properties:
-          embedded:
-          type: object
-          properties:
-            data:
-            type: array
-            items:
-              $ref: "../schemas/user.yaml#/SimpleUser"
-          page:
-            $ref: "../schemas/page.yaml#/Page"
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                embedded:
+                  type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: "../schemas/user.yaml#/SimpleUser"
+                page:
+                  $ref: "../schemas/page.yaml#/Page"
 
 ViewPointReasonableMe:
   post:
@@ -185,22 +185,22 @@ ViewPointDislikes:
       - $ref: "../parameters/page.yaml#/Page"
       - $ref: "../parameters/size.yaml#/Size"
     responses:
-    '200':
-      description: Successful response
-      content:
-      application/json:
-        schema:
-        type: object
-        properties:
-          embedded:
-          type: object
-          properties:
-            data:
-            type: array
-            items:
-              $ref: "../schemas/user.yaml#/SimpleUser"
-          page:
-            $ref: "../schemas/page.yaml#/Page"
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                embedded:
+                  type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: "../schemas/user.yaml#/SimpleUser"
+                page:
+                  $ref: "../schemas/page.yaml#/Page"
 
 ViewPointDislikeMe:
   post:
@@ -212,12 +212,12 @@ ViewPointDislikeMe:
     parameters:
       - $ref: "../parameters/requestId.yaml#/RequestId"
     responses:
-    '200':
-      description: Successful response
-      content:
-      application/json:
-        schema:
-        $ref: "../schemas/viewpoint.yaml#/ViewPoint"
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/viewpoint.yaml#/ViewPoint"
 
 ViewPointFacts:
   get:
@@ -231,22 +231,22 @@ ViewPointFacts:
       - $ref: "../parameters/page.yaml#/Page"
       - $ref: "../parameters/size.yaml#/Size"
     responses:
-    '200':
-      description: Successful response
-      content:
-      application/json:
-        schema:
-        type: object
-        properties:
-          embedded:
-          type: object
-          properties:
-            data:
-            type: array
-            items:
-              $ref: "../schemas/fact.yaml#/Fact"
-          page:
-            $ref: "../schemas/page.yaml#/Page"
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                embedded:
+                  type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: "../schemas/fact.yaml#/Fact"
+                page:
+                  $ref: "../schemas/page.yaml#/Page"
   post:
     summary: Add a fact to a viewpoint
     description: This endpoint is used to add a fact to a viewpoint
