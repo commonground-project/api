@@ -1,5 +1,6 @@
-name: page
-in: query
-default: 5
-schema:
-  type: number
+Page:
+  name: page
+  in: query
+  default: 5
+  schema:
+    type: number

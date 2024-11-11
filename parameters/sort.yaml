@@ -1,5 +1,6 @@
-name: sort
-in: query
-default: create_at,asc
-schema:
-  type: string
+Sort:
+  name: sort
+  in: query
+  default: create_at,asc
+  schema:
+    type: string

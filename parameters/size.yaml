@@ -1,5 +1,6 @@
-name: sss
-in: query
-default: 5
-schema:
-  type: number
+Size:
+  name: size
+  in: query
+  default: 5
+  schema:
+    type: number

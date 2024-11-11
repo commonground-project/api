@@ -1,0 +1,37 @@
+ViewPoint:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+      description: The unique identifier of the ViewPoint
+    createdAt:
+      type: string
+      format: date-time
+      description: The date and time the ViewPoint was created
+    updatedAt:
+      type: string
+      format: date-time
+      description: The date and time the ViewPoint was last updated
+    title:
+      type: string
+      description: The name of the ViewPoint
+    content:
+      type: string
+      description: The content of the ViewPoint
+    authorId:
+      type: string
+      format: uuid
+      description: The unique identifier of the author of the ViewPoint
+    authorName:
+      type: string
+      description: The name of the author of the ViewPoint
+    likeCount:
+      type: integer
+      description: The number of likes the ViewPoint has
+    ReasonableCount:
+      type: integer
+      description: The number of resonables the ViewPoint has
+    dislikeCount:
+      type: integer
+      description: The number of dislikes the ViewPoint has

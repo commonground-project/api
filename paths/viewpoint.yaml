@@ -1,0 +1,289 @@
+ViewPoints:
+  get:
+    summary: List viewpoints
+    description: This endpoint returns all viewpoints
+    operationId: getFactsList
+    tags:
+      - ViewPoint
+    parameters:
+      - $ref: "../parameters/sort.yaml#/Sort"
+      - $ref: "../parameters/page.yaml#/Page"
+      - $ref: "../parameters/size.yaml#/Size"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                embedded:
+                  type: object
+                  properties:
+                    data:
+                      type: array
+                      items:
+                        $ref: "../schemas/viewpoint.yaml#/ViewPoint"
+                page:
+                  $ref: "../schemas/page.yaml#/Page"
+
+ViewPoint:
+  get:
+    summary: Get specific viewpoint information
+    description: This endpoint returns specific fact information by fact id
+    operationId: getFact
+    tags:
+      - ViewPoint
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestId"
+    responses:
+    '200':
+      description: Successful response
+      content:
+      application/json:
+        schema:
+          $ref: "../schemas/viewpoint.yaml#/ViewPoint"
+  put:
+    summary: Update a viewpoint
+    description: This endpoint is used to update a viewpoint
+    operationId: updateViewPoint
+    tags:
+      - ViewPoint
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestId"
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              title:
+                type: string
+              content:
+                type: string
+    responses:
+    '200':
+      description: Successful response
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/viewpoint.yaml#/ViewPoint"
+  delete:
+    summary: Delete a viewpoint
+    description: This endpoint is used to delete a viewpoint
+    operationId: deleteViewPoint
+    tags:
+      - ViewPoint
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestId"
+    responses:
+    '204':
+      description: No content
+
+ViewPointLikes:
+  get:
+    summary: List likes of a viewpoint
+    description: This endpoint returns all likes of a viewpoint
+    operationId: getLikesListOfViewPoint
+    tags:
+      - ViewPoint
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - $ref: "../parameters/page.yaml#/Page"
+      - $ref: "../parameters/size.yaml#/Size"
+    responses:
+    '200':
+      description: Successful response
+      content:
+      application/json:
+        schema:
+        type: object
+        properties:
+          embedded:
+          type: object
+          properties:
+            data:
+            type: array
+            items:
+              $ref: "../schemas/user.yaml#/SimpleUser"
+          page:
+            $ref: "../schemas/page.yaml#/Page"
+
+ViewPointLikeMe:
+  post:
+    summary: Like a viewpoint
+    description: This endpoint is used to like a viewpoint
+    operationId: likeViewPoint
+    tags:
+      - ViewPoint
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestId"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/viewpoint.yaml#/ViewPoint"
+
+ViewPointReasonables:
+  get:
+    summary: List reasonables of a viewpoint
+    description: This endpoint returns all reasonables of a viewpoint
+    operationId: getReasonablesListOFViewPoint
+    tags:
+      - ViewPoint
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - $ref: "../parameters/page.yaml#/Page"
+      - $ref: "../parameters/size.yaml#/Size"
+    responses:
+    '200':
+      description: Successful response
+      content:
+      application/json:
+        schema:
+        type: object
+        properties:
+          embedded:
+          type: object
+          properties:
+            data:
+            type: array
+            items:
+              $ref: "../schemas/user.yaml#/SimpleUser"
+          page:
+            $ref: "../schemas/page.yaml#/Page"
+
+ViewPointReasonableMe:
+  post:
+    summary: Reasonable a viewpoint
+    description: This endpoint is used to reasonable a viewpoint
+    operationId: reasonableViewPoint
+    tags:
+      - ViewPoint
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestId"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/viewpoint.yaml#/ViewPoint"
+
+ViewPointDislikes:
+  get:
+    summary: List dislikes of a viewpoint
+    description: This endpoint returns all dislikes of a viewpoint
+    operationId: getDislikesListOfViewPoint
+    tags:
+      - ViewPoint
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - $ref: "../parameters/page.yaml#/Page"
+      - $ref: "../parameters/size.yaml#/Size"
+    responses:
+    '200':
+      description: Successful response
+      content:
+      application/json:
+        schema:
+        type: object
+        properties:
+          embedded:
+          type: object
+          properties:
+            data:
+            type: array
+            items:
+              $ref: "../schemas/user.yaml#/SimpleUser"
+          page:
+            $ref: "../schemas/page.yaml#/Page"
+
+ViewPointDislikeMe:
+  post:
+    summary: Dislike a viewpoint
+    description: This endpoint is used to dislike a viewpoint
+    operationId: dislikeViewPoint
+    tags:
+      - ViewPoint
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestId"
+    responses:
+    '200':
+      description: Successful response
+      content:
+      application/json:
+        schema:
+        $ref: "../schemas/viewpoint.yaml#/ViewPoint"
+
+ViewPointFacts:
+  get:
+    summary: List facts of a viewpoint
+    description: This endpoint returns all facts of a viewpoint
+    operationId: getFactsListOfViewPoint
+    tags:
+      - ViewPoint
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - $ref: "../parameters/page.yaml#/Page"
+      - $ref: "../parameters/size.yaml#/Size"
+    responses:
+    '200':
+      description: Successful response
+      content:
+      application/json:
+        schema:
+        type: object
+        properties:
+          embedded:
+          type: object
+          properties:
+            data:
+            type: array
+            items:
+              $ref: "../schemas/fact.yaml#/Fact"
+          page:
+            $ref: "../schemas/page.yaml#/Page"
+  post:
+    summary: Add a fact to a viewpoint
+    description: This endpoint is used to add a fact to a viewpoint
+    operationId: addFactToViewPoint
+    tags:
+      - ViewPoint
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestId"
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              factId:
+                type: string
+    responses:
+      '204':
+        description: No content
+
+ViewPointFact:
+  delete:
+    summary: Unlink a fact from a viewpoint
+    description: This endpoint is used to remove a fact from a viewpoint
+    operationId: removeFactFromViewPoint
+    tags:
+      - ViewPoint
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - name: factId
+        in: path
+        required: true
+        description: The uuid of fact
+        schema:
+          type: string
+          format: uuid
+    responses:
+      '204':
+        description: No content
