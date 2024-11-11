@@ -26,6 +26,24 @@ ViewPoint:
     authorName:
       type: string
       description: The name of the author of the ViewPoint
+    userLiked:
+      type: boolean
+      description: Whether the user liked the ViewPoint
+    userReasonable:
+      type: boolean
+      description: Whether the user found the ViewPoint reasonable
+    userDisliked:
+      type: boolean
+      description: Whether the user disliked the ViewPoint
+    likeCount:
+      type: integer
+      description: The number of likes the ViewPoint has
+    ReasonableCount:
+      type: integer
+      description: The number of resonables the ViewPoint has
+    dislikeCount:
+      type: integer
+      description: The number of dislikes the ViewPoint has
     facts:
       type: array
       items:
