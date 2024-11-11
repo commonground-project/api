@@ -125,7 +125,7 @@ ViewPointLikeMe:
         content:
           application/json:
             schema:
-              $ref: "../schemas/viewpoint.yaml#/ViewPoint"
+              $ref: "../schemas/viewpoint.yaml#/ViewPointReaction"
 
 ViewPointReasonables:
   get:
@@ -171,7 +171,7 @@ ViewPointReasonableMe:
         content:
           application/json:
             schema:
-              $ref: "../schemas/viewpoint.yaml#/ViewPoint"
+              $ref: "../schemas/viewpoint.yaml#/ViewPointReaction"
 
 ViewPointDislikes:
   get:
@@ -217,7 +217,7 @@ ViewPointDislikeMe:
         content:
           application/json:
             schema:
-              $ref: "../schemas/viewpoint.yaml#/ViewPoint"
+              $ref: "../schemas/viewpoint.yaml#/ViewPointReaction"
 
 ViewPointFacts:
   get:
