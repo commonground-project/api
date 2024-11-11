@@ -10,7 +10,7 @@ Reference:
     url:
       type: string
       format: uri
-    favicon:
+    icon:
       type: string
       format: byte
     title:
