@@ -38,10 +38,7 @@ Facts:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              title:
-                type: string
+            $ref: "../schemas/fact.yaml#/UpdateFact"
     responses:
       '200':
         description: Successful response
@@ -82,10 +79,7 @@ Fact:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              title:
-                type: string
+            $ref: "../schemas/fact.yaml#/UpdateFact"
     responses:
       '200':
         description: Successful response

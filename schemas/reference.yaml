@@ -15,3 +15,10 @@ Reference:
       format: byte
     title:
       type: string
+
+UpdateReference:
+  type: object
+  properties:
+    url:
+      type: string
+      format: uri

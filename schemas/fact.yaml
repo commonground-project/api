@@ -21,3 +21,13 @@ Fact:
       type: array
       items:
         $ref: "../schemas/reference.yaml#/Reference"
+
+UpdateFact:
+  type: object
+  properties:
+    title:
+      type: string
+    references:
+      type: array
+      items:
+        $ref: "../schemas/reference.yaml#/UpdateReference"
