@@ -8,7 +8,7 @@ servers:
 paths:
   # Issue
   /issue/{id}/viewpoints:
-    $ref: "./paths/viewpoint.yaml#/ViewPoints"
+    $ref: "./paths/viewpoint.yaml#/IssueViewPoints"
   # ViewPoint
   /api/viewpoints:
     $ref: "./paths/viewpoint.yaml#/ViewPoints"
