@@ -26,15 +26,8 @@ ViewPoint:
     authorName:
       type: string
       description: The name of the author of the ViewPoint
-    userLiked:
-      type: boolean
-      description: Whether the user liked the ViewPoint
-    userReasonable:
-      type: boolean
-      description: Whether the user found the ViewPoint reasonable
-    userDisliked:
-      type: boolean
-      description: Whether the user disliked the ViewPoint
+    userReaction:
+      $ref: "#/ViewPointReaction"
     likeCount:
       type: integer
       description: The number of likes the ViewPoint has
@@ -52,21 +45,11 @@ ViewPoint:
 ViewPointReaction:
   type: object
   properties:
-    userLiked:
-      type: boolean
-      description: Whether the user liked the ViewPoint
-    userReasonable:
-      type: boolean
-      description: Whether the user found the ViewPoint reasonable
-    userDisliked:
-      type: boolean
-      description: Whether the user disliked the ViewPoint
-    likeCount:
-      type: integer
-      description: The number of likes the ViewPoint has
-    ReasonableCount:
-      type: integer
-      description: The number of resonables the ViewPoint has
-    dislikeCount:
-      type: integer
-      description: The number of dislikes the ViewPoint has
+    reaction:
+      type: string
+      description: The reaction of the user
+      format: enum
+      enum:
+        - LIKE
+        - REASONABLE
+        - DISLIKE

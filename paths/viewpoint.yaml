@@ -110,7 +110,7 @@ ViewPointLikes:
                 page:
                   $ref: "../schemas/page.yaml#/Page"
 
-ViewPointLikeMe:
+ViewPointReaction:
   post:
     summary: Like a viewpoint
     description: This endpoint is used to like a viewpoint
@@ -119,98 +119,12 @@ ViewPointLikeMe:
       - ViewPoint
     parameters:
       - $ref: "../parameters/requestId.yaml#/RequestId"
-    responses:
-      '200':
-        description: Successful response
-        content:
-          application/json:
-            schema:
-              $ref: "../schemas/viewpoint.yaml#/ViewPointReaction"
-
-ViewPointReasonables:
-  get:
-    summary: List reasonables of a viewpoint
-    description: This endpoint returns all reasonables of a viewpoint
-    operationId: getReasonablesListOFViewPoint
-    tags:
-      - ViewPoint
-    parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestId"
-      - $ref: "../parameters/page.yaml#/Page"
-      - $ref: "../parameters/size.yaml#/Size"
-    responses:
-      '200':
-        description: Successful response
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                embedded:
-                  type: object
-                  properties:
-                    data:
-                      type: array
-                      items:
-                        $ref: "../schemas/user.yaml#/SimpleUser"
-                page:
-                  $ref: "../schemas/page.yaml#/Page"
-
-ViewPointReasonableMe:
-  post:
-    summary: Reasonable a viewpoint
-    description: This endpoint is used to reasonable a viewpoint
-    operationId: reasonableViewPoint
-    tags:
-      - ViewPoint
-    parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestId"
-    responses:
-      '200':
-        description: Successful response
-        content:
-          application/json:
-            schema:
-              $ref: "../schemas/viewpoint.yaml#/ViewPointReaction"
-
-ViewPointDislikes:
-  get:
-    summary: List dislikes of a viewpoint
-    description: This endpoint returns all dislikes of a viewpoint
-    operationId: getDislikesListOfViewPoint
-    tags:
-      - ViewPoint
-    parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestId"
-      - $ref: "../parameters/page.yaml#/Page"
-      - $ref: "../parameters/size.yaml#/Size"
-    responses:
-      '200':
-        description: Successful response
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                embedded:
-                  type: object
-                  properties:
-                    data:
-                      type: array
-                      items:
-                        $ref: "../schemas/user.yaml#/SimpleUser"
-                page:
-                  $ref: "../schemas/page.yaml#/Page"
-
-ViewPointDislikeMe:
-  post:
-    summary: Dislike a viewpoint
-    description: This endpoint is used to dislike a viewpoint
-    operationId: dislikeViewPoint
-    tags:
-      - ViewPoint
-    parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestId"
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/viewpoint.yaml#/ViewPointReaction"
     responses:
       '200':
         description: Successful response
