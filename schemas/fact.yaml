@@ -17,3 +17,7 @@ Fact:
       format: uuid
     author_name:
       type: string
+    references:
+      type: array
+      items:
+        $ref: "../schemas/reference.yaml#/Reference"
