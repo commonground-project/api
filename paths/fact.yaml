@@ -104,7 +104,7 @@ FactReferences:
   get:
     summary: List references of specific fact
     description: This endpoint returns references of specific fact by fact id
-    operationId: getFactReferences
+    operationId: getReferencesOfFact
     tags:
       - Fact
     parameters:
@@ -150,7 +150,7 @@ FactReferences:
   delete:
     summary: Delete selected reference
     description: This endpoint is used to delete specific reference by reference id
-    operationId: deletedReference
+    operationId: deleteReference
     tags:
       - Fact
     parameters:

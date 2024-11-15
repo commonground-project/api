@@ -53,3 +53,19 @@ ViewPointReaction:
         - LIKE
         - REASONABLE
         - DISLIKE
+
+UpdateViewPoint:
+  type: object
+  properties:
+    title:
+      type: string
+      description: The name of the ViewPoint
+    content:
+      type: string
+      description: The content of the ViewPoint
+    facts:
+      type: array
+      items:
+        type: string
+        format: uuid
+        description: The unique identifier of the fact

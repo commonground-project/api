@@ -6,6 +6,9 @@ info:
 servers:
   - url: https://your-api-server.com
 paths:
+  # Issue
+  /issue/{id}/viewpoints:
+    $ref: "./paths/viewpoint.yaml#/ViewPoints"
   # ViewPoint
   /api/viewpoints:
     $ref: "./paths/viewpoint.yaml#/ViewPoints"
