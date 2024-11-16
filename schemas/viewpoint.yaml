@@ -53,6 +53,7 @@ ViewPointReaction:
       description: The reaction of the user
       format: enum
       enum:
+        - NONE
         - LIKE
         - REASONABLE
         - DISLIKE
