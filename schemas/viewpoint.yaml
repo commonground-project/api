@@ -26,12 +26,15 @@ ViewPoint:
     authorName:
       type: string
       description: The name of the author of the ViewPoint
+    authorAvatar:
+      type: string
+      format: uri
     userReaction:
       $ref: "#/ViewPointReaction"
     likeCount:
       type: integer
       description: The number of likes the ViewPoint has
-    ReasonableCount:
+    reasonableCount:
       type: integer
       description: The number of resonables the ViewPoint has
     dislikeCount:

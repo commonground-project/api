@@ -4,7 +4,7 @@ Reference:
     id:
       type: string
       format: uuid
-    create_at:
+    createdAt:
       type: string
       format: date-time
     url:
