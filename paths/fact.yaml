@@ -38,10 +38,7 @@ Facts:
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              title:
-                type: string
+            $ref: "../schemas/fact.yaml#/UpdateFact"
     responses:
       '200':
         description: Successful response
@@ -58,7 +55,7 @@ Fact:
     tags:
       - Fact
     parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
     responses:
       '200':
         description: Successful response
@@ -76,16 +73,13 @@ Fact:
     tags:
       - Fact
     parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
     requestBody:
       required: true
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              title:
-                type: string
+            $ref: "../schemas/fact.yaml#/UpdateFact"
     responses:
       '200':
         description: Successful response
@@ -101,7 +95,7 @@ Fact:
     tags:
       - Fact
     parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
     responses:
       204:
         $ref: "../definitions/processSuccess.yaml"
@@ -110,11 +104,11 @@ FactReferences:
   get:
     summary: List references of specific fact
     description: This endpoint returns references of specific fact by fact id
-    operationId: getFactReferences
+    operationId: getReferencesOfFact
     tags:
       - Fact
     parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
     responses:
       '200':
         description: Successful response
@@ -131,7 +125,7 @@ FactReferences:
     tags:
       - Fact
     parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
     requestBody:
       required: true
       content:
@@ -156,11 +150,11 @@ FactReferences:
   delete:
     summary: Delete selected reference
     description: This endpoint is used to delete specific reference by reference id
-    operationId: deletedReference
+    operationId: deleteReference
     tags:
       - Fact
     parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
     responses:
       '204':
         $ref: "../definitions/processSuccess.yaml"

@@ -4,7 +4,7 @@ Reference:
     id:
       type: string
       format: uuid
-    create_at:
+    createdAt:
       type: string
       format: date-time
     url:
@@ -15,3 +15,10 @@ Reference:
       format: byte
     title:
       type: string
+
+UpdateReference:
+  type: object
+  properties:
+    url:
+      type: string
+      format: uri

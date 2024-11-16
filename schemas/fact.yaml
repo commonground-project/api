@@ -4,16 +4,33 @@ Fact:
     id:
       type: string
       format: uuid
-    create_at:
+    createdAt:
       type: string
       format: date-time
-    updated_at:
+    updatedAt:
       type: string
       format: date-time
     title:
       type: string
-    author_id:
+    authorId:
       type: string
       format: uuid
-    author_name:
+    authorName:
       type: string
+    authorAvatar:
+      type: string
+      format: uri
+    references:
+      type: array
+      items:
+        $ref: "../schemas/reference.yaml#/Reference"
+
+UpdateFact:
+  type: object
+  properties:
+    title:
+      type: string
+    references:
+      type: array
+      items:
+        $ref: "../schemas/reference.yaml#/UpdateReference"
