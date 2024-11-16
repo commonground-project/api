@@ -1,8 +1,8 @@
-RequestId:
+RequestUid:
   name: id
   in: path
   required: true
-  description: The uuid of request
+  description: The uuid of specific resource
   schema:
     type: string
     format: uuid

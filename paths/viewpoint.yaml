@@ -6,7 +6,7 @@ IssueViewPoints:
     tags:
       - Issue
     parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
       - $ref: "../parameters/sort.yaml#/Sort"
       - $ref: "../parameters/page.yaml#/Page"
       - $ref: "../parameters/size.yaml#/Size"
@@ -79,12 +79,12 @@ ViewPoints:
 ViewPoint:
   get:
     summary: Get specific viewpoint information
-    description: This endpoint returns specific fact information by fact id
+    description: This endpoint returns specific viewpoint information by viewpoint id
     operationId: getViewPoint
     tags:
       - ViewPoint
     parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
     responses:
       '200':
         description: Successful response
@@ -99,18 +99,13 @@ ViewPoint:
     tags:
       - ViewPoint
     parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
     requestBody:
       required: true
       content:
         application/json:
           schema:
-            type: object
-            properties:
-              title:
-                type: string
-              content:
-                type: string
+            $ref: "../schemas/viewpoint.yaml#/UpdateViewPoint"
     responses:
       '200':
         description: Successful response
@@ -125,7 +120,7 @@ ViewPoint:
     tags:
       - ViewPoint
     parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
     responses:
       '204':
         description: No content
@@ -138,7 +133,7 @@ ViewPointReaction:
     tags:
       - ViewPoint
     parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
     requestBody:
       required: true
       content:
@@ -161,7 +156,7 @@ ViewPointFacts:
     tags:
       - ViewPoint
     parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
       - $ref: "../parameters/page.yaml#/Page"
       - $ref: "../parameters/size.yaml#/Size"
     responses:
@@ -188,7 +183,7 @@ ViewPointFacts:
     tags:
       - ViewPoint
     parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
     requestBody:
       required: true
       content:
@@ -211,7 +206,7 @@ ViewPointFact:
     tags:
       - ViewPoint
     parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
       - name: factId
         in: path
         required: true

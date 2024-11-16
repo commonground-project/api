@@ -55,7 +55,7 @@ Fact:
     tags:
       - Fact
     parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
     responses:
       '200':
         description: Successful response
@@ -73,7 +73,7 @@ Fact:
     tags:
       - Fact
     parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
     requestBody:
       required: true
       content:
@@ -95,7 +95,7 @@ Fact:
     tags:
       - Fact
     parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
     responses:
       204:
         $ref: "../definitions/processSuccess.yaml"
@@ -108,7 +108,7 @@ FactReferences:
     tags:
       - Fact
     parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
     responses:
       '200':
         description: Successful response
@@ -125,7 +125,7 @@ FactReferences:
     tags:
       - Fact
     parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
     requestBody:
       required: true
       content:
@@ -154,7 +154,7 @@ FactReferences:
     tags:
       - Fact
     parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestId"
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
     responses:
       '204':
         $ref: "../definitions/processSuccess.yaml"
