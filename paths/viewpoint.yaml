@@ -18,13 +18,10 @@ IssueViewPoints:
             schema:
               type: object
               properties:
-                embedded:
-                  type: object
-                  properties:
-                    data:
-                      type: array
-                      items:
-                        $ref: "../schemas/viewpoint.yaml#/ViewPoint"
+                content:
+                  type: array
+                  items:
+                    $ref: "../schemas/viewpoint.yaml#/ViewPoint"
                 page:
                   $ref: "../schemas/page.yaml#/Page"
   post:
@@ -66,13 +63,10 @@ ViewPoints:
             schema:
               type: object
               properties:
-                embedded:
-                  type: object
-                  properties:
-                    data:
-                      type: array
-                      items:
-                        $ref: "../schemas/viewpoint.yaml#/ViewPoint"
+                content:
+                  type: array
+                  items:
+                    $ref: "../schemas/viewpoint.yaml#/ViewPoint"
                 page:
                   $ref: "../schemas/page.yaml#/Page"
 
@@ -167,13 +161,10 @@ ViewPointFacts:
             schema:
               type: object
               properties:
-                embedded:
-                  type: object
-                  properties:
-                    data:
-                      type: array
-                      items:
-                        $ref: "../schemas/fact.yaml#/Fact"
+                content:
+                  type: array
+                  items:
+                    $ref: "../schemas/fact.yaml#/Fact"
                 page:
                   $ref: "../schemas/page.yaml#/Page"
   post:
