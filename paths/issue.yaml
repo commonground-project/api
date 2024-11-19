@@ -73,6 +73,24 @@ Issue:
           application/json:
             schema:
               $ref: "../schemas/issue.yaml#/Issue"
+  delete:
+    summary: Delete an issue
+    description: This endpoint is used to delete an issue
+    operationId: deleteIssue
+    tags:
+      - Issue
+      - Admin
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the issue
+        schema:
+          type: string
+          format: uuid
+    responses:
+      '204':
+        description: No content
 
 IssueFacts:
   get:
