@@ -6,12 +6,3 @@ RequestUid:
   schema:
     type: string
     format: uuid
-
-RequestReferenceUid:
-  name: referenceId
-  in: path
-  required: true
-  description: The uuid of specific reference
-  schema:
-    type: string
-    format: uuid

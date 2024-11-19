@@ -151,7 +151,13 @@ FactReference:
       - Fact
     parameters:
       - $ref: "../parameters/requestId.yaml#/RequestUid"
-      - $ref: "../parameters/requestId.yaml#/RequestReferenceUid"
+      - name: referenceId
+        in: path
+        required: true
+        description: The uuid of specific reference
+        schema:
+          type: string
+          format: uuid
     responses:
       '204':
         $ref: "../definitions/processSuccess.yaml"
