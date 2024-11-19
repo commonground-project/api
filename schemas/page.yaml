@@ -3,9 +3,9 @@ Page:
   properties:
     size:
       type: number
-    total_element:
+    totalElement:
       type: number
-    total_page:
+    totalPage:
       type: number
     number:
       type: number
