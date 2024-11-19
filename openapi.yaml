@@ -31,6 +31,8 @@ paths:
     $ref: "./paths/fact.yaml#/Fact"
   /api/fact/{id}/references:
     $ref: "./paths/fact.yaml#/FactReferences"
+  /api/fact/{id}/reference/{referenceId}:
+    $ref: "./paths/fact.yaml#/FactReference"
 
 components:
   schemas:

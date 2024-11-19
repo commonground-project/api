@@ -138,14 +138,11 @@ FactReferences:
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                content:
-                  type: array
-                  items:
-                    $ref: "../schemas/reference.yaml#/Reference"
-                page:
-                  $ref: "../schemas/page.yaml#/Page"
+              type: array
+              items:
+                $ref: "../schemas/reference.yaml#/Reference"
+                  
+FactReference:
   delete:
     summary: Delete selected reference
     description: This endpoint is used to delete specific reference by reference id
@@ -154,6 +151,7 @@ FactReferences:
       - Fact
     parameters:
       - $ref: "../parameters/requestId.yaml#/RequestUid"
+      - $ref: "../parameters/requestId.yaml#/RequestReferenceUid"
     responses:
       '204':
         $ref: "../definitions/processSuccess.yaml"
