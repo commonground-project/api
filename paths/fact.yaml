@@ -17,16 +17,12 @@ Facts:
             schema:
               type: object
               properties:
-                embedded:
-                  type: object
-                  properties:
-                    data:
-                      type: array
-                      items:
-                        $ref: "../schemas/fact.yaml#/Fact"
+                content:
+                  type: array
+                  items:
+                    $ref: "../schemas/fact.yaml#/Fact"
                 page:
                   $ref: "../schemas/page.yaml#/Page"
-  
   post:
     summary: Create a new fact
     description: This endpoint is used to create a new fact for user
@@ -65,7 +61,6 @@ Fact:
               $ref: "../schemas/fact.yaml#/Fact"
       '404':
         $ref: "../definitions/errorOccurred.yaml"
-  
   put:
     summary: Update properties for a selected fact
     description: This endpoint is used to update properties of specific fact by fact id
@@ -87,7 +82,6 @@ Fact:
           application/json:
             schema:
               $ref: "../schemas/fact.yaml#/Fact"
-  
   delete:
     summary: Delete selected fact
     description: This endpoint is used to delete specific fact by fact id
@@ -144,9 +138,14 @@ FactReferences:
         content:
           application/json:
             schema:
-              type: array
-              items:
-                $ref: "../schemas/reference.yaml#/Reference"
+              type: object
+              properties:
+                content:
+                  type: array
+                  items:
+                    $ref: "../schemas/reference.yaml#/Reference"
+                page:
+                  $ref: "../schemas/page.yaml#/Page"
   delete:
     summary: Delete selected reference
     description: This endpoint is used to delete specific reference by reference id
