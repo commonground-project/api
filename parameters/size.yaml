@@ -1,0 +1,6 @@
+Size:
+  name: size
+  in: query
+  default: 5
+  schema:
+    type: number

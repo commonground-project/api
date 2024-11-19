@@ -1,0 +1,36 @@
+Fact:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    createdAt:
+      type: string
+      format: date-time
+    updatedAt:
+      type: string
+      format: date-time
+    title:
+      type: string
+    authorId:
+      type: string
+      format: uuid
+    authorName:
+      type: string
+    authorAvatar:
+      type: string
+      format: uri
+    references:
+      type: array
+      items:
+        $ref: "../schemas/reference.yaml#/Reference"
+
+UpdateFact:
+  type: object
+  properties:
+    title:
+      type: string
+    references:
+      type: array
+      items:
+        $ref: "../schemas/reference.yaml#/UpdateReference"

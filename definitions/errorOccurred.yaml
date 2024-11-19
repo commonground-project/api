@@ -1,0 +1,16 @@
+#Error Occurred Template
+content:
+  application/json:
+    schema:
+      type: object
+      properties:
+        type:
+          type: string
+        status:
+          type: number
+        title:
+          type: string
+        detail:
+          type: string
+        instance:
+          type: string

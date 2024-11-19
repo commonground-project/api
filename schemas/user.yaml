@@ -1,0 +1,16 @@
+SimpleUser:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    username:
+      type: string
+    nickname:
+      type: string
+    email:
+      type: string
+      format: email
+    avatar:
+      type: string
+      format: uri
