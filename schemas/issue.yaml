@@ -32,6 +32,22 @@ Issue:
       items:
         $ref: "../schemas/fact.yaml#/Fact"
 
+SimpleIssue:
+  id:
+    type: string
+    format: uuid
+  createdAt:
+    type: string
+    format: date-time
+  updatedAt:
+    type: string
+    format: date-time
+    description: The last time the issue title, description, or insight was updated
+  title:
+    type: string
+  description:
+    type: string
+
 UpdateIssue:
   type: object
   properties:

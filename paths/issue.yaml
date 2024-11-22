@@ -20,7 +20,7 @@ Issues:
                 content:
                   type: array
                   items:
-                    $ref: "../schemas/issue.yaml#/Issue"
+                    $ref: "../schemas/issue.yaml#/SimpleIssue"
                 page:
                   $ref: "../schemas/page.yaml#/Page"
   post:
