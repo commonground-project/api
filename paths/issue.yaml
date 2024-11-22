@@ -45,6 +45,27 @@ Issues:
               $ref: "../schemas/issue.yaml#/Issue"
 
 Issue:
+  get:
+    summary: Get an issue
+    description: This endpoint returns an issue
+    operationId: getIssue
+    tags:
+      - Issue
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the issue
+        schema:
+          type: string
+          format: uuid
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/issue.yaml#/Issue"
   put:
     summary: Update an issue
     description: This endpoint is used to update an issue
