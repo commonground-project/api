@@ -4,7 +4,6 @@ on:
   push:
     branches:
       - main
-      - remove-node-modules
 permissions:
   contents: write
 
