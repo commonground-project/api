@@ -145,3 +145,34 @@ IssueFacts:
                     $ref: "../schemas/fact.yaml#/Fact"
                 page:
                   $ref: "../schemas/page.yaml#/Page"
+  post:
+    summary: Add a fact to the issue
+    description: This endpoint is used to add a fact to the issue
+    operationId: addIssueFact
+    tags:
+      - Issue
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the issue
+        schema:
+          type: string
+          format: uuid
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: string
+              format: uuid
+              description: The unique identifier of the fact
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/fact.yaml#/Fact"
