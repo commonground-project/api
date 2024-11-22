@@ -7,11 +7,13 @@ servers:
   - url: https://your-api-server.com
 paths:
   # Issue
-  #  /issues:
-  #    $ref: "./paths/issue.yaml#/Issues"
-  #  /issue/{id}:
-  #    $ref: "./paths/issue.yaml#/Issue"
-  /issue/{id}/viewpoints:
+  /api/issues:
+    $ref: "./paths/issue.yaml#/Issues"
+  /api/issue/{id}:
+    $ref: "./paths/issue.yaml#/Issue"
+  /api/issue/{id}/facts:
+    $ref: "./paths/issue.yaml#/IssueFacts"
+  /api/issue/{id}/viewpoints:
     $ref: "./paths/viewpoint.yaml#/IssueViewPoints"
   # ViewPoint
   /api/viewpoints:
@@ -36,6 +38,12 @@ paths:
 
 components:
   schemas:
+    Issue:
+      $ref: "./schemas/issue.yaml#/Issue"
+    UpdateIssue:
+      $ref: "./schemas/issue.yaml#/UpdateIssue"
+    IssueFacts:
+      $ref: "./schemas/issue.yaml#/IssueFacts"
     ViewPoint:
       $ref: "./schemas/viewpoint.yaml#/ViewPoint"
     UpdateViewPoint:
