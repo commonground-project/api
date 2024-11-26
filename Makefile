@@ -1,5 +1,6 @@
 IMAGE_NAME = swagger-server
 CONTAINER_NAME = swagger-server-container
+MOCK_IMAGE_NAME = stoplight/prism:4
 MOCK_CONTAINER_NAME = mock-api-container
 HOST_PORT = 8080
 CONTAINER_PORT = 8080
@@ -22,7 +23,7 @@ run: stop build
 mock: 
 	docker run -d --rm --init --name $(MOCK_CONTAINER_NAME) \
 		-v $(CUR_DIR):/api \
-		-p $(MOCK_ENDPOINT_PORT):$(MOCK_ENDPOINT_PORT) stoplight/prism:4 \
+		-p $(MOCK_ENDPOINT_PORT):$(MOCK_ENDPOINT_PORT) $(MOCK_IMAGE_NAME) \
 		mock -h 0.0.0.0 "/api/openapi.yaml"
 
 stop:
@@ -32,4 +33,4 @@ stop:
 
 clean: stop
 	-docker rmi $(IMAGE_NAME)
-	-docker rmi stoplight/prism:4
+	-docker rmi $(MOCK_IMAGE_NAME)
