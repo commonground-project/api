@@ -164,11 +164,14 @@ IssueFacts:
       content:
         application/json:
           schema:
-            type: array
-            items:
-              type: string
-              format: uuid
-              description: The unique identifier of the fact
+            type: object
+            properties:
+              factIds:
+                type: array
+                items:
+                  type: string
+                  format: uuid
+                  description: The unique identifier of the fact
     responses:
       '200':
         description: Successful response
