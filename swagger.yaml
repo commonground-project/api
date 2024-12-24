@@ -1,21 +1,62 @@
 openapi: 3.0.0
 info:
-  title: Sample API
+  title: CommonGround API
   description: A simple API example
   version: 1.0.0
 servers:
   - url: https://your-api-server.com
 paths:
-  /items:
-    get:
-      summary: Get a list of items
-      operationId: getItems
-      responses:
-        '200':
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: string
+  # Issue
+  /api/issues:
+    $ref: "./paths/issue.yaml#/Issues"
+  /api/issue/{id}:
+    $ref: "./paths/issue.yaml#/Issue"
+  /api/issue/{id}/facts:
+    $ref: "./paths/issue.yaml#/IssueFacts"
+  /api/issue/{id}/viewpoints:
+    $ref: "./paths/viewpoint.yaml#/IssueViewPoints"
+  # ViewPoint
+  /api/viewpoints:
+    $ref: "./paths/viewpoint.yaml#/ViewPoints"
+  /api/viewpoint/{id}:
+    $ref: "./paths/viewpoint.yaml#/ViewPoint"
+  /api/viewpoint/{id}/reaction/me:
+    $ref: "./paths/viewpoint.yaml#/ViewPointReaction"
+  /api/viewpoint/{id}/facts:
+    $ref: "./paths/viewpoint.yaml#/ViewPointFacts"
+  /api/viewpoint/{id}/fact/{factId}:
+    $ref: "./paths/viewpoint.yaml#/ViewPointFact"
+  # Fact
+  /api/facts:
+    $ref: "./paths/fact.yaml#/Facts"
+  /api/fact/{id}:
+    $ref: "./paths/fact.yaml#/Fact"
+  /api/fact/{id}/references:
+    $ref: "./paths/fact.yaml#/FactReferences"
+  /api/fact/{id}/reference/{referenceId}:
+    $ref: "./paths/fact.yaml#/FactReference"
+
+components:
+  schemas:
+    Issue:
+      $ref: "./schemas/issue.yaml#/Issue"
+    UpdateIssue:
+      $ref: "./schemas/issue.yaml#/UpdateIssue"
+    IssueFacts:
+      $ref: "./schemas/issue.yaml#/IssueFacts"
+    ViewPoint:
+      $ref: "./schemas/viewpoint.yaml#/ViewPoint"
+    UpdateViewPoint:
+      $ref: "./schemas/viewpoint.yaml#/UpdateViewPoint"
+    ViewPointReaction:
+      $ref: "./schemas/viewpoint.yaml#/ViewPointReaction"
+    Fact:
+      $ref: "./schemas/fact.yaml#/Fact"
+    UpdateFact:
+      $ref: "./schemas/fact.yaml#/UpdateFact"
+    Reference:
+      $ref: "./schemas/reference.yaml#/Reference"
+    UpdateReference:
+      $ref: "./schemas/reference.yaml#/UpdateReference"
+    Pagination:
+      $ref: "./schemas/page.yaml#/Page"
