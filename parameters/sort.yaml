@@ -1,0 +1,6 @@
+Sort:
+  name: sort
+  in: query
+  default: createAt,asc
+  schema:
+    type: string

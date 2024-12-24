@@ -1,0 +1,24 @@
+Reference:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    createdAt:
+      type: string
+      format: date-time
+    url:
+      type: string
+      format: uri
+    icon:
+      type: string
+      format: byte
+    title:
+      type: string
+
+UpdateReference:
+  type: object
+  properties:
+    url:
+      type: string
+      format: uri

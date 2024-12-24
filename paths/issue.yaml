@@ -1,0 +1,178 @@
+Issues:
+  get:
+    summary: List issues
+    description: This endpoint returns all issues
+    operationId: getIssues
+    tags:
+      - Issue
+    parameters:
+      - $ref: "../parameters/sort.yaml#/Sort"
+      - $ref: "../parameters/page.yaml#/Page"
+      - $ref: "../parameters/size.yaml#/Size"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: array
+                  items:
+                    $ref: "../schemas/issue.yaml#/SimpleIssue"
+                page:
+                  $ref: "../schemas/page.yaml#/Page"
+  post:
+    summary: Create a new issue
+    description: This endpoint is used to create a new an issue
+    operationId: createIssue
+    tags:
+      - Issue
+      - Admin
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/issue.yaml#/UpdateIssue"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/issue.yaml#/Issue"
+
+Issue:
+  get:
+    summary: Get an issue
+    description: This endpoint returns an issue
+    operationId: getIssue
+    tags:
+      - Issue
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the issue
+        schema:
+          type: string
+          format: uuid
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/issue.yaml#/Issue"
+  put:
+    summary: Update an issue
+    description: This endpoint is used to update an issue
+    operationId: updateIssue
+    tags:
+      - Issue
+      - Admin
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the issue
+        schema:
+          type: string
+          format: uuid
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/issue.yaml#/UpdateIssue"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/issue.yaml#/Issue"
+  delete:
+    summary: Delete an issue
+    description: This endpoint is used to delete an issue
+    operationId: deleteIssue
+    tags:
+      - Issue
+      - Admin
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the issue
+        schema:
+          type: string
+          format: uuid
+    responses:
+      '204':
+        description: No content
+
+IssueFacts:
+  get:
+    summary: List facts of viewpoints used in the issue
+    description: This endpoint returns all facts of viewpoints used in the issue
+    operationId: getIssueFacts
+    tags:
+      - Issue
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the issue
+        schema:
+          type: string
+          format: uuid
+      - $ref: "../parameters/sort.yaml#/Sort"
+      - $ref: "../parameters/page.yaml#/Page"
+      - $ref: "../parameters/size.yaml#/Size"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: array
+                  items:
+                    $ref: "../schemas/fact.yaml#/Fact"
+                page:
+                  $ref: "../schemas/page.yaml#/Page"
+  post:
+    summary: Add a fact to the issue
+    description: This endpoint is used to add a fact to the issue
+    operationId: addIssueFact
+    tags:
+      - Issue
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the issue
+        schema:
+          type: string
+          format: uuid
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              type: string
+              format: uuid
+              description: The unique identifier of the fact
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/fact.yaml#/Fact"

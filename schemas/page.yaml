@@ -1,0 +1,11 @@
+Page:
+  type: object
+  properties:
+    size:
+      type: number
+    totalElement:
+      type: number
+    totalPage:
+      type: number
+    number:
+      type: number
