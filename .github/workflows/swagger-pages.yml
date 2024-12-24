@@ -36,7 +36,8 @@ jobs:
         run: |
           mkdir -p public
           cp -R node_modules/swagger-ui-dist/* public/
-          cp openapi.yaml public/swagger.yaml
+          npx speccy resolve openapi.yaml -o output.yaml
+          cp output.yaml public/swagger.yaml
           echo "window.onload = function() { window.ui = SwaggerUIBundle({ url: './swagger.yaml', dom_id: '#swagger-ui' }); };" > public/swagger-initializer.js
           sed -i 's|<title>Swagger UI</title>|<title>API Documentation</title>|' public/index.html
 
