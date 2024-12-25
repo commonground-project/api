@@ -4,7 +4,10 @@ IssueViewPoints:
     description: This endpoint returns all viewpoints of an issue
     operationId: getViewpointsByIssue
     tags:
-      - Issue
+      - ViewPoint
+      - Guest
+      - User
+      - Admin
     parameters:
       - $ref: "../parameters/requestId.yaml#/RequestUid"
       - $ref: "../parameters/sort.yaml#/Sort"
@@ -30,6 +33,8 @@ IssueViewPoints:
     operationId: createViewPoint
     tags:
       - Issue
+      - User
+      - Admin
     requestBody:
       required: true
       content:
@@ -51,6 +56,9 @@ ViewPoints:
     operationId: getViewPoints
     tags:
       - ViewPoint
+      - Guest
+      - User
+      - Admin
     parameters:
       - $ref: "../parameters/sort.yaml#/Sort"
       - $ref: "../parameters/page.yaml#/Page"
@@ -77,6 +85,9 @@ ViewPoint:
     operationId: getViewPoint
     tags:
       - ViewPoint
+      - Guest
+      - User
+      - Admin
     parameters:
       - $ref: "../parameters/requestId.yaml#/RequestUid"
     responses:
@@ -92,6 +103,8 @@ ViewPoint:
     operationId: updateViewPoint
     tags:
       - ViewPoint
+      - User (author)
+      - Admin
     parameters:
       - $ref: "../parameters/requestId.yaml#/RequestUid"
     requestBody:
@@ -113,6 +126,8 @@ ViewPoint:
     operationId: deleteViewPoint
     tags:
       - ViewPoint
+      - User (author)
+      - Admin
     parameters:
       - $ref: "../parameters/requestId.yaml#/RequestUid"
     responses:
@@ -126,6 +141,8 @@ ViewPointReaction:
     operationId: reactToViewPoint
     tags:
       - ViewPoint
+      - User
+      - Admin
     parameters:
       - $ref: "../parameters/requestId.yaml#/RequestUid"
     requestBody:
@@ -149,6 +166,9 @@ ViewPointFacts:
     operationId: getFactsOfViewPoint
     tags:
       - ViewPoint
+      - Guest
+      - User
+      - Admin
     parameters:
       - $ref: "../parameters/requestId.yaml#/RequestUid"
       - $ref: "../parameters/page.yaml#/Page"
@@ -173,6 +193,8 @@ ViewPointFacts:
     operationId: addFactToViewPoint
     tags:
       - ViewPoint
+      - User (author)
+      - Admin
     parameters:
       - $ref: "../parameters/requestId.yaml#/RequestUid"
     requestBody:
@@ -196,6 +218,8 @@ ViewPointFact:
     operationId: removeFactFromViewPoint
     tags:
       - ViewPoint
+      - User (author)
+      - Admin
     parameters:
       - $ref: "../parameters/requestId.yaml#/RequestUid"
       - name: factId

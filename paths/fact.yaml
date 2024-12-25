@@ -5,6 +5,9 @@ Facts:
     operationId: getFactsList
     tags:
       - Fact
+      - Guest
+      - User
+      - Admin
     parameters:
       - $ref: "../parameters/sort.yaml#/Sort"
       - $ref: "../parameters/page.yaml#/Page"
@@ -29,6 +32,8 @@ Facts:
     operationId: createFact
     tags:
       - Fact
+      - User
+      - Admin
     requestBody:
       required: true
       content:
@@ -50,6 +55,9 @@ Fact:
     operationId: getFact
     tags:
       - Fact
+      - Guest
+      - User
+      - Admin
     parameters:
       - $ref: "../parameters/requestId.yaml#/RequestUid"
     responses:
@@ -67,6 +75,8 @@ Fact:
     operationId: updateFact
     tags:
       - Fact
+      - User (author)
+      - Admin
     parameters:
       - $ref: "../parameters/requestId.yaml#/RequestUid"
     requestBody:
@@ -88,6 +98,8 @@ Fact:
     operationId: deletedFact
     tags:
       - Fact
+      - User (author)
+      - Admin
     parameters:
       - $ref: "../parameters/requestId.yaml#/RequestUid"
     responses:
@@ -101,6 +113,9 @@ FactReferences:
     operationId: getReferencesOfFact
     tags:
       - Fact
+      - Guest
+      - User
+      - Admin
     parameters:
       - $ref: "../parameters/requestId.yaml#/RequestUid"
     responses:
@@ -118,6 +133,8 @@ FactReferences:
     operationId: addReferences
     tags:
       - Fact
+      - User (author)
+      - Admin
     parameters:
       - $ref: "../parameters/requestId.yaml#/RequestUid"
     requestBody:
@@ -149,6 +166,8 @@ FactReference:
     operationId: deleteReference
     tags:
       - Fact
+      - User (author)
+      - Admin
     parameters:
       - $ref: "../parameters/requestId.yaml#/RequestUid"
       - name: referenceId

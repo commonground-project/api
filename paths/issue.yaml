@@ -5,6 +5,9 @@ Issues:
     operationId: getIssues
     tags:
       - Issue
+      - Guest
+      - User
+      - Admin
     parameters:
       - $ref: "../parameters/sort.yaml#/Sort"
       - $ref: "../parameters/page.yaml#/Page"
@@ -51,6 +54,9 @@ Issue:
     operationId: getIssue
     tags:
       - Issue
+      - Guest
+      - User
+      - Admin
     parameters:
       - name: id
         in: path
@@ -120,6 +126,9 @@ IssueFacts:
     operationId: getIssueFacts
     tags:
       - Issue
+      - Guest
+      - User
+      - Admin
     parameters:
       - name: id
         in: path
@@ -151,6 +160,7 @@ IssueFacts:
     operationId: addIssueFact
     tags:
       - Issue
+      - Admin
     parameters:
       - name: id
         in: path
