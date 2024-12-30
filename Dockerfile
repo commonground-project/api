@@ -13,5 +13,5 @@ RUN curl -L https://github.com/swagger-api/swagger-ui/archive/v4.15.5.tar.gz | t
 RUN echo "window.onload = function() { window.ui = SwaggerUIBundle({ url: './swagger.yaml', dom_id: '#swagger-ui' }); };" > /app/public/swagger-initializer.js
 RUN sed -i 's|<title>Swagger UI</title>|<title>API Documentation</title>|' /app/public/index.html
 
-EXPOSE 8080
-CMD watchmedo auto-restart --patterns="*.yaml;*.html;*.js;*.css" --recursive -- python3 -m http.server 8080 --directory /app/public
+EXPOSE 8000
+CMD watchmedo auto-restart --patterns="*.yaml;*.html;*.js;*.css" --recursive -- python3 -m http.server 8000 --directory /app/public

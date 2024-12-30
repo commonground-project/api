@@ -2,8 +2,8 @@ IMAGE_NAME = swagger-server
 CONTAINER_NAME = swagger-server-container
 MOCK_IMAGE_NAME = stoplight/prism:4
 MOCK_CONTAINER_NAME = mock-api-container
-HOST_PORT = 8080
-CONTAINER_PORT = 8080
+HOST_PORT = 8000
+CONTAINER_PORT = 8000
 MOCK_ENDPOINT_PORT = 4010
 CUR_DIR = $(shell pwd)
 
