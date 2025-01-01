@@ -1,0 +1,43 @@
+Timeline:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+      description: The unique identifier of the timeline
+    createdAt:
+      type: string
+      format: date-time
+    updatedAt:
+      type: string
+      format: date-time
+    title:
+      type: string
+      description: The name of the timeline
+    description:
+      type: string
+      description: The description of the timeline
+    date:
+      type: string
+      format: date
+      description: The date of the timeline (YYYY-MM-DD)
+      example: "2020-01-01"
+
+UpdateTimeline:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+      description: The unique identifier of the timeline
+    title:
+      type: string
+      description: The name of the timeline
+    description:
+      type: string
+      description: The description of the timeline
+    date:
+      type: string
+      format: date
+      description: The date of the timeline (YYYY-MM-DD)
+      example: "2020-01-01"

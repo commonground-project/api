@@ -1,0 +1,109 @@
+Timelines:
+  get:
+    summary: Get all timelines for a specific issue
+    description: This endpoint returns all timelines for a specific issue
+    operationId: getTimelines
+    tags:
+      - Timeline
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/timeline.yaml#/Timeline"
+  post:
+    summary: Create a new timeline
+    description: This endpoint is used to create a new timeline for an issue
+    operationId: createTimeline
+    tags:
+      - Timeline
+      - Admin
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/timeline.yaml#/UpdateTimeline"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/timeline.yaml#/Timeline"
+
+Timeline:
+  get:
+    summary: Get a timeline
+    description: This endpoint returns a timeline
+    operationId: getTimeline
+    tags:
+      - Timeline
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the timeline
+        schema:
+          type: string
+          format: uuid
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/timeline.yaml#/Timeline"
+  put:
+    summary: Update a timeline
+    description: This endpoint is used to update a timeline
+    operationId: updateTimeline
+    tags:
+      - Timeline
+      - Admin
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the timeline
+        schema:
+          type: string
+          format: uuid
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/timeline.yaml#/UpdateTimeline"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/timeline.yaml#/Timeline"
+  delete:
+    summary: Delete a timeline
+    description: This endpoint is used to delete a timeline
+    operationId: deleteTimeline
+    tags:
+      - Timeline
+      - Admin
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the timeline
+        schema:
+          type: string
+          format: uuid
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/timeline.yaml#/Timeline"
