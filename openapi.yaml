@@ -26,6 +26,8 @@ paths:
     $ref: "./paths/viewpoint.yaml#/ViewPointFacts"
   /api/viewpoint/{id}/fact/{factId}:
     $ref: "./paths/viewpoint.yaml#/ViewPointFact"
+  /api/viewpoint/{id}/replies:
+    $ref: "./paths/reply.yaml#/ViewpointReplies"
   # Fact
   /api/facts:
     $ref: "./paths/fact.yaml#/Facts"
@@ -35,7 +37,13 @@ paths:
     $ref: "./paths/fact.yaml#/FactReferences"
   /api/fact/{id}/reference/{referenceId}:
     $ref: "./paths/fact.yaml#/FactReference"
-
+  # Reply
+  /api/reply:
+    $ref: "./paths/reply.yaml#/Reply"
+  /api/reply/{id}/reaction/me:
+    $ref: "./paths/reply.yaml#/ReplyReaction"
+  /api/reply/{id}/facts:
+    $ref: "./paths/reply.yaml#/ReplyFacts"
 components:
   schemas:
     Issue:
@@ -58,5 +66,14 @@ components:
       $ref: "./schemas/reference.yaml#/Reference"
     UpdateReference:
       $ref: "./schemas/reference.yaml#/UpdateReference"
+    Reply:
+      $ref: "./schemas/reply.yaml#/Reply"
+    UpdateReply:
+      $ref: "./schemas/reply.yaml#/UpdateReply"
+    ReplyReaction:
+      $ref: "./schemas/reply.yaml#/ReplyReaction"
+    QuoteReply:
+      $ref: "./schemas/reply.yaml#/QuoteReply"
     Pagination:
       $ref: "./schemas/page.yaml#/Page"
+      
