@@ -21,7 +21,7 @@ ViewpointReplies:
                 content:
                   type: array
                   items:
-                    $ref: "../schemas/fact.yaml#/Fact"
+                    $ref: "../schemas/reply.yaml#/Reply"
                 page:
                   $ref: "../schemas/page.yaml#/Page"
   post:
@@ -66,6 +66,7 @@ Reply:
     operationId: updateReply
     tags:
       - Reply
+      - Admin
     parameters:
       - $ref: "../parameters/requestId.yaml#/RequestUid"
     requestBody:
@@ -87,6 +88,7 @@ Reply:
     operationId: deleteReply
     tags:
       - Reply
+      - Admin
     parameters:
       - $ref: "../parameters/requestId.yaml#/RequestUid"
     responses:
@@ -107,7 +109,7 @@ ReplyReaction:
       content:
         application/json:
           schema:
-            $ref: "../schemas/reply.yaml#/ReplyReaction"
+            $ref: "../schemas/reply.yaml#/UpdateReplyReaction"
     responses:
       '200':
         description: Successful response
@@ -115,71 +117,4 @@ ReplyReaction:
           application/json:
             schema:
               $ref: "../schemas/reply.yaml#/ReplyReaction"
-
-ReplyFacts:
-  get:
-    summary: List facts of a reply
-    description: This endpoint returns all facts of a reply
-    operationId: getFactsOfReply
-    tags:
-      - Reply
-    parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestUid"
-      - $ref: "../parameters/page.yaml#/Page"
-      - $ref: "../parameters/size.yaml#/Size"
-    responses:
-      '200':
-        description: Successful response
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                content:
-                  type: array
-                  items:
-                    $ref: "../schemas/fact.yaml#/Fact"
-                page:
-                  $ref: "../schemas/page.yaml#/Page"
-  post:
-    summary: Add a fact to a reply
-    description: This endpoint is used to add a fact to a reply
-    operationId: addFactToReply
-    tags:
-      - Reply
-    parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestUid"
-    requestBody:
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              factId:
-                type: string
-                format: uuid
-    responses:
-      '204':
-        description: No content
-
-ReplyFact:
-  delete:
-    summary: Unlink a fact from a reply
-    description: This endpoint is used to remove a fact from a reply
-    operationId: removeFactFromReply
-    tags:
-      - Reply
-    parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestUid"
-      - name: factId
-        in: path
-        required: true
-        description: The uuid of fact
-        schema:
-          type: string
-          format: uuid
-    responses:
-      '204':
-        description: No content
         

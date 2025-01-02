@@ -60,6 +60,32 @@ ReplyReaction:
         - LIKE
         - REASONABLE
         - DISLIKE
+    likeCount:
+      type: integer
+      description: The number of likes the Reply has
+    reasonableCount:
+      type: integer
+      description: The number of reasonables the Reply has
+    dislikeCount:
+      type: integer
+      description: The number of dislikes the Reply
+    updatedAt:
+      type: string
+      format: date-time
+      description: The date and time the Reply was last updated
+
+UpdateReplyReaction:
+  type: object
+  properties:
+    reaction:
+      type: string
+      description: The reaction of the user
+      format: enum
+      enum:
+        - NONE
+        - LIKE
+        - REASONABLE
+        - DISLIKE
 
 UpdateReply:
   type: object
@@ -67,6 +93,10 @@ UpdateReply:
     content:
       type: string
       description: The content of the Reply
+    quotes:
+      type: array
+      items:
+        $ref: "#/UpdateQuoteReply"
     facts:
       type: array
       items:
@@ -77,14 +107,41 @@ UpdateReply:
 QuoteReply:
   type: object
   properties:
-    id:
+    replyId:
       type: string
       format: uuid
       description: The id of the Reply
+    authorId:
+      type: string
+      format: uuid
+      description: The unique identifier of the author of the Reply
     authorName:
       type: string
       description: The name of the author of the Reply
+    authorAvatar:
+      type: string
+      format: uri
     content:
       type: string
       description: The part of the content of the Reply
-      
+    start:
+      type: integer
+      description: The start position of the content of the Reply
+    end:
+      type: integer
+      description: The end position of the content of the Reply
+
+UpdateQuoteReply:
+  type: object
+  properties:
+    replyId:
+      type: string
+      format: uuid
+      description: The id of the Reply
+    start:
+      type: integer
+      description: The start position of the content of the Reply
+    end:
+      type: integer
+      description: The end position of the content of the Reply
+
