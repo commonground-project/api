@@ -1,0 +1,6 @@
+Search:
+  name: search
+  in: query
+  nullable: true
+  schema:
+    type: string
