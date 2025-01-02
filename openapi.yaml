@@ -36,9 +36,9 @@ paths:
   /api/fact/{id}/reference/{referenceId}:
     $ref: "./paths/fact.yaml#/FactReference"
   # Timeline
-  /api/issue/{id}/timelines:
+  /api/issue/{id}/timeline:
     $ref: "./paths/timeline.yaml#/Timelines"
-  /api/timeline/{id}:
+  /api/timeline/node/{id}:
     $ref: "./paths/timeline.yaml#/Timeline"
 
 components:

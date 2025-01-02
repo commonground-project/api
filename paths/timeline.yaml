@@ -13,7 +13,12 @@ Timelines:
         content:
           application/json:
             schema:
-              $ref: "../schemas/timeline.yaml#/Timeline"
+              type: object
+              properties:
+                content:
+                  type: array
+                  items:
+                    $ref: "../schemas/timeline.yaml#/Timeline"
   post:
     summary: Create a new timeline
     description: This endpoint is used to create a new timeline for an issue
