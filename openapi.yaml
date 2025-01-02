@@ -36,7 +36,7 @@ paths:
   /api/fact/{id}/reference/{referenceId}:
     $ref: "./paths/fact.yaml#/FactReference"
   # Timeline
-  /api/issues/{id}/timelines:
+  /api/issue/{id}/timelines:
     $ref: "./paths/timeline.yaml#/Timelines"
   /api/timeline/{id}:
     $ref: "./paths/timeline.yaml#/Timeline"
