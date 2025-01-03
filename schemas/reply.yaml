@@ -28,7 +28,17 @@ Reply:
       type: string
       format: uri
     userReaction:
-      $ref: "#/ReplyReaction"
+      type: object
+      properties:
+        reaction:
+          type: string
+          description: The reaction of the user
+          format: enum
+          enum:
+            - NONE
+            - LIKE
+            - REASONABLE
+            - DISLIKE
     likeCount:
       type: integer
       description: The number of likes the Reply has
