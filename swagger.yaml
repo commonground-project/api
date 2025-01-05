@@ -16,7 +16,7 @@ paths:
       parameters:
         - name: sort
           in: query
-          default: createAt,asc
+          default: createdAt,asc
           schema:
             type: string
         - name: page
@@ -580,6 +580,160 @@ paths:
       responses:
         "204":
           description: No content
+  "/api/viewpoint/{id}/replies":
+    get:
+      summary: List replies
+      description: This endpoint will return all replies of a viewpoints
+      operationId: getRepliesByViewpoint
+      tags:
+        - ViewPoint
+      parameters:
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
+        - $ref: "#/paths/~1api~1issues/get/parameters/0"
+        - $ref: "#/paths/~1api~1issues/get/parameters/1"
+        - $ref: "#/paths/~1api~1issues/get/parameters/2"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  content:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                          description: The unique identifier of the Reply
+                        createdAt:
+                          type: string
+                          format: date-time
+                          description: The date and time the Reply was created
+                        updatedAt:
+                          type: string
+                          format: date-time
+                          description: The date and time the Reply was last updated
+                        content:
+                          type: string
+                          description: The content of the Reply
+                          example: "[[Quote]](0) This is a reply [first imported fact](0) [second imported
+                            fact](1,2) [[Quote]](1)"
+                        authorId:
+                          type: string
+                          format: uuid
+                          description: The unique identifier of the author of the Reply
+                        authorName:
+                          type: string
+                          description: The name of the author of the Reply
+                        authorAvatar:
+                          type: string
+                          format: uri
+                        userReaction:
+                          type: object
+                          properties:
+                            reaction:
+                              type: string
+                              description: The reaction of the user
+                              format: enum
+                              enum:
+                                - NONE
+                                - LIKE
+                                - REASONABLE
+                                - DISLIKE
+                        likeCount:
+                          type: integer
+                          description: The number of likes the Reply has
+                        reasonableCount:
+                          type: integer
+                          description: The number of reasonables the Reply has
+                        dislikeCount:
+                          type: integer
+                          description: The number of dislikes the Reply
+                        quotes:
+                          type: array
+                          description: The list of quotes
+                          items:
+                            type: object
+                            properties:
+                              replyId:
+                                type: string
+                                format: uuid
+                                description: The id of the Reply
+                              authorId:
+                                type: string
+                                format: uuid
+                                description: The unique identifier of the author of the Reply
+                              authorName:
+                                type: string
+                                description: The name of the author of the Reply
+                              authorAvatar:
+                                type: string
+                                format: uri
+                              content:
+                                type: string
+                                description: The part of the content of the Reply
+                              start:
+                                type: integer
+                                description: The start position of the content of the Reply
+                              end:
+                                type: integer
+                                description: The end position of the content of the Reply
+                        facts:
+                          type: array
+                          items:
+                            $ref: "#/components/schemas/Issue/properties/facts/items"
+                  page:
+                    $ref: "#/paths/~1api~1issues/get/responses/200/content/application~1json/schema\
+                      /properties/page"
+    post:
+      summary: Create a new reply
+      description: This endpoint is used to create a new reply for an viewpoint
+      operationId: createReply
+      tags:
+        - ViewPoint
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: string
+                  description: The content of the Reply
+                quotes:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      replyId:
+                        type: string
+                        format: uuid
+                        description: The id of the Reply
+                      start:
+                        type: integer
+                        description: The start position of the content of the Reply
+                      end:
+                        type: integer
+                        description: The end position of the content of the Reply
+                facts:
+                  type: array
+                  items:
+                    type: string
+                    format: uuid
+                    description: The unique identifier of the fact
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/paths/~1api~1viewpoint~1%7Bid%7D~1replies/get/responses/200/content/ap\
+                  plication~1json/schema/properties/content/items"
   /api/facts:
     get:
       summary: List facts
@@ -776,6 +930,114 @@ paths:
       responses:
         "204":
           $ref: "#/paths/~1api~1fact~1%7Bid%7D/delete/responses/204"
+  "/api/reply/{id}":
+    get:
+      summary: Get specific reply information
+      description: This endpoint returns specific reply information by reply id
+      operationId: getReply
+      tags:
+        - Reply
+      parameters:
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/paths/~1api~1viewpoint~1%7Bid%7D~1replies/get/responses/200/content/ap\
+                  plication~1json/schema/properties/content/items"
+    put:
+      summary: Update a reply
+      description: This endpoint is used to update a reply
+      operationId: updateReply
+      tags:
+        - Reply
+        - Admin
+      parameters:
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: "#/paths/~1api~1viewpoint~1%7Bid%7D~1replies/post/requestBody/content/app\
+                lication~1json/schema"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/paths/~1api~1viewpoint~1%7Bid%7D~1replies/get/responses/200/content/ap\
+                  plication~1json/schema/properties/content/items"
+    delete:
+      summary: Delete a reply
+      description: This endpoint is used to delete a reply
+      operationId: deleteReply
+      tags:
+        - Reply
+        - Admin
+      parameters:
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
+      responses:
+        "204":
+          description: No content
+  "/api/reply/{id}/reaction/me":
+    post:
+      summary: React to a reply
+      description: This endpoint is used to react to a reply
+      operationId: reactToReply
+      tags:
+        - Reply
+      parameters:
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                reaction:
+                  type: string
+                  description: The reaction of the user
+                  format: enum
+                  enum:
+                    - NONE
+                    - LIKE
+                    - REASONABLE
+                    - DISLIKE
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  reaction:
+                    type: string
+                    description: The reaction of the user
+                    format: enum
+                    enum:
+                      - NONE
+                      - LIKE
+                      - REASONABLE
+                      - DISLIKE
+                  likeCount:
+                    type: integer
+                    description: The number of likes the Reply has
+                  reasonableCount:
+                    type: integer
+                    description: The number of reasonables the Reply has
+                  dislikeCount:
+                    type: integer
+                    description: The number of dislikes the Reply
+                  updatedAt:
+                    type: string
+                    format: date-time
+                    description: The date and time the Reply was last updated
 components:
   schemas:
     Issue:
@@ -1034,6 +1296,168 @@ components:
         url:
           type: string
           format: uri
+    Reply:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+          description: The unique identifier of the Reply
+        createdAt:
+          type: string
+          format: date-time
+          description: The date and time the Reply was created
+        updatedAt:
+          type: string
+          format: date-time
+          description: The date and time the Reply was last updated
+        content:
+          type: string
+          description: The content of the Reply
+          example: "[[Quote]](0) This is a reply [first imported fact](0) [second imported
+            fact](1,2) [[Quote]](1)"
+        authorId:
+          type: string
+          format: uuid
+          description: The unique identifier of the author of the Reply
+        authorName:
+          type: string
+          description: The name of the author of the Reply
+        authorAvatar:
+          type: string
+          format: uri
+        userReaction:
+          type: object
+          properties:
+            reaction:
+              type: string
+              description: The reaction of the user
+              format: enum
+              enum:
+                - NONE
+                - LIKE
+                - REASONABLE
+                - DISLIKE
+        likeCount:
+          type: integer
+          description: The number of likes the Reply has
+        reasonableCount:
+          type: integer
+          description: The number of reasonables the Reply has
+        dislikeCount:
+          type: integer
+          description: The number of dislikes the Reply
+        quotes:
+          type: array
+          description: The list of quotes
+          items:
+            type: object
+            properties:
+              replyId:
+                type: string
+                format: uuid
+                description: The id of the Reply
+              authorId:
+                type: string
+                format: uuid
+                description: The unique identifier of the author of the Reply
+              authorName:
+                type: string
+                description: The name of the author of the Reply
+              authorAvatar:
+                type: string
+                format: uri
+              content:
+                type: string
+                description: The part of the content of the Reply
+              start:
+                type: integer
+                description: The start position of the content of the Reply
+              end:
+                type: integer
+                description: The end position of the content of the Reply
+        facts:
+          type: array
+          items:
+            $ref: "#/components/schemas/Issue/properties/facts/items"
+    UpdateReply:
+      type: object
+      properties:
+        content:
+          type: string
+          description: The content of the Reply
+        quotes:
+          type: array
+          items:
+            type: object
+            properties:
+              replyId:
+                type: string
+                format: uuid
+                description: The id of the Reply
+              start:
+                type: integer
+                description: The start position of the content of the Reply
+              end:
+                type: integer
+                description: The end position of the content of the Reply
+        facts:
+          type: array
+          items:
+            type: string
+            format: uuid
+            description: The unique identifier of the fact
+    ReplyReaction:
+      type: object
+      properties:
+        reaction:
+          type: string
+          description: The reaction of the user
+          format: enum
+          enum:
+            - NONE
+            - LIKE
+            - REASONABLE
+            - DISLIKE
+        likeCount:
+          type: integer
+          description: The number of likes the Reply has
+        reasonableCount:
+          type: integer
+          description: The number of reasonables the Reply has
+        dislikeCount:
+          type: integer
+          description: The number of dislikes the Reply
+        updatedAt:
+          type: string
+          format: date-time
+          description: The date and time the Reply was last updated
+    QuoteReply:
+      type: object
+      properties:
+        replyId:
+          type: string
+          format: uuid
+          description: The id of the Reply
+        authorId:
+          type: string
+          format: uuid
+          description: The unique identifier of the author of the Reply
+        authorName:
+          type: string
+          description: The name of the author of the Reply
+        authorAvatar:
+          type: string
+          format: uri
+        content:
+          type: string
+          description: The part of the content of the Reply
+        start:
+          type: integer
+          description: The start position of the content of the Reply
+        end:
+          type: integer
+          description: The end position of the content of the Reply
     Pagination:
       type: object
       properties:
