@@ -1,6 +1,6 @@
 Sort:
   name: sort
   in: query
-  default: createAt,asc
+  default: createdAt,asc
   schema:
     type: string
