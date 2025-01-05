@@ -1,0 +1,36 @@
+Notification:
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    createdAt:
+      type: string
+      format: date-time
+    url:
+      type: string
+      format: uri
+    icon:
+      type: string
+      format: uri
+      #  or byte?
+    title:
+      type: string
+    content:
+      type: string
+    read:
+      type: boolean
+    userId:
+      type: string
+      format: uuid
+    type:
+      # 0: like, 1: comment, 2: follow, 3: system ...
+      type: string
+    status:
+      # 0: unread, 1: read, 2: deleted ...
+      type: string
+    readAt:
+      type: string
+      format: date-time
+    readByMe:
+      type: boolean

@@ -35,6 +35,13 @@ paths:
     $ref: "./paths/fact.yaml#/FactReferences"
   /api/fact/{id}/reference/{referenceId}:
     $ref: "./paths/fact.yaml#/FactReference"
+  # Notification
+  /api/notifications:
+    $ref: "./paths/notification.yaml#/Notifications"
+  /api/notification/user/{userId}:
+    $ref: "./paths/notification.yaml#/NotificationUser"
+  /api/notification/{id}:
+    $ref: "./paths/notification.yaml#/Notification"
 
 components:
   schemas:
@@ -60,3 +67,5 @@ components:
       $ref: "./schemas/reference.yaml#/UpdateReference"
     Pagination:
       $ref: "./schemas/page.yaml#/Page"
+    Notification:
+      $ref: "./schemas/notification.yaml#/Notification"

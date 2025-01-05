@@ -1,0 +1,52 @@
+Notifications:
+  get:
+    summary: List notifications
+    description: This endpoint returns all notifications for all users
+    operationId: getNotifications
+    tags:
+      - Notification
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "../schemas/notification.yaml#/Notification"
+
+NotificationUser:
+  get:
+    summary: List notifications for a specific user
+    description: This endpoint returns all notifications for a specific user
+    operationId: getNotificationsUser
+    tags:
+      - Notification
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: "../schemas/notification.yaml#/Notification"
+
+Notification:
+  get:
+    summary: Get a notification by id
+    description: This endpoint returns a notification
+    operationId: getNotification
+    tags:
+      - Notification
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/notification.yaml#/Notification"
