@@ -12,14 +12,11 @@ Notification:
       format: uri
     icon:
       type: string
-      format: uri
-      #  or byte?
+      format: uri #  or byte?
     title:
       type: string
     content:
       type: string
-    read:
-      type: boolean
     userId:
       type: string
       format: uuid
@@ -29,20 +26,15 @@ Notification:
     status:
       # 0: unread, 1: read, 2: deleted ...  maybe change to enum
       type: string
-    readAt:
+    UpdateAt:
       type: string
       format: date-time
-    readByMe:
-      type: boolean
 
 UpdateNotification:
   type: object
   properties:
-    read:
-      type: boolean
+    id:
+      type: string
+      format: uuid
     status:
       type: string
-      # 0: unread, 1: read, 2: deleted ...
-    readAt:
-      type: string
-      format: date-time
