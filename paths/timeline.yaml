@@ -106,9 +106,5 @@ Timeline:
           type: string
           format: uuid
     responses:
-      '200':
+      '204':
         description: Successful response
-        content:
-          application/json:
-            schema:
-              $ref: "../schemas/timeline.yaml#/Timeline"
