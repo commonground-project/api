@@ -591,6 +591,11 @@ paths:
         - $ref: "#/paths/~1api~1issues/get/parameters/0"
         - $ref: "#/paths/~1api~1issues/get/parameters/1"
         - $ref: "#/paths/~1api~1issues/get/parameters/2"
+        - name: search
+          in: query
+          nullable: true
+          schema:
+            type: string
       responses:
         "200":
           description: Successful response
