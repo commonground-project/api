@@ -50,3 +50,23 @@ Notification:
           application/json:
             schema:
               $ref: "../schemas/notification.yaml#/Notification"
+  put:
+    summary: Update a notification
+    description: This endpoint is used to update a notification
+    operationId: updateNotification
+    tags:
+      - Notification
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
+    requestBody:
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/notification.yaml#/UpdateNotification"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/notification.yaml#/UpdateNotification"

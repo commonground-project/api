@@ -24,13 +24,25 @@ Notification:
       type: string
       format: uuid
     type:
-      # 0: like, 1: comment, 2: follow, 3: system ...
+      # 0: like, 1: comment, 2: follow, 3: system ... maybe change to enum
       type: string
     status:
-      # 0: unread, 1: read, 2: deleted ...
+      # 0: unread, 1: read, 2: deleted ...  maybe change to enum
       type: string
     readAt:
       type: string
       format: date-time
     readByMe:
       type: boolean
+
+UpdateNotification:
+  type: object
+  properties:
+    read:
+      type: boolean
+    status:
+      type: string
+      # 0: unread, 1: read, 2: deleted ...
+    readAt:
+      type: string
+      format: date-time
