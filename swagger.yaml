@@ -1,10 +1,11 @@
 openapi: 3.0.0
 info:
   title: CommonGround API
-  description: A simple API example
-  version: 1.0.0
+  description: CommonGround API specification
+  version: 0.0.1
 servers:
-  - url: https://your-api-server.com
+  - url: https://localhost:8080
+    description: Local server with WireGuard
 paths:
   /api/issues:
     get:
