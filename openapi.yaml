@@ -1,10 +1,11 @@
 openapi: 3.0.0
 info:
   title: CommonGround API
-  description: A simple API example
-  version: 1.0.0
+  description: CommonGround API specification
+  version: 0.0.1
 servers:
-  - url: https://your-api-server.com
+  - url: https://localhost:8080
+    description: Local server with WireGuard
 paths:
   # Issue
   /api/issues:
@@ -26,6 +27,8 @@ paths:
     $ref: "./paths/viewpoint.yaml#/ViewPointFacts"
   /api/viewpoint/{id}/fact/{factId}:
     $ref: "./paths/viewpoint.yaml#/ViewPointFact"
+  /api/viewpoint/{id}/replies:
+    $ref: "./paths/reply.yaml#/ViewpointReplies"
   # Fact
   /api/facts:
     $ref: "./paths/fact.yaml#/Facts"
@@ -40,6 +43,11 @@ paths:
     $ref: "./paths/timeline.yaml#/Timelines"
   /api/timeline/node/{id}:
     $ref: "./paths/timeline.yaml#/Timeline"
+  # Reply
+  /api/reply/{id}:
+    $ref: "./paths/reply.yaml#/Reply"
+  /api/reply/{id}/reaction/me:
+    $ref: "./paths/reply.yaml#/ReplyReaction"
 
 components:
   schemas:
@@ -63,5 +71,14 @@ components:
       $ref: "./schemas/reference.yaml#/Reference"
     UpdateReference:
       $ref: "./schemas/reference.yaml#/UpdateReference"
+    Reply:
+      $ref: "./schemas/reply.yaml#/Reply"
+    UpdateReply:
+      $ref: "./schemas/reply.yaml#/UpdateReply"
+    ReplyReaction:
+      $ref: "./schemas/reply.yaml#/ReplyReaction"
+    QuoteReply:
+      $ref: "./schemas/reply.yaml#/QuoteReply"
     Pagination:
       $ref: "./schemas/page.yaml#/Page"
+      
