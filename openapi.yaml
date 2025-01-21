@@ -48,6 +48,9 @@ paths:
     $ref: "./paths/reply.yaml#/Reply"
   /api/reply/{id}/reaction/me:
     $ref: "./paths/reply.yaml#/ReplyReaction"
+  # Website Title
+  /api/websitetitle:
+    $ref: "./paths/websitetitle.yaml#/WebsiteTitle"
 
 components:
   schemas:
@@ -81,4 +84,3 @@ components:
       $ref: "./schemas/reply.yaml#/QuoteReply"
     Pagination:
       $ref: "./schemas/page.yaml#/Page"
-      

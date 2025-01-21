@@ -1,0 +1,39 @@
+WebsiteTitle:
+  get:
+    summary: Get Website Title and Icon
+    description: Get the title and icon of the website.
+    requsestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              url:
+                type: string
+                format: uri
+    responses:
+      "200": # when the website of the given URL is found
+        description: OK
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                title: # return 'NO TITLE' when the title is not found
+                  type: string
+                icon: # return '' (empty string) when the icon is not found
+                  type: string
+                  format: uri
+
+      "400": # when the website of the given URL is not found
+        description: Website not found
+        content:
+          application/json:
+            schema:
+              $ref: "../definitions/errorOccurred.yaml#/ErrorOccurred"
+            example:
+              type: "WEBSITE_NOT_FOUND"
+              statue: 400
+              title: "Requested website not found"
+              detail: "The website of the given URL is not found. Check the URL and try again."
