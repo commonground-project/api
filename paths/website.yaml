@@ -1,4 +1,4 @@
-WebsiteTitle:
+WebsiteCheck:
   get:
     summary: Get Website Title and Icon
     description: Get the title and icon of the website.

@@ -49,8 +49,8 @@ paths:
   /api/reply/{id}/reaction/me:
     $ref: "./paths/reply.yaml#/ReplyReaction"
   # Website Title
-  /api/websitetitle:
-    $ref: "./paths/websitetitle.yaml#/WebsiteTitle"
+  /api/website/check:
+    $ref: "./paths/website.yaml#/WebsiteCheck"
 
 components:
   schemas:
