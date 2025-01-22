@@ -7,9 +7,9 @@ Subscribe:
     keys:
       type: object
       properties:
-        p256hd:
+        p256dh:
           type: string
-          description: p256hd of the subscription of the pushManager of the browser
+          description: p256dh of the subscription of the pushManager of the browser
         auth:
           type: string
           description: auth of the subscription of the pushManager of the browser
