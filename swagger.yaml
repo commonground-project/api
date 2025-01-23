@@ -1186,6 +1186,55 @@ paths:
                     type: string
                     format: date-time
                     description: The date and time the Reply was last updated
+  /api/subscription/subscribe:
+    post:
+      summary: subscribe to push service
+      description: This endpoint is used to add subscription to backend
+      operationId: subscribePushService
+      tags:
+        - Subscription
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                endpoint:
+                  type: string
+                  description: The endpoint of push service
+                keys:
+                  type: object
+                  properties:
+                    p256dh:
+                      type: string
+                      description: p256dh of the subscription of the pushManager of the browser
+                    auth:
+                      type: string
+                      description: auth of the subscription of the pushManager of the browser
+      responses:
+        "204":
+          $ref: "#/paths/~1api~1fact~1%7Bid%7D/delete/responses/204"
+  /api/subscription/unsubscribe:
+    post:
+      summary: unsubscribe to push service
+      description: This endpoint is used to remove subscription from backend
+      operationId: unsubscribePushService
+      tags:
+        - Subscription
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                endpoint:
+                  type: string
+                  description: The endpoint of push service
+      responses:
+        "204":
+          $ref: "#/paths/~1api~1fact~1%7Bid%7D/delete/responses/204"
 components:
   schemas:
     Issue:
@@ -1606,6 +1655,8 @@ components:
         end:
           type: integer
           description: The end position of the content of the Reply
+    Subscribe: {}
+    Unsubscribe: {}
     Pagination:
       type: object
       properties:
