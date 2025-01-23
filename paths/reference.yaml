@@ -1,0 +1,20 @@
+References:
+  post:
+    summary: Create a new reference without a fact
+    description: This endpoint is used to create a new reference and without a fact
+    operationId: createReference
+    tags:
+      - Reference
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/reference.yaml#/UpdateReference"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/reference.yaml#/Reference"
