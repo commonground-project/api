@@ -38,6 +38,9 @@ paths:
     $ref: "./paths/fact.yaml#/FactReferences"
   /api/fact/{id}/reference/{referenceId}:
     $ref: "./paths/fact.yaml#/FactReference"
+  # Reference
+  /api/references:
+    $ref: "./paths/reference.yaml#/References"
   # Timeline
   /api/issue/{id}/timeline:
     $ref: "./paths/timeline.yaml#/Timelines"
