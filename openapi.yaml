@@ -48,6 +48,9 @@ paths:
     $ref: "./paths/reply.yaml#/Reply"
   /api/reply/{id}/reaction/me:
     $ref: "./paths/reply.yaml#/ReplyReaction"
+  # UserSettings
+  /api/user/settings:
+    $ref: "./paths/user.yaml#/UserSettings"
 
 components:
   schemas:
