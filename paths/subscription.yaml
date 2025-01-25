@@ -1,0 +1,33 @@
+Subscribe:
+  post:
+    summary: subscribe to push service
+    description: This endpoint is used to add subscription to backend
+    operationId: subscribePushService
+    tags:
+      - Subscription
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/subscription.yaml#/Subscribe"
+    responses:
+      '204':
+        $ref: "../definitions/processSuccess.yaml"
+
+Unsubscribe:
+  post:
+    summary: unsubscribe to push service
+    description: This endpoint is used to remove subscription from backend
+    operationId: unsubscribePushService
+    tags:
+      - Subscription
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/subscription.yaml#/Unsubscribe"
+    responses:
+      '204':
+        $ref: "../definitions/processSuccess.yaml"
