@@ -1,9 +1,6 @@
-SimpleUser:
+User:
   type: object
   properties:
-    id:
-      type: string
-      format: uuid
     username:
       type: string
     nickname:
@@ -11,9 +8,12 @@ SimpleUser:
     email:
       type: string
       format: email
-    avatar:
+    role:
       type: string
-      format: uri
+      enum:
+        - ROLE_NOT_SETUP
+        - ROLE_USER
+        - ROLE_ADMIN
 
 UserSettings:
   type: object
