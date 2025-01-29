@@ -53,6 +53,27 @@ Me:
             schema:
               $ref: "../schemas/user.yaml#/User"
 
+UserSetup:
+  post:
+    summary: Setup user
+    description: This endpoint is used to setup a user
+    operationId: setupUser
+    tags:
+      - UserSettings
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/user.yaml#/UserSetup"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/user.yaml#/User"
+
 UserSettings:
   get:
     summary: Get user settings

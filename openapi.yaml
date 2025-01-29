@@ -52,6 +52,8 @@ paths:
   /api/reply/{id}/reaction/me:
     $ref: "./paths/reply.yaml#/ReplyReaction"
   # UserSettings
+  /api/user/setup:
+    $ref: "./paths/user.yaml#/UserSetup"
   /api/user/settings:
     $ref: "./paths/user.yaml#/UserSettings"
   # Subscription

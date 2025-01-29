@@ -15,6 +15,14 @@ User:
         - ROLE_USER
         - ROLE_ADMIN
 
+UserSetup:
+  type: object
+  properties:
+    username:
+      type: string
+    nickname:
+      type: string
+
 UserSettings:
   type: object
   properties:
