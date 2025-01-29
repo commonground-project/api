@@ -1,0 +1,22 @@
+Subscribe:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: The endpoint of push service
+    keys:
+      type: object
+      properties:
+        p256dh:
+          type: string
+          description: p256dh of the subscription of the pushManager of the browser
+        auth:
+          type: string
+          description: auth of the subscription of the pushManager of the browser
+
+Unsubscribe:
+  type: object
+  properties:
+    endpoint:
+      type: string
+      description: The endpoint of push service

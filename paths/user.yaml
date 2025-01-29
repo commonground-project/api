@@ -1,0 +1,33 @@
+UserSettings:
+  get:
+    summary: Get user settings
+    description: This endpoint returns user settings
+    operationId: getUserSettings
+    tags:
+      - UserSettings
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/user.yaml#/UserSettings"
+  put:
+    summary: Update user settings
+    description: This endpoint is used to update user settings
+    operationId: updateUserSettings
+    tags:
+      - UserSettings
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/user.yaml#/UserSettings"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/user.yaml#/UserSettings"

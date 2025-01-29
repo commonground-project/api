@@ -14,3 +14,14 @@ SimpleUser:
     avatar:
       type: string
       format: uri
+
+UserSettings:
+  type: object
+  properties:
+    notification:
+      type: object
+      properties:
+        newReplyInMyViewpoint:
+          type: boolean
+        newReferenceToMyReply:
+          type: boolean
