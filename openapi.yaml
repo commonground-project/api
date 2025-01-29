@@ -51,6 +51,9 @@ paths:
     $ref: "./paths/reply.yaml#/Reply"
   /api/reply/{id}/reaction/me:
     $ref: "./paths/reply.yaml#/ReplyReaction"
+  # Website Title
+  /api/website/check:
+    $ref: "./paths/website.yaml#/WebsiteCheck"
   # UserSettings
   /api/user/settings:
     $ref: "./paths/user.yaml#/UserSettings"
@@ -96,4 +99,3 @@ components:
       $ref: "./schemas/subscription.yaml#/Unsubcribe"
     Pagination:
       $ref: "./schemas/page.yaml#/Page"
-      
