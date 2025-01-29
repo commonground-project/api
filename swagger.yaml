@@ -1206,6 +1206,43 @@ paths:
                     type: string
                     format: date-time
                     description: The date and time the Reply was last updated
+  /api/website/check:
+    get:
+      summary: Get Website Title and Icon
+      description: Get the title and icon of the website.
+      requsestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                url:
+                  type: string
+                  format: uri
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  title:
+                    type: string
+                  icon:
+                    type: string
+                    format: uri
+        "400":
+          description: Website not found
+          content:
+            application/json:
+              schema: {}
+              example:
+                type: WEBSITE_NOT_FOUND
+                statue: 400
+                title: Requested website not found
+                detail: The website of the given URL is not found. Check the URL and try again.
   /api/user/settings:
     get:
       summary: Get user settings
