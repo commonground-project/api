@@ -55,6 +55,8 @@ paths:
   /api/website/check:
     $ref: "./paths/website.yaml#/WebsiteCheck"
   # UserSettings
+  /api/user/setup:
+    $ref: "./paths/user.yaml#/UserSetup"
   /api/user/settings:
     $ref: "./paths/user.yaml#/UserSettings"
   # Subscription
@@ -62,6 +64,13 @@ paths:
     $ref: "./paths/subscription.yaml#/Subscribe"
   /api/subscription/unsubscribe:
     $ref: "./paths/subscription.yaml#/Unsubscribe"
+  # User
+  /api/user/me:
+    $ref: "./paths/user.yaml#/Me"
+  /api/user/{username}:
+    $ref: "./paths/user.yaml#/User"
+  /api/users:
+    $ref: "./paths/user.yaml#/Users"
 
 components:
   schemas:
