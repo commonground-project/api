@@ -1243,6 +1243,45 @@ paths:
                 statue: 400
                 title: Requested website not found
                 detail: The website of the given URL is not found. Check the URL and try again.
+  /api/user/setup:
+    post:
+      summary: Setup user
+      description: This endpoint is used to setup a user
+      operationId: setupUser
+      tags:
+        - UserSettings
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                username:
+                  type: string
+                nickname:
+                  type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  username:
+                    type: string
+                  nickname:
+                    type: string
+                  email:
+                    type: string
+                    format: email
+                  role:
+                    type: string
+                    enum:
+                      - ROLE_NOT_SETUP
+                      - ROLE_USER
+                      - ROLE_ADMIN
   /api/user/settings:
     get:
       summary: Get user settings
@@ -1335,6 +1374,61 @@ paths:
       responses:
         "204":
           $ref: "#/paths/~1api~1fact~1%7Bid%7D/delete/responses/204"
+  /api/user/me:
+    get:
+      summary: Get me
+      description: This endpoint returns the current user
+      operationId: getMe
+      tags:
+        - Users
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/paths/~1api~1user~1setup/post/responses/200/content/application~1json/\
+                  schema"
+  "/api/user/{username}":
+    get:
+      summary: Get user
+      description: This endpoint returns a user
+      operationId: getUser
+      tags:
+        - Users
+      parameters:
+        - name: username
+          in: path
+          required: true
+          description: Username
+          schema:
+            type: string
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/paths/~1api~1user~1setup/post/responses/200/content/application~1json/\
+                  schema"
+  /api/users:
+    get:
+      summary: Get users
+      description: This endpoint returns all users
+      operationId: getUsers
+      tags:
+        - Users
+        - Admin
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/paths/~1api~1user~1setup/post/responses/200/content/application~1json/\
+                    schema"
 components:
   schemas:
     Issue:
