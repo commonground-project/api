@@ -2,16 +2,16 @@ WebsiteCheck:
   get:
     summary: Get Website Title and Icon
     description: Get the title and icon of the website.
-    requsestBody:
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              url:
-                type: string
-                format: uri
+    tags:
+      - Reference
+    parameters:
+      - name: url
+        in: query
+        required: true
+        description: The URL of the website
+        schema:
+          type: string
+          format: uri
     responses:
       "200": # when the website of the given URL is found
         description: OK
@@ -31,7 +31,18 @@ WebsiteCheck:
         content:
           application/json:
             schema:
-              $ref: "../definitions/errorOccurred.yaml#/ErrorOccurred"
+              type: object
+              properties:
+                type:
+                  type: string
+                status:
+                  type: number
+                title:
+                  type: string
+                detail:
+                  type: string
+                instance:
+                  type: string
             example:
               type: "WEBSITE_NOT_FOUND"
               statue: 400
