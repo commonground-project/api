@@ -44,7 +44,7 @@ WebsiteCheck:
                 instance:
                   type: string
             example:
-              type: "WEBSITE_NOT_FOUND"
+              type: "type:WEBSITE_NOT_FOUND"
               statue: 400
               title: "Requested website not found"
               detail: "The website of the given URL is not found. Check the URL and try again."
