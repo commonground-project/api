@@ -26,8 +26,6 @@ Issue:
     authorAvatar:
       type: string
       format: uri
-    followCount:
-      type: integer
     userFollow:
       type: object
       properties:
@@ -54,8 +52,6 @@ SimpleIssue:
     type: string
   description:
     type: string
-  followCount:
-    type: integer
   userFollow:
     type: object
     properties:
@@ -97,8 +93,6 @@ IssueFollow:
   properties:
     follow:
       type: boolean
-    followCount:
-      type: integer
     updatedAt:
       type: string
       format: date-time
