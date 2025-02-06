@@ -12,8 +12,8 @@ Subscribe:
           schema:
             $ref: "../schemas/subscription.yaml#/Subscribe"
     responses:
-      '204':
-        $ref: "../definitions/processSuccess.yaml"
+      '200':
+        description: Successful response
 
 Unsubscribe:
   post:
@@ -29,5 +29,5 @@ Unsubscribe:
           schema:
             $ref: "../schemas/subscription.yaml#/Unsubscribe"
     responses:
-      '204':
-        $ref: "../definitions/processSuccess.yaml"
+      '200':
+        description: Successful response
