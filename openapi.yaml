@@ -103,8 +103,8 @@ components:
     QuoteReply:
       $ref: "./schemas/reply.yaml#/QuoteReply"
     Subscribe:
-      $ref: "./schemas/subscription.yaml#/Subcribe"
+      $ref: "./schemas/subscription.yaml#/Subscribe"
     Unsubscribe:
-      $ref: "./schemas/subscription.yaml#/Unsubcribe"
+      $ref: "./schemas/subscription.yaml#/Unsubscribe"
     Pagination:
       $ref: "./schemas/page.yaml#/Page"
