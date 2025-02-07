@@ -16,7 +16,7 @@ Subscribe:
         description: Successful response
 
 Unsubscribe:
-  post:
+  delete:
     summary: unsubscribe to push service
     description: This endpoint is used to remove subscription from backend
     operationId: unsubscribePushService
