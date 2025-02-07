@@ -1,0 +1,16 @@
+Profile:
+  get:
+    summary: Get user's fact information
+    description: This endpoint returns specific user's profile information by user id
+    operationId: getProfile
+    tags:
+      - Internal
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/internal.yaml#/Profile"
