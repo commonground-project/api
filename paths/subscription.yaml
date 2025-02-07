@@ -12,11 +12,11 @@ Subscribe:
           schema:
             $ref: "../schemas/subscription.yaml#/Subscribe"
     responses:
-      '204':
-        $ref: "../definitions/processSuccess.yaml"
+      '200':
+        description: Successful response
 
 Unsubscribe:
-  post:
+  delete:
     summary: unsubscribe to push service
     description: This endpoint is used to remove subscription from backend
     operationId: unsubscribePushService
@@ -29,5 +29,5 @@ Unsubscribe:
           schema:
             $ref: "../schemas/subscription.yaml#/Unsubscribe"
     responses:
-      '204':
-        $ref: "../definitions/processSuccess.yaml"
+      '200':
+        description: Successful response
