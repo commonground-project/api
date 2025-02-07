@@ -1364,10 +1364,10 @@ paths:
                       type: string
                       description: auth of the subscription of the pushManager of the browser
       responses:
-        "204":
-          $ref: "#/paths/~1api~1fact~1%7Bid%7D/delete/responses/204"
+        "200":
+          description: Successful response
   /api/subscription/unsubscribe:
-    post:
+    delete:
       summary: unsubscribe to push service
       description: This endpoint is used to remove subscription from backend
       operationId: unsubscribePushService
@@ -1384,8 +1384,8 @@ paths:
                   type: string
                   description: The endpoint of push service
       responses:
-        "204":
-          $ref: "#/paths/~1api~1fact~1%7Bid%7D/delete/responses/204"
+        "200":
+          description: Successful response
   /api/user/me:
     get:
       summary: Get me
