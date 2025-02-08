@@ -71,6 +71,11 @@ paths:
     $ref: "./paths/user.yaml#/User"
   /api/users:
     $ref: "./paths/user.yaml#/Users"
+  # Internal
+  /api/internal/issues:
+    $ref: "./paths/internal.yaml#/InternalIssues"
+  /api/internal/issues/{issueId}:
+    $ref: "./paths/internal.yaml#/InternalIssue"
 
 components:
   schemas:
@@ -108,3 +113,5 @@ components:
       $ref: "./schemas/subscription.yaml#/Unsubscribe"
     Pagination:
       $ref: "./schemas/page.yaml#/Page"
+    InternalIssue:
+      $ref: "./schemas/internal.yaml#/InternalIssue"
