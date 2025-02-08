@@ -1,4 +1,4 @@
-Profile:
+InternalProfile:
   type: object
   properties:
     user_id:

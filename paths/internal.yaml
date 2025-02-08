@@ -1,8 +1,28 @@
-Profile:
+InternalProfiles:
   get:
-    summary: Get user's profile information
+    summary: List internal user profiles
+    description: This endpoint returns all internal user profiles
+    operationId: getInternalProfiles
+    tags:
+      - Internal
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: array
+                  items:
+                    $ref: "../schemas/internal.yaml#/InternalProfile"
+
+InternalProfile:
+  get:
+    summary: Get internal user's profile information
     description: This endpoint returns specific user's profile information by user id
-    operationId: getProfile
+    operationId: getInternalProfile
     tags:
       - Internal
     parameters:
@@ -13,4 +33,4 @@ Profile:
         content:
           application/json:
             schema:
-              $ref: "../schemas/internal.yaml#/Profile"
+              $ref: "../schemas/internal.yaml#/InternalProfile"
