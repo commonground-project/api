@@ -73,6 +73,13 @@ paths:
     $ref: "./paths/user.yaml#/User"
   /api/users:
     $ref: "./paths/user.yaml#/Users"
+  #  ServiceAccount
+  /api/internal/service-account/me:
+    $ref: "./paths/service-account.yaml#/ServiceAccountMe"
+  /api/internal/service-account/{serviceId}:
+    $ref: "./paths/service-account.yaml#/ServiceAccount"
+  /api/internal/service-accounts:
+    $ref: "./paths/service-account.yaml#/ServiceAccounts"
 
 components:
   schemas:
