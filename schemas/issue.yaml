@@ -26,6 +26,11 @@ Issue:
     authorAvatar:
       type: string
       format: uri
+    userFollow:
+      type: object
+      properties:
+        follow:
+          type: boolean
     facts:
       type: array
       description: List of fact referenced by issue's insight, displayed in the insight link as the position starting from 0 in the list
@@ -47,6 +52,11 @@ SimpleIssue:
     type: string
   description:
     type: string
+  userFollow:
+    type: object
+    properties:
+      follow:
+        type: boolean
 
 UpdateIssue:
   type: object
@@ -77,3 +87,18 @@ IssueFacts:
       type: array
       items:
         $ref: "../schemas/fact.yaml#/Fact"
+
+IssueFollow:
+  type: object
+  properties:
+    follow:
+      type: boolean
+    updatedAt:
+      type: string
+      format: date-time
+
+UpdateIssueFollow:
+  type: object
+  properties:
+    follow:
+      type: boolean
