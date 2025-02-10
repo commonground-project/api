@@ -1,0 +1,31 @@
+InternalProfile:
+  type: object
+  properties:
+    user_id:
+      type: string
+      format: uuid
+    gender:
+      type: string
+    occupation:
+      type: string
+      nullable: true
+    location:
+      type: string
+    browsing_tags:
+      type: array
+      items:
+        type: string
+    search_keywords:
+      type: array
+      items:
+        type: string
+    created_at:
+      type: string
+      format: date-time
+    last_active_at:
+      type: string
+      format: date-time
+    activity_frequency:
+      type: object
+    user_top_ip:
+      type: object
