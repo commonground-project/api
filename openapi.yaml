@@ -80,6 +80,12 @@ paths:
     $ref: "./paths/service-account.yaml#/ServiceAccount"
   /api/internal/service-accounts:
     $ref: "./paths/service-account.yaml#/ServiceAccounts"
+  # Internal
+  /api/internal/users/profile:
+    $ref: "/paths/internal.yaml#/InternalProfiles"
+  /api/internal/users/profile/{userId}:
+    $ref: "/paths/internal.yaml#/InternalProfile"
+
 
 components:
   schemas:
@@ -121,3 +127,5 @@ components:
       $ref: "./schemas/subscription.yaml#/Unsubscribe"
     Pagination:
       $ref: "./schemas/page.yaml#/Page"
+    InternalProfile:
+      $ref: "./schemas/internal.yaml#/InternalProfile"
