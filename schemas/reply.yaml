@@ -155,3 +155,31 @@ UpdateQuoteReply:
       type: integer
       description: The end position of the content of the Reply
 
+ReplyContent:
+  type: object
+  properties:
+    user_id:
+      type: string
+      format: uuid
+      description: The unique identifier of the User
+    interaction_id:
+      type: string
+      format: uuid
+      description: The unique identifier of the Reply
+    content:
+      type: string
+      description: The content of the Reply
+      example: "[[Quote]](0) This is a reply [first imported fact](0) [second imported fact](1,2) [[Quote]](1)"
+    like_count:
+      type: integer
+      description: The number of likes the Reply has
+    reasonable_count:
+      type: integer
+      description: The number of reasonables the Reply has
+    dislike_count:
+      type: integer
+      description: The number of dislikes the Reply has
+    timestamp:
+      type: string
+      format: date-time
+      description: The date and time the Reply was created
