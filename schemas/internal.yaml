@@ -1,22 +1,22 @@
 InternalIssue:
   type: object
   properties:
-    issueId:
+    issue_id:
       type: string
       format: uuid
-    createdAt:
+    created_at:
       type: string
       format: date-time
-    updatedAt:
+    updated_at:
       type: string
       format: date-time
       description: The last time the issue title, description, or insight was updated
     title:
       type: string
-    publisherId:
+    publisher_id:
       type: string
       format: uuid
-    viewCount:
+    view_count:
       type: integer
-    viewpointCount:
+    viewpoint_count:
       type: integer
