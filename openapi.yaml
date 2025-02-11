@@ -86,9 +86,9 @@ paths:
   /api/internal/users/profile/{userId}:
     $ref: "/paths/internal.yaml#/InternalProfile"
   /api/internal/viewpoints/:
-    $ref: "/paths/internal.yaml#/InternalViewpoints"
+    $ref: "./paths/internal.yaml#/InternalViewpoints"
   /api/internal/viewpoints/{viewpointId}:
-    $ref: "/paths/internal.yaml#/InternalViewpoint"
+    $ref: "./paths/internal.yaml#/InternalViewpoint"
 
 
 components:
