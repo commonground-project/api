@@ -133,3 +133,5 @@ components:
       $ref: "./schemas/page.yaml#/Page"
     InternalProfile:
       $ref: "./schemas/internal.yaml#/InternalProfile"
+    InternalViewpoint:
+      $ref: "./schemas/internal.yaml#/InternalViewpoint"
