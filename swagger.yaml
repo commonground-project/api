@@ -1482,6 +1482,161 @@ paths:
                 items:
                   $ref: "#/paths/~1api~1user~1setup/post/responses/200/content/application~1json/\
                     schema"
+  /api/internal/service-account/me:
+    get:
+      summary: Get Service Account Information
+      description: Get the information of the service account.
+      tags:
+        - ServiceAccount
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  id:
+                    type: string
+                    format: uuid
+                  name:
+                    type: string
+                  role:
+                    type: string
+                    enum:
+                      - ROLE_SERVICE_ACCOUNT_READ
+  "/api/internal/service-account/{serviceId}":
+    delete:
+      summary: Delete Service Account
+      description: Delete the service account.
+      tags:
+        - ServiceAccount
+        - Admin
+      parameters:
+        - name: serviceId
+          in: path
+          required: true
+          description: The id of the service account
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "204":
+          description: No Content
+  /api/internal/service-accounts:
+    get:
+      summary: Get Service Accounts
+      description: Get the list of service accounts.
+      tags:
+        - ServiceAccount
+        - Admin
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/paths/~1api~1internal~1service-account~1me/get/responses/200/content/a\
+                    pplication~1json/schema"
+    post:
+      summary: Create Service Account
+      description: Create a new service account.
+      tags:
+        - ServiceAccount
+        - Admin
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                role:
+                  type: string
+                  enum:
+                    - ROLE_SERVICE_ACCOUNT_READ
+      responses:
+        "200":
+          description: OK
+          content:
+            application/json:
+              schema:
+                allOf:
+                  - $ref: "#/paths/~1api~1internal~1service-account~1me/get/responses/200/content/a\
+                      pplication~1json/schema"
+                  - properties:
+                      token:
+                        type: string
+                        format: uuid
+  /api/internal/users/profile:
+    get:
+      summary: List internal user profiles
+      description: This endpoint returns all internal user profiles
+      operationId: getInternalProfiles
+      tags:
+        - Internal
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  content:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        user_id:
+                          type: string
+                          format: uuid
+                        gender:
+                          type: string
+                        occupation:
+                          type: string
+                          nullable: true
+                        location:
+                          type: string
+                        browsing_tags:
+                          type: array
+                          items:
+                            type: string
+                        search_keywords:
+                          type: array
+                          items:
+                            type: string
+                        created_at:
+                          type: string
+                          format: date-time
+                        last_active_at:
+                          type: string
+                          format: date-time
+                        activity_frequency:
+                          type: object
+                        user_top_ip:
+                          type: object
+  "/api/internal/users/profile/{userId}":
+    get:
+      summary: Get internal user's profile information
+      description: This endpoint returns specific user's profile information by user id
+      operationId: getInternalProfile
+      tags:
+        - Internal
+      parameters:
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/paths/~1api~1internal~1users~1profile/get/responses/200/content/applic\
+                  ation~1json/schema/properties/content/items"
 components:
   schemas:
     Issue:
@@ -1952,3 +2107,34 @@ components:
           type: number
         number:
           type: number
+    InternalProfile:
+      type: object
+      properties:
+        user_id:
+          type: string
+          format: uuid
+        gender:
+          type: string
+        occupation:
+          type: string
+          nullable: true
+        location:
+          type: string
+        browsing_tags:
+          type: array
+          items:
+            type: string
+        search_keywords:
+          type: array
+          items:
+            type: string
+        created_at:
+          type: string
+          format: date-time
+        last_active_at:
+          type: string
+          format: date-time
+        activity_frequency:
+          type: object
+        user_top_ip:
+          type: object
