@@ -41,25 +41,27 @@ paths:
                   content:
                     type: array
                     items:
-                      id:
-                        type: string
-                        format: uuid
-                      createdAt:
-                        type: string
-                        format: date-time
-                      updatedAt:
-                        type: string
-                        format: date-time
-                        description: The last time the issue title, description, or insight was updated
-                      title:
-                        type: string
-                      description:
-                        type: string
-                      userFollow:
-                        type: object
-                        properties:
-                          follow:
-                            type: boolean
+                      type: object
+                      properties:
+                        id:
+                          type: string
+                          format: uuid
+                        createdAt:
+                          type: string
+                          format: date-time
+                        updatedAt:
+                          type: string
+                          format: date-time
+                          description: The last time the issue title, description, or insight was updated
+                        title:
+                          type: string
+                        insight:
+                          type: string
+                        userFollow:
+                          type: object
+                          properties:
+                            follow:
+                              type: boolean
                   page:
                     type: object
                     properties:
@@ -86,8 +88,6 @@ paths:
               type: object
               properties:
                 title:
-                  type: string
-                description:
                   type: string
                 insight:
                   type: string
@@ -129,8 +129,6 @@ paths:
                     format: date-time
                     description: The last time the issue title, description, or insight was updated
                   title:
-                    type: string
-                  description:
                     type: string
                   insight:
                     type: string
@@ -1654,8 +1652,6 @@ components:
           description: The last time the issue title, description, or insight was updated
         title:
           type: string
-        description:
-          type: string
         insight:
           type: string
           example: "[San Francisco, CA](0) — In a significant leap forward for electric
@@ -1709,8 +1705,6 @@ components:
       type: object
       properties:
         title:
-          type: string
-        description:
           type: string
         insight:
           type: string
