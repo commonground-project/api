@@ -82,9 +82,9 @@ paths:
     $ref: "./paths/service-account.yaml#/ServiceAccounts"
   # Internal
   /api/internal/users/profile:
-    $ref: "/paths/internal.yaml#/InternalProfiles"
+    $ref: "./paths/internal.yaml#/InternalProfiles"
   /api/internal/users/profile/{userId}:
-    $ref: "/paths/internal.yaml#/InternalProfile"
+    $ref: "./paths/internal.yaml#/InternalProfile"
 
 
 components:
