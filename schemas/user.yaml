@@ -33,3 +33,5 @@ UserSettings:
           type: boolean
         newReferenceToMyReply:
           type: boolean
+        newNodeOfTimelineToFollowedIssue:
+          type: boolean
