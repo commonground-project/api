@@ -1355,6 +1355,8 @@ paths:
                         type: boolean
                       newReferenceToMyReply:
                         type: boolean
+                      newNodeOfTimelineToFollowedIssue:
+                        type: boolean
     put:
       summary: Update user settings
       description: This endpoint is used to update user settings
