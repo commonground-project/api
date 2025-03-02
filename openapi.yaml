@@ -82,6 +82,10 @@ paths:
     $ref: "./paths/internal.yaml#/InternalProfiles"
   /api/internal/users/profile/{userId}:
     $ref: "./paths/internal.yaml#/InternalProfile"
+  /api/internal/viewpoints/:
+    $ref: "./paths/internal.yaml#/InternalViewpoints"
+  /api/internal/viewpoints/{viewpointId}:
+    $ref: "./paths/internal.yaml#/InternalViewpoint"
   #  ServiceAccount
   /api/internal/service-account/me:
     $ref: "./paths/service-account.yaml#/ServiceAccountMe"
@@ -134,3 +138,5 @@ components:
       $ref: "./schemas/internal.yaml#/InternalIssue"
     InternalProfile:
       $ref: "./schemas/internal.yaml#/InternalProfile"
+    InternalViewpoint:
+      $ref: "./schemas/internal.yaml#/InternalViewpoint"

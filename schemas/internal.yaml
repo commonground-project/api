@@ -52,3 +52,44 @@ InternalProfile:
       type: object
     user_top_ip:
       type: object
+InternalViewpoint:
+  type: object
+  properties:
+    viewpoint_id:
+      type: string
+      format: uuid
+    created_at:
+      type: string
+      format: date-time
+    updated_at:
+      type: string
+      format: date-time
+    content:
+      type: string
+    author_id:
+      type: string
+      format: uuid
+    like_count:
+      type: integer
+    dislike_count:
+      type: integer
+    reasonable_count:
+      type: integer
+    view_count:
+      type: integer
+    issue_id:
+      type: string
+      format: uuid
+    fact_tags:
+      type: array
+      items:
+        type: string
+    reply_count:
+      type: integer
+    reply_content:
+      type: array
+      items:
+        $ref: '../schemas/reply.yaml#/ReplyContent'
+    sentiment_score:
+      type: number
+      format: float

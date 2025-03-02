@@ -70,3 +70,39 @@ InternalProfile:
           application/json:
             schema:
               $ref: "../schemas/internal.yaml#/InternalProfile"
+InternalViewpoints:
+  get:
+    summary: List internal viewpoints
+    description: This endpoint returns all internal viewpoints
+    operationId: getInternalViewpoints
+    tags:
+      - Internal
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: array
+                  items:
+                    $ref: "../schemas/internal.yaml#/InternalViewpoint"
+
+InternalViewpoint:
+  get:
+    summary: Get internal viewpoint information
+    description: This endpoint returns specific viewpoint information by viewpoint id
+    operationId: getInternalViewpoint
+    tags:
+      - Internal
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/internal.yaml#/InternalViewpoint"
