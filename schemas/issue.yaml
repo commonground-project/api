@@ -13,8 +13,6 @@ Issue:
       description: The last time the issue title, description, or insight was updated
     title:
       type: string
-    description:
-      type: string
     insight:
       type: string
       example: "[San Francisco, CA](0) — In a significant leap forward for electric vehicle (EV) technology, researchers at [GreenTech Innovations](1) announced today the development of a [new battery](1,2) that could revolutionize the industry"
@@ -38,32 +36,32 @@ Issue:
         $ref: "../schemas/fact.yaml#/Fact"
 
 SimpleIssue:
-  id:
-    type: string
-    format: uuid
-  createdAt:
-    type: string
-    format: date-time
-  updatedAt:
-    type: string
-    format: date-time
-    description: The last time the issue title, description, or insight was updated
-  title:
-    type: string
-  description:
-    type: string
-  userFollow:
-    type: object
-    properties:
-      follow:
-        type: boolean
+  type: object
+  properties:
+    id:
+      type: string
+      format: uuid
+    createdAt:
+      type: string
+      format: date-time
+    updatedAt:
+      type: string
+      format: date-time
+      description: The last time the issue title, description, or insight was updated
+    title:
+      type: string
+    insight:
+      type: string
+    userFollow:
+      type: object
+      properties:
+        follow:
+          type: boolean
 
 UpdateIssue:
   type: object
   properties:
     title:
-      type: string
-    description:
       type: string
     insight:
       type: string

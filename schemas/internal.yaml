@@ -1,3 +1,26 @@
+InternalIssue:
+  type: object
+  properties:
+    issue_id:
+      type: string
+      format: uuid
+    created_at:
+      type: string
+      format: date-time
+    updated_at:
+      type: string
+      format: date-time
+      description: The last time the issue title, description, or insight was updated
+    title:
+      type: string
+    publisher_id:
+      type: string
+      format: uuid
+    view_count:
+      type: integer
+    viewpoint_count:
+      type: integer
+
 InternalProfile:
   type: object
   properties:
@@ -29,7 +52,6 @@ InternalProfile:
       type: object
     user_top_ip:
       type: object
-
 InternalViewpoint:
   type: object
   properties:
