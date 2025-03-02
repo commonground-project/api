@@ -1,3 +1,22 @@
+InternalIssues:
+  get:
+    summary: List internal issues
+    description: This endpoint returns all internal issues
+    operationId: getInternalIssues
+    tags:
+      - Internal
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: array
+                  items:
+                    $ref: "../schemas/internal.yaml#/InternalProfile"
 InternalProfiles:
   get:
     summary: List internal user profiles
@@ -16,7 +35,24 @@ InternalProfiles:
                 content:
                   type: array
                   items:
-                    $ref: "../schemas/internal.yaml#/InternalProfile"
+                    $ref: "../schemas/internal.yaml#/InternalIssue"
+
+InternalIssue:
+  get:
+    summary: Get internal issue
+    description: This endpoint returns specific issue information by issue id
+    operationId: getInternalIssue
+    tags:
+      - Internal
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/internal.yaml#/InternalIssue"
 
 InternalProfile:
   get:
