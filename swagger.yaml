@@ -1482,6 +1482,127 @@ paths:
                 items:
                   $ref: "#/paths/~1api~1user~1setup/post/responses/200/content/application~1json/\
                     schema"
+  /api/internal/issues:
+    get:
+      summary: List internal issues
+      description: This endpoint returns all internal issues
+      operationId: getInternalIssues
+      tags:
+        - Internal
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  content:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        user_id:
+                          type: string
+                          format: uuid
+                        gender:
+                          type: string
+                        occupation:
+                          type: string
+                          nullable: true
+                        location:
+                          type: string
+                        browsing_tags:
+                          type: array
+                          items:
+                            type: string
+                        search_keywords:
+                          type: array
+                          items:
+                            type: string
+                        created_at:
+                          type: string
+                          format: date-time
+                        last_active_at:
+                          type: string
+                          format: date-time
+                        activity_frequency:
+                          type: object
+                        user_top_ip:
+                          type: object
+  "/api/internal/issues/{issueId}":
+    get:
+      summary: Get internal issue
+      description: This endpoint returns specific issue information by issue id
+      operationId: getInternalIssue
+      tags:
+        - Internal
+      parameters:
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  issue_id:
+                    type: string
+                    format: uuid
+                  created_at:
+                    type: string
+                    format: date-time
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: The last time the issue title, description, or insight was updated
+                  title:
+                    type: string
+                  publisher_id:
+                    type: string
+                    format: uuid
+                  view_count:
+                    type: integer
+                  viewpoint_count:
+                    type: integer
+  /api/internal/users/profile:
+    get:
+      summary: List internal user profiles
+      description: This endpoint returns all internal user profiles
+      operationId: getInternalProfiles
+      tags:
+        - Internal
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  content:
+                    type: array
+                    items:
+                      $ref: "#/paths/~1api~1internal~1issues~1%7BissueId%7D/get/responses/200/content\
+                        /application~1json/schema"
+  "/api/internal/users/profile/{userId}":
+    get:
+      summary: Get internal user's profile information
+      description: This endpoint returns specific user's profile information by user id
+      operationId: getInternalProfile
+      tags:
+        - Internal
+      parameters:
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/paths/~1api~1internal~1issues/get/responses/200/content/application~1j\
+                  son/schema/properties/content/items"
   /api/internal/service-account/me:
     get:
       summary: Get Service Account Information
@@ -1572,71 +1693,6 @@ paths:
                       token:
                         type: string
                         format: uuid
-  /api/internal/users/profile:
-    get:
-      summary: List internal user profiles
-      description: This endpoint returns all internal user profiles
-      operationId: getInternalProfiles
-      tags:
-        - Internal
-      responses:
-        "200":
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  content:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        user_id:
-                          type: string
-                          format: uuid
-                        gender:
-                          type: string
-                        occupation:
-                          type: string
-                          nullable: true
-                        location:
-                          type: string
-                        browsing_tags:
-                          type: array
-                          items:
-                            type: string
-                        search_keywords:
-                          type: array
-                          items:
-                            type: string
-                        created_at:
-                          type: string
-                          format: date-time
-                        last_active_at:
-                          type: string
-                          format: date-time
-                        activity_frequency:
-                          type: object
-                        user_top_ip:
-                          type: object
-  "/api/internal/users/profile/{userId}":
-    get:
-      summary: Get internal user's profile information
-      description: This endpoint returns specific user's profile information by user id
-      operationId: getInternalProfile
-      tags:
-        - Internal
-      parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
-      responses:
-        "200":
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: "#/paths/~1api~1internal~1users~1profile/get/responses/200/content/applic\
-                  ation~1json/schema/properties/content/items"
 components:
   schemas:
     Issue:
@@ -2103,6 +2159,28 @@ components:
           type: number
         number:
           type: number
+    InternalIssue:
+      type: object
+      properties:
+        issue_id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+          description: The last time the issue title, description, or insight was updated
+        title:
+          type: string
+        publisher_id:
+          type: string
+          format: uuid
+        view_count:
+          type: integer
+        viewpoint_count:
+          type: integer
     InternalProfile:
       type: object
       properties:
