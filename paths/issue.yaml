@@ -179,3 +179,26 @@ IssueFacts:
           application/json:
             schema:
               $ref: "../schemas/fact.yaml#/Fact"
+
+IssueFollow:
+  post:
+    summary: Follow an issue
+    description: This endpoint is used to follow an issue
+    operationId: followIssue
+    tags:
+      - Issue
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
+    requestBody:
+      require: true
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/issue.yaml#/UpdateIssueFollow"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/issue.yaml#/IssueFollow"

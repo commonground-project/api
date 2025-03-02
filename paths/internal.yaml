@@ -16,6 +16,25 @@ InternalIssues:
                 content:
                   type: array
                   items:
+                    $ref: "../schemas/internal.yaml#/InternalProfile"
+InternalProfiles:
+  get:
+    summary: List internal user profiles
+    description: This endpoint returns all internal user profiles
+    operationId: getInternalProfiles
+    tags:
+      - Internal
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: array
+                  items:
                     $ref: "../schemas/internal.yaml#/InternalIssue"
 
 InternalIssue:
@@ -34,3 +53,20 @@ InternalIssue:
           application/json:
             schema:
               $ref: "../schemas/internal.yaml#/InternalIssue"
+
+InternalProfile:
+  get:
+    summary: Get internal user's profile information
+    description: This endpoint returns specific user's profile information by user id
+    operationId: getInternalProfile
+    tags:
+      - Internal
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/internal.yaml#/InternalProfile"

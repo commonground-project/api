@@ -12,6 +12,8 @@ paths:
     $ref: "./paths/issue.yaml#/Issues"
   /api/issue/{id}:
     $ref: "./paths/issue.yaml#/Issue"
+  /api/issue/{id}/follow/me:
+    $ref: "./paths/issue.yaml#/IssueFollow"
   /api/issue/{id}/facts:
     $ref: "./paths/issue.yaml#/IssueFacts"
   /api/issue/{id}/viewpoints:
@@ -76,6 +78,17 @@ paths:
     $ref: "./paths/internal.yaml#/InternalIssues"
   /api/internal/issues/{issueId}:
     $ref: "./paths/internal.yaml#/InternalIssue"
+  /api/internal/users/profile:
+    $ref: "./paths/internal.yaml#/InternalProfiles"
+  /api/internal/users/profile/{userId}:
+    $ref: "./paths/internal.yaml#/InternalProfile"
+  #  ServiceAccount
+  /api/internal/service-account/me:
+    $ref: "./paths/service-account.yaml#/ServiceAccountMe"
+  /api/internal/service-account/{serviceId}:
+    $ref: "./paths/service-account.yaml#/ServiceAccount"
+  /api/internal/service-accounts:
+    $ref: "./paths/service-account.yaml#/ServiceAccounts"
 
 components:
   schemas:
@@ -85,6 +98,10 @@ components:
       $ref: "./schemas/issue.yaml#/UpdateIssue"
     IssueFacts:
       $ref: "./schemas/issue.yaml#/IssueFacts"
+    IssueFollow:
+      $ref: "./schemas/issue.yaml#/IssueFollow"
+    UpdateIssueFollow:
+      $ref: "./schemas/issue.yaml#/UpdateIssueFollow"
     ViewPoint:
       $ref: "./schemas/viewpoint.yaml#/ViewPoint"
     UpdateViewPoint:
@@ -115,3 +132,5 @@ components:
       $ref: "./schemas/page.yaml#/Page"
     InternalIssue:
       $ref: "./schemas/internal.yaml#/InternalIssue"
+    InternalProfile:
+      $ref: "./schemas/internal.yaml#/InternalProfile"
