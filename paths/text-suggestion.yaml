@@ -1,0 +1,57 @@
+TextSuggestion:
+  post:
+    summary: Analyze the user's text input and provide suggestions
+    description: When the user enters text for the first time, the system will check the content and highlight phrases that may need adjustments.
+    operationId: getTextSuggestions
+    tags:
+      - TextSuggestion
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              text:
+                type: string
+                description: The original input text from the user that has not yet been analyzed.
+    responses:
+      "200":
+        description: Returns the original text with highlighted areas and suggestions.
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/text-suggestion.yaml#/TextSuggestionResponse"
+
+EditedTextSuggestion:
+  post:
+    summary: Analyze edited text and provide further recommendations
+    description: When the user modifies the suggested text, this API ensures that the adjustments remain in line with rational discussion principles.
+    operationId: getEditedTextSuggestions
+    tags:
+      - TextSuggestion
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              text:
+                type: string
+                description: The original text input.
+              edited_text:
+                type: string
+                description: The user’s modified text.
+              suggestions:
+                type: array
+                description: The list of previous AI suggestions and the user’s modifications.
+                items:
+                  $ref: "../schemas/text-suggestion.yaml#/EditedTextSuggestionRequest"
+    responses:
+      "200":
+        description: Returns the analyzed edited text with additional recommendations.
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/text-suggestion.yaml#/EditedTextSuggestionResponse"
