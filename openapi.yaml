@@ -93,6 +93,11 @@ paths:
     $ref: "./paths/service-account.yaml#/ServiceAccount"
   /api/internal/service-accounts:
     $ref: "./paths/service-account.yaml#/ServiceAccounts"
+  # Text-suggestion
+  /api/text-suggestion:
+    $ref: "./paths/text-suggestion.yaml#/TextSuggestion"
+  /api/edited-text-suggestion:
+    $ref: "./paths/text-suggestion.yaml#/EditedTextSuggestion"
 
 components:
   schemas:
@@ -140,3 +145,13 @@ components:
       $ref: "./schemas/internal.yaml#/InternalProfile"
     InternalViewpoint:
       $ref: "./schemas/internal.yaml#/InternalViewpoint"
+    TextSuggestion:
+      $ref: "./schemas/text-suggestion.yaml#/TextSuggestion"
+    TextSuggestionResponse:
+      $ref: "./schemas/text-suggestion.yaml#/TextSuggestionResponse"
+    EditedTextSuggestion:
+      $ref: "./schemas/text-suggestion.yaml#/EditedTextSuggestion"
+    EditedTextSuggestionRequest:
+      $ref: "./schemas/text-suggestion.yaml#/EditedTextSuggestionRequest"
+    EditedTextSuggestionResponse:
+      $ref: "./schemas/text-suggestion.yaml#/EditedTextSuggestionResponse"
