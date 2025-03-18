@@ -1768,6 +1768,119 @@ paths:
                       token:
                         type: string
                         format: uuid
+  /api/text-suggestion:
+    post:
+      summary: Analyze the user's text input and provide suggestions
+      description: When the user enters text for the first time, the system will check
+        the content and highlight phrases that may need adjustments.
+      operationId: getTextSuggestions
+      tags:
+        - TextSuggestion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: The original input text from the user that has not yet been
+                    analyzed.
+      responses:
+        "200":
+          description: Returns the original text with highlighted areas and suggestions.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  text:
+                    type: string
+                    description: The original input text from the user.
+                  suggestions:
+                    type: array
+                    description: A list of suggested modifications, each containing highlighted
+                      problematic areas.
+                    items:
+                      type: object
+                      properties:
+                        message:
+                          type: string
+                          description: The suggested text with highlighted parts (<sugX>).
+                        feedback:
+                          type: string
+                          description: The feedback message explaining why the suggestion was made.
+                        replacement:
+                          type: string
+                          description: The recommended replacement for the highlighted text.
+  /api/edited-text-suggestion:
+    post:
+      summary: Analyze edited text and provide further recommendations
+      description: When the user modifies the suggested text, this API ensures that
+        the adjustments remain in line with rational discussion principles.
+      operationId: getEditedTextSuggestions
+      tags:
+        - TextSuggestion
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                text:
+                  type: string
+                  description: The original text input.
+                edited_text:
+                  type: string
+                  description: The user’s modified text.
+                suggestions:
+                  type: array
+                  description: The list of previous AI suggestions and the user’s modifications.
+                  items:
+                    type: object
+                    properties:
+                      message:
+                        type: string
+                        description: The original suggested message from the AI.
+                      edited_message:
+                        type: string
+                        description: The user's modified version of the message.
+                      feedback:
+                        type: string
+                        description: The original AI feedback explaining the suggested change.
+                      replacement:
+                        type: string
+                        description: The original AI recommended replacement.
+      responses:
+        "200":
+          description: Returns the analyzed edited text with additional recommendations.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  edited_text:
+                    type: string
+                    description: The user-modified text.
+                  suggestions:
+                    type: array
+                    description: A list of suggested modifications for the edited text.
+                    items:
+                      type: object
+                      properties:
+                        edited_message:
+                          type: string
+                          description: The modified message after user edits, with highlighted parts
+                            (<sugX>).
+                        feedback:
+                          type: string
+                          description: The feedback message explaining why further modifications are
+                            needed.
+                        replacement:
+                          type: string
+                          description: The recommended replacement for the edited text.
 components:
   schemas:
     Issue:
@@ -2355,3 +2468,88 @@ components:
         sentiment_score:
           type: number
           format: float
+    TextSuggestion:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The suggested text with highlighted parts (<sugX>).
+        feedback:
+          type: string
+          description: The feedback message explaining why the suggestion was made.
+        replacement:
+          type: string
+          description: The recommended replacement for the highlighted text.
+    TextSuggestionResponse:
+      type: object
+      properties:
+        text:
+          type: string
+          description: The original input text from the user.
+        suggestions:
+          type: array
+          description: A list of suggested modifications, each containing highlighted
+            problematic areas.
+          items:
+            type: object
+            properties:
+              message:
+                type: string
+                description: The suggested text with highlighted parts (<sugX>).
+              feedback:
+                type: string
+                description: The feedback message explaining why the suggestion was made.
+              replacement:
+                type: string
+                description: The recommended replacement for the highlighted text.
+    EditedTextSuggestion:
+      type: object
+      properties:
+        edited_message:
+          type: string
+          description: The modified message after user edits, with highlighted parts
+            (<sugX>).
+        feedback:
+          type: string
+          description: The feedback message explaining why further modifications are needed.
+        replacement:
+          type: string
+          description: The recommended replacement for the edited text.
+    EditedTextSuggestionRequest:
+      type: object
+      properties:
+        message:
+          type: string
+          description: The original suggested message from the AI.
+        edited_message:
+          type: string
+          description: The user's modified version of the message.
+        feedback:
+          type: string
+          description: The original AI feedback explaining the suggested change.
+        replacement:
+          type: string
+          description: The original AI recommended replacement.
+    EditedTextSuggestionResponse:
+      type: object
+      properties:
+        edited_text:
+          type: string
+          description: The user-modified text.
+        suggestions:
+          type: array
+          description: A list of suggested modifications for the edited text.
+          items:
+            type: object
+            properties:
+              edited_message:
+                type: string
+                description: The modified message after user edits, with highlighted parts
+                  (<sugX>).
+              feedback:
+                type: string
+                description: The feedback message explaining why further modifications are
+                  needed.
+              replacement:
+                type: string
+                description: The recommended replacement for the edited text.
