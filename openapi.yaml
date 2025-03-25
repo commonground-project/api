@@ -18,6 +18,7 @@ paths:
     $ref: "./paths/issue.yaml#/IssueFacts"
   /api/issue/{id}/viewpoints:
     $ref: "./paths/viewpoint.yaml#/IssueViewPoints"
+
   # ViewPoint
   /api/viewpoints:
     $ref: "./paths/viewpoint.yaml#/ViewPoints"
@@ -31,6 +32,7 @@ paths:
     $ref: "./paths/viewpoint.yaml#/ViewPointFact"
   /api/viewpoint/{id}/replies:
     $ref: "./paths/reply.yaml#/ViewpointReplies"
+
   # Fact
   /api/facts:
     $ref: "./paths/fact.yaml#/Facts"
@@ -40,32 +42,39 @@ paths:
     $ref: "./paths/fact.yaml#/FactReferences"
   /api/fact/{id}/reference/{referenceId}:
     $ref: "./paths/fact.yaml#/FactReference"
+
   # Reference
   /api/references:
     $ref: "./paths/reference.yaml#/References"
+
   # Timeline
   /api/issue/{id}/timeline:
     $ref: "./paths/timeline.yaml#/Timelines"
   /api/timeline/node/{id}:
     $ref: "./paths/timeline.yaml#/Timeline"
+
   # Reply
   /api/reply/{id}:
     $ref: "./paths/reply.yaml#/Reply"
   /api/reply/{id}/reaction/me:
     $ref: "./paths/reply.yaml#/ReplyReaction"
+
   # Website Title
   /api/website/check:
     $ref: "./paths/website.yaml#/WebsiteCheck"
+
   # UserSettings
   /api/user/setup:
     $ref: "./paths/user.yaml#/UserSetup"
   /api/user/settings:
     $ref: "./paths/user.yaml#/UserSettings"
+
   # Subscription
   /api/subscription/subscribe:
     $ref: "./paths/subscription.yaml#/Subscribe"
   /api/subscription/unsubscribe:
     $ref: "./paths/subscription.yaml#/Unsubscribe"
+
   # User
   /api/user/me:
     $ref: "./paths/user.yaml#/Me"
@@ -73,6 +82,7 @@ paths:
     $ref: "./paths/user.yaml#/User"
   /api/users:
     $ref: "./paths/user.yaml#/Users"
+
   # Internal
   /api/internal/issues:
     $ref: "./paths/internal.yaml#/InternalIssues"
@@ -86,6 +96,13 @@ paths:
     $ref: "./paths/internal.yaml#/InternalViewpoints"
   /api/internal/viewpoints/{viewpointId}:
     $ref: "./paths/internal.yaml#/InternalViewpoint"
+  /api/internal/embeddings:
+    $ref: "./paths/internal.yaml#/InternalEmbeddings"
+  /api/internal/similarities:
+    $ref: "./paths/internal.yaml#/InternalUsersSimilarity"
+  /api/internal/similarity/{userId}:
+    $ref: "./paths/internal.yaml#/InternalUserSimilarity"
+
   #  ServiceAccount
   /api/internal/service-account/me:
     $ref: "./paths/service-account.yaml#/ServiceAccountMe"
@@ -93,6 +110,7 @@ paths:
     $ref: "./paths/service-account.yaml#/ServiceAccount"
   /api/internal/service-accounts:
     $ref: "./paths/service-account.yaml#/ServiceAccounts"
+
   # Text-suggestion
   /api/text-suggestion:
     $ref: "./paths/text-suggestion.yaml#/TextSuggestion"
@@ -145,6 +163,14 @@ components:
       $ref: "./schemas/internal.yaml#/InternalProfile"
     InternalViewpoint:
       $ref: "./schemas/internal.yaml#/InternalViewpoint"
+    InternalEmbedding:
+      $ref: "./schemas/internal.yaml#/InternalEmbedding"
+    CreateInternalEmbedding:
+      $ref: "./schemas/internal.yaml#/CreateInternalEmbedding"
+    UpdateInternalEmbedding:
+      $ref: "./schemas/internal.yaml#/UpdateInternalEmbedding"
+    InternalUserSimilarity:
+      $ref: "./schemas/internal.yaml#/InternalUserSimilarity"
     TextSuggestion:
       $ref: "./schemas/text-suggestion.yaml#/TextSuggestion"
     TextSuggestionResponse:
