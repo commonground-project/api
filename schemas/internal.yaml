@@ -98,9 +98,6 @@ InternalViewpoint:
 InternalEmbedding:
   type: object
   properties:
-    id:
-      type: string
-      format: uuid
     embedding_type:
       type: string
       format: enum
