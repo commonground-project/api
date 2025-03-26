@@ -96,8 +96,12 @@ paths:
     $ref: "./paths/internal.yaml#/InternalViewpoints"
   /api/internal/viewpoints/{viewpointId}:
     $ref: "./paths/internal.yaml#/InternalViewpoint"
+
+  # Embedding
   /api/internal/embeddings:
     $ref: "./paths/internal.yaml#/InternalEmbeddings"
+
+  # Similarity
   /api/internal/similarities:
     $ref: "./paths/internal.yaml#/InternalUsersSimilarity"
   /api/internal/similarity/{userId}:
