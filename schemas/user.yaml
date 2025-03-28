@@ -22,8 +22,9 @@ User:
         - FEMALE
         - NON_BINARY
         - PREFER_NOT_TO_SAY
-    age:
-      type: number
+    birthday:
+      type: string
+      format: date-time
     occupation:
       type: string
       format: enum
@@ -63,8 +64,9 @@ UserSetup:
         - FEMALE
         - NON_BINARY
         - PREFER_NOT_TO_SAY
-    age:
-      type: number
+    birthday:
+      type: string
+      format: date-time
     occupation:
       type: string
       format: enum
