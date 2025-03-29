@@ -62,6 +62,8 @@ paths:
                           properties:
                             follow:
                               type: boolean
+                        viewpointCount:
+                          type: number
                   page:
                     type: object
                     properties:
@@ -149,6 +151,8 @@ paths:
                     properties:
                       follow:
                         type: boolean
+                  viewpointCount:
+                    type: number
                   facts:
                     type: array
                     description: List of fact referenced by issue's insight, displayed in the
@@ -1917,6 +1921,8 @@ components:
           properties:
             follow:
               type: boolean
+        viewpointCount:
+          type: number
         facts:
           type: array
           description: List of fact referenced by issue's insight, displayed in the
