@@ -14,6 +14,40 @@ User:
         - ROLE_NOT_SETUP
         - ROLE_USER
         - ROLE_ADMIN
+    gender:
+      type: string
+      format: enum
+      enum:
+        - MALE
+        - FEMALE
+        - NON_BINARY
+        - PREFER_NOT_TO_SAY
+    birthday:
+      type: string
+      format: date-time
+    occupation:
+      type: string
+      format: enum
+      enum:
+        - STUDENTS
+        - FREELANCERS_SELF_EMPLOYED
+        - EDUCATION_ACADEMIA
+        - HEALTHCARE_HEALTH
+        - TECHNOLOGY_ENGINEERING
+        - ARTS_DESIGN
+        - FINANCE_LAW
+        - PUBLIC_SERVICE
+        - BUSINESS_SALES
+        - MEDIA_COMMUNICATION
+        - TRAVEL_HOSPITALITY
+        - ENVIRONMENTAL_SCIENCE_POLICY
+        - ENERGY_INFRASTRUCTURE
+        - CONSTRUCTION_BUILDING
+        - LOGISTICS_SUPPLY_CHAIN_MANAGEMENT
+        - TRANSPORTATION_SERVICES
+        - AGRICULTURAL_WORKERS
+        - ENVIRONMENTAL_CONSERVATION_RESOURCE_MANAGEMENT
+        - RETIRED_NOT_WORKING
 
 UserSetup:
   type: object
@@ -22,6 +56,40 @@ UserSetup:
       type: string
     nickname:
       type: string
+    gender:
+      type: string
+      format: enum
+      enum:
+        - MALE
+        - FEMALE
+        - NON_BINARY
+        - PREFER_NOT_TO_SAY
+    birthday:
+      type: string
+      format: date-time
+    occupation:
+      type: string
+      format: enum
+      enum:
+        - STUDENTS
+        - FREELANCERS_SELF_EMPLOYED
+        - EDUCATION_ACADEMIA
+        - HEALTHCARE_HEALTH
+        - TECHNOLOGY_ENGINEERING
+        - ARTS_DESIGN
+        - FINANCE_LAW
+        - PUBLIC_SERVICE
+        - BUSINESS_SALES
+        - MEDIA_COMMUNICATION
+        - TRAVEL_HOSPITALITY
+        - ENVIRONMENTAL_SCIENCE_POLICY
+        - ENERGY_INFRASTRUCTURE
+        - CONSTRUCTION_BUILDING
+        - LOGISTICS_SUPPLY_CHAIN_MANAGEMENT
+        - TRANSPORTATION_SERVICES
+        - AGRICULTURAL_WORKERS
+        - ENVIRONMENTAL_CONSERVATION_RESOURCE_MANAGEMENT
+        - RETIRED_NOT_WORKING
 
 UserSettings:
   type: object
