@@ -29,6 +29,8 @@ Issue:
       properties:
         follow:
           type: boolean
+    viewpointCount:
+      type: number
     facts:
       type: array
       description: List of fact referenced by issue's insight, displayed in the insight link as the position starting from 0 in the list
@@ -57,6 +59,8 @@ SimpleIssue:
       properties:
         follow:
           type: boolean
+    viewpointCount:
+        type: number
 
 UpdateIssue:
   type: object
