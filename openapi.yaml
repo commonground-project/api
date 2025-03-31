@@ -169,12 +169,12 @@ components:
       $ref: "./schemas/internal.yaml#/InternalViewpoint"
     InternalEmbedding:
       $ref: "./schemas/internal.yaml#/InternalEmbedding"
-    CreateInternalEmbedding:
-      $ref: "./schemas/internal.yaml#/CreateInternalEmbedding"
     UpdateInternalEmbedding:
       $ref: "./schemas/internal.yaml#/UpdateInternalEmbedding"
     InternalUserSimilarity:
       $ref: "./schemas/internal.yaml#/InternalUserSimilarity"
+    UpdateUserSimilarity:
+      $ref: "./schemas/internal.yaml#/UpdateUserSimilarity"
     TextSuggestion:
       $ref: "./schemas/text-suggestion.yaml#/TextSuggestion"
     TextSuggestionResponse:
