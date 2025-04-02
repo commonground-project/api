@@ -45,7 +45,7 @@ User:
         - FEMALE
         - NON_BINARY
         - PREFER_NOT_TO_SAY
-    birthDate:
+    birthdate:
       type: string
       format: date
 
@@ -87,7 +87,7 @@ UserSetup:
         - FEMALE
         - NON_BINARY
         - PREFER_NOT_TO_SAY
-    birthDate:
+    birthdate:
       type: string
       format: date
 
