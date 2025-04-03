@@ -106,3 +106,144 @@ InternalViewpoint:
           application/json:
             schema:
               $ref: "../schemas/internal.yaml#/InternalViewpoint"
+
+InternalEmbeddings:
+  get:
+    summary: List internal embeddings
+    description: This endpoint returns all internal embeddings
+    operationId: getInternalEmbeddings
+    tags:
+    - Internal
+    parameters:
+      - name: type
+        in: query
+        required: false
+        description: The type of embedding
+        schema:
+            type: string
+            format: enum
+            enum:
+            - ISSUE
+            - VIEWPOINT
+            - FACT
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: array
+                  items:
+                    $ref: "../schemas/internal.yaml#/InternalEmbedding"
+
+  post:
+    summary: Create a new embedding
+    description: This endpoint is used to create a new embedding
+    operationId: createInternalEmbedding
+    tags:
+      - Internal
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "../schemas/internal.yaml#/UpdateInternalEmbedding"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: array
+                  items:
+                    $ref: "../schemas/internal.yaml#/InternalEmbedding"
+
+InternalUsersSimilarity:
+  get:
+    summary: List internal user similarities
+    description: This endpoint returns all internal user similarities
+    operationId: getInternalUserSimilarities
+    tags:
+      - Internal
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: array
+                  items:
+                    $ref: "../schemas/internal.yaml#/InternalUserSimilarity"
+  post:
+    summary: Create or Update user similarity
+    description: This endpoint is used to create or update users similarity
+    operationId: createOrUpdateInternalUserSimilarity
+    tags:
+      - Internal
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: array
+            items:
+              $ref: "../schemas/internal.yaml#/InternalUserSimilarity"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: array
+                  items:
+                    $ref: "../schemas/internal.yaml#/InternalUserSimilarity"
+
+InternalUserSimilarity:
+  get:
+    summary: Get internal user similarity
+    description: This endpoint returns the similarity between two users
+    operationId: getInternalUserSimilarity
+    tags:
+      - Internal
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/internal.yaml#/InternalUserSimilarity"
+  put:
+    summary: Update an user similarity
+    description: This endpoint is used to update an user similarity
+    operationId: updateInternalUserSimilarity
+    tags:
+      - Internal
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/internal.yaml#/UpdateUserSimilarity"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/internal.yaml#/InternalUserSimilarity"
