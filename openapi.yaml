@@ -78,7 +78,7 @@ paths:
   # User
   /api/user/me:
     $ref: "./paths/user.yaml#/Me"
-  /api/user/{username}:
+  /api/user/username/{username}:
     $ref: "./paths/user.yaml#/User"
   /api/users:
     $ref: "./paths/user.yaml#/Users"
