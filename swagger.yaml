@@ -1514,7 +1514,7 @@ paths:
               schema:
                 $ref: "#/paths/~1api~1user~1setup/post/responses/200/content/application~1json/\
                   schema"
-  "/api/user/{username}":
+  "/api/user/username/{username}":
     get:
       summary: Get user
       description: This endpoint returns a user
