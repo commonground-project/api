@@ -247,3 +247,49 @@ InternalUserSimilarity:
           application/json:
             schema:
               $ref: "../schemas/internal.yaml#/InternalUserSimilarity"
+InternalDetailIssue:
+  get:
+    summary: Get detailed internal issue
+    description: This endpoint returns specific detailed issue information, including references with descriptions, by issue id
+    operationId: getDetailIssue
+    tags:
+      - Internal
+    parameters:
+      - name: issueId
+        in: path
+        required: true
+        description: The ID of the issue to retrieve
+        schema:
+          type: string
+          format: uuid
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/internal.yaml#/InternalDetailIssue"
+
+InternalDetailReference:
+  get:
+    summary: Get detailed reference
+    description: This endpoint returns specific reference information by reference id
+    operationId: getDetailReference
+    tags:
+      - Internal
+    parameters:
+      - name: referenceId
+        in: path
+        required: true
+        description: The ID of the reference to retrieve
+        schema:
+          type: string
+          format: uuid
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/internal.yaml#/InternalDetailReference"
+
