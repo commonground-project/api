@@ -97,6 +97,12 @@ paths:
   /api/internal/viewpoints/{viewpointId}:
     $ref: "./paths/internal.yaml#/InternalViewpoint"
 
+  # Detail Reference
+  /api/internal/detail/{issueId}:
+    $ref: "./paths/internal.yaml#/InternalDetailIssue"
+  /api/internal/references/{referenceId}:
+      $ref: "./paths/internal.yaml#/InternalDetailReference"
+
   # Embedding
   /api/internal/embeddings:
     $ref: "./paths/internal.yaml#/InternalEmbeddings"
@@ -167,6 +173,10 @@ components:
       $ref: "./schemas/internal.yaml#/InternalProfile"
     InternalViewpoint:
       $ref: "./schemas/internal.yaml#/InternalViewpoint"
+    InternalDetailIssue:
+        $ref: "./schemas/internal.yaml#/InternalDetailIssue"
+    InternalDetailReference:
+        $ref: "./schemas/internal.yaml#/InternalDetailReference"
     InternalEmbedding:
       $ref: "./schemas/internal.yaml#/InternalEmbedding"
     UpdateInternalEmbedding:
