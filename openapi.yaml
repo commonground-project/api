@@ -98,9 +98,9 @@ paths:
     $ref: "./paths/internal.yaml#/InternalViewpoint"
 
   # Detail Reference
-  /api/internal/detail/{issueId}:
+  /api/internal/issue/detail/{issueId}:
     $ref: "./paths/internal.yaml#/InternalDetailIssue"
-  /api/internal/references/{referenceId}:
+  /api/internal/reference/detail/{referenceId}:
       $ref: "./paths/internal.yaml#/InternalDetailReference"
 
   # Embedding
