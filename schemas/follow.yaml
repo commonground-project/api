@@ -1,0 +1,10 @@
+Follow:
+  type: object
+  properties:
+    follow:
+        type: boolean
+        description: Whether the user is following the issue
+    updated_at:
+      type: string
+      format: date-time
+      description: The last time the issue title, description, or insight was updated

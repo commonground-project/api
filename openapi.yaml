@@ -12,8 +12,6 @@ paths:
     $ref: "./paths/issue.yaml#/Issues"
   /api/issue/{id}:
     $ref: "./paths/issue.yaml#/Issue"
-  /api/issue/{id}/follow/me:
-    $ref: "./paths/issue.yaml#/IssueFollow"
   /api/issue/{id}/facts:
     $ref: "./paths/issue.yaml#/IssueFacts"
   /api/issue/{id}/viewpoints:
@@ -120,6 +118,12 @@ paths:
     $ref: "./paths/text-suggestion.yaml#/TextSuggestion"
   /api/edited-text-suggestion:
     $ref: "./paths/text-suggestion.yaml#/EditedTextSuggestion"
+
+  # Follow
+  /api/issue/{id}/follow/me:
+    $ref: "./paths/follow.yaml#/FollowObject"
+  /api/viewpoint/{id}/follow/me:
+    $ref: "./paths/follow.yaml#/FollowObject"
 
 components:
   schemas:
