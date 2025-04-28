@@ -40,6 +40,9 @@ ViewPoint:
     dislikeCount:
       type: integer
       description: The number of dislikes the ViewPoint has
+    replyCount:
+      type: integer
+      description: The number of replies the ViewPoint has
     facts:
       type: array
       items:
