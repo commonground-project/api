@@ -32,6 +32,8 @@ paths:
     $ref: "./paths/viewpoint.yaml#/ViewPointFact"
   /api/viewpoint/{id}/replies:
     $ref: "./paths/reply.yaml#/ViewpointReplies"
+  /api/viewpoint/{id}/preference/me:
+    $ref: "./paths/viewpoint.yaml#/ViewpointPreference"
 
   # Fact
   /api/facts:

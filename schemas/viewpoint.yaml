@@ -76,3 +76,14 @@ UpdateViewPoint:
         type: string
         format: uuid
         description: The unique identifier of the fact
+
+ViewpointPreference:
+  type: object
+  properties:
+    preference:
+      type: string
+      description: The preference of the user
+      format: enum
+      enum:
+        - INTEREST
+        - DISINTEREST

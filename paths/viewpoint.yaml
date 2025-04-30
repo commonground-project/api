@@ -208,3 +208,26 @@ ViewPointFact:
     responses:
       '204':
         description: No content
+
+ViewpointPreference:
+  post:
+    summary: Set viewpoint preference
+    description: This endpoint is used to set viewpoint preference
+    operationId: addViewpointPreference
+    tags:
+      - ViewPoint
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/viewpoint.yaml#/ViewpointPreference"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/viewpoint.yaml#/ViewpointPreference"
