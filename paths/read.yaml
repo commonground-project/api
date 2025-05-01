@@ -39,6 +39,37 @@ ReadIssue:
                   type: boolean
                 updatedAt:
                   type: string
+  get:
+    summary: Get read status of an issue
+    description: This endpoint returns the read status of an issue
+    operationId: getReadIssueStatus
+    tags:
+      - Read
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the issue
+        schema:
+          type: string
+          format: uuid
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+                objectId:
+                  type: string
+                  format: uuid
+                readStatus:
+                  type: boolean
+                updatedAt:
+                  type: string
 ReadViewpoint:
   post:
     summary: Mark a viewpoint as read or unread
@@ -63,6 +94,37 @@ ReadViewpoint:
             properties:
               readStatus:
                 type: boolean
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+                objectId:
+                  type: string
+                  format: uuid
+                readStatus:
+                  type: boolean
+                updatedAt:
+                  type: string
+  get:
+    summary: Get read status of a viewpoint
+    description: This endpoint returns the read status of a viewpoint
+    operationId: getReadViewpointStatus
+    tags:
+      - Read
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the issue
+        schema:
+          type: string
+          format: uuid
     responses:
       '200':
         description: Successful response
