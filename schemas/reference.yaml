@@ -15,9 +15,6 @@ Reference:
       format: byte
     title:
       type: string
-    description:
-      type: string
-
 
 UpdateReference:
   type: object
