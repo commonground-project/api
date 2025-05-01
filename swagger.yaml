@@ -229,43 +229,6 @@ paths:
       responses:
         "204":
           description: No content
-  "/api/issue/{id}/follow/me":
-    post:
-      summary: Follow an issue
-      description: This endpoint is used to follow an issue
-      operationId: followIssue
-      tags:
-        - Issue
-      parameters:
-        - name: id
-          in: path
-          required: true
-          description: The uuid of specific resource
-          schema:
-            type: string
-            format: uuid
-      requestBody:
-        require: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                follow:
-                  type: boolean
-      responses:
-        "200":
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  follow:
-                    type: boolean
-                  updatedAt:
-                    type: string
-                    format: date-time
   "/api/issue/{id}/facts":
     get:
       summary: List facts of viewpoints used in the issue
@@ -341,7 +304,13 @@ paths:
       tags:
         - Issue
       parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+        - name: id
+          in: path
+          required: true
+          description: The uuid of specific resource
+          schema:
+            type: string
+            format: uuid
         - $ref: "#/paths/~1api~1issues/get/parameters/0"
         - $ref: "#/paths/~1api~1issues/get/parameters/1"
         - $ref: "#/paths/~1api~1issues/get/parameters/2"
@@ -485,7 +454,7 @@ paths:
       tags:
         - ViewPoint
       parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
       responses:
         "200":
           description: Successful response
@@ -501,7 +470,7 @@ paths:
       tags:
         - ViewPoint
       parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
       requestBody:
         required: true
         content:
@@ -524,7 +493,7 @@ paths:
       tags:
         - ViewPoint
       parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
       responses:
         "204":
           description: No content
@@ -536,7 +505,7 @@ paths:
       tags:
         - ViewPoint
       parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
       requestBody:
         required: true
         content:
@@ -569,7 +538,7 @@ paths:
       tags:
         - ViewPoint
       parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
         - $ref: "#/paths/~1api~1issues/get/parameters/1"
         - $ref: "#/paths/~1api~1issues/get/parameters/2"
       responses:
@@ -594,7 +563,7 @@ paths:
       tags:
         - ViewPoint
       parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
       requestBody:
         required: true
         content:
@@ -616,7 +585,7 @@ paths:
       tags:
         - ViewPoint
       parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
         - name: factId
           in: path
           required: true
@@ -635,7 +604,7 @@ paths:
       tags:
         - ViewPoint
       parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
         - $ref: "#/paths/~1api~1issues/get/parameters/0"
         - $ref: "#/paths/~1api~1issues/get/parameters/1"
         - $ref: "#/paths/~1api~1issues/get/parameters/2"
@@ -846,7 +815,7 @@ paths:
       tags:
         - Fact
       parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
       responses:
         "200":
           description: Successful response
@@ -877,7 +846,7 @@ paths:
       tags:
         - Fact
       parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
       requestBody:
         required: true
         content:
@@ -898,7 +867,7 @@ paths:
       tags:
         - Fact
       parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
       responses:
         "204":
           description: Successful response
@@ -919,7 +888,7 @@ paths:
       tags:
         - Fact
       parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
       responses:
         "200":
           description: Successful response
@@ -936,7 +905,7 @@ paths:
       tags:
         - Fact
       parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
       requestBody:
         required: true
         content:
@@ -966,7 +935,7 @@ paths:
       tags:
         - Fact
       parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
         - name: referenceId
           in: path
           required: true
@@ -1005,7 +974,7 @@ paths:
       tags:
         - Timeline
       parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
       responses:
         "200":
           description: Successful response
@@ -1152,7 +1121,7 @@ paths:
       tags:
         - Reply
       parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
       responses:
         "200":
           description: Successful response
@@ -1169,7 +1138,7 @@ paths:
         - Reply
         - Admin
       parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
       requestBody:
         required: true
         content:
@@ -1193,7 +1162,7 @@ paths:
         - Reply
         - Admin
       parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
       responses:
         "204":
           description: No content
@@ -1205,7 +1174,7 @@ paths:
       tags:
         - Reply
       parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
       requestBody:
         required: true
         content:
@@ -1613,7 +1582,7 @@ paths:
       tags:
         - Internal
       parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
       responses:
         "200":
           description: Successful response
@@ -1669,7 +1638,7 @@ paths:
       tags:
         - Internal
       parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
       responses:
         "200":
           description: Successful response
@@ -1744,7 +1713,7 @@ paths:
       tags:
         - Internal
       parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
       responses:
         "200":
           description: Successful response
@@ -1927,7 +1896,7 @@ paths:
       tags:
         - Internal
       parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me/post/parameters/0"
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
       responses:
         "200":
           description: Successful response
@@ -2182,6 +2151,52 @@ paths:
                         replacement:
                           type: string
                           description: The recommended replacement for the edited text.
+  "/api/issue/{id}/follow/me":
+    post:
+      summary: Follow or unfollow an issue or viewpoint
+      description: This endpoint allows a user to follow or unfollow a specific issue
+        or viewpoint
+      operationId: followIssue
+      tags:
+        - Follow
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: id
+          in: path
+          description: ID of the issue to follow/unfollow
+          required: true
+          schema:
+            type: string
+            format: uuid
+          requestBody:
+            required: true
+            content:
+              application/json:
+                schema:
+                  follow:
+                    type: boolean
+      responses:
+        "200":
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  follow:
+                    type: boolean
+                    description: Whether the user is following the issue
+                  updated_at:
+                    type: string
+                    format: date-time
+                    description: The last time the issue title, description, or insight was updated
+        "403":
+          description: Forbidden - user doesn't have USER role
+        "404":
+          description: Issue not found
+  "/api/viewpoint/{id}/follow/me":
+    $ref: "#/paths/~1api~1issue~1%7Bid%7D~1follow~1me"
 components:
   schemas:
     Issue:
