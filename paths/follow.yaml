@@ -1,0 +1,35 @@
+FollowObject:
+  post:
+    summary: Follow or unfollow an issue or viewpoint
+    description: This endpoint allows a user to follow or unfollow a specific issue or viewpoint
+    operationId: followIssue
+    tags:
+      - Follow
+    security:
+      - bearerAuth: [ ]
+    parameters:
+      - name: id
+        in: path
+        description: ID of the issue to follow/unfollow
+        required: true
+        schema:
+          type: string
+          format: uuid
+        requestBody:
+          required: true
+          content:
+            application/json:
+              schema:
+                follow:
+                  type: boolean
+    responses:
+      '200':
+        description: Successful operation
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/follow.yaml#/Follow"
+      '403':
+        description: Forbidden - user doesn't have USER role
+      '404':
+        description: Issue not found
