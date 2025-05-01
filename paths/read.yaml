@@ -1,0 +1,82 @@
+ReadIssue:
+  post:
+    summary: Mark an issue as read or unread
+    description: When a user marks an issue as read or unread, this endpoint is used to update the read status of the issue
+    operationId: readIssue
+    tags:
+      - Read
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the issue
+        schema:
+          type: string
+          format: uuid
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              readStatus:
+                type: boolean
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+                objectId:
+                  type: string
+                  format: uuid
+                readStatus:
+                  type: boolean
+                updatedAt:
+                  type: string
+ReadViewpoint:
+  post:
+    summary: Mark a viewpoint as read or unread
+    description: When a user marks a viewpoint as read or unread, this endpoint is used to update the read status of the viewpoint
+    operationId: readViewpoint
+    tags:
+      - Read
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the viewpoint
+        schema:
+          type: string
+          format: uuid
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            type: object
+            properties:
+              readStatus:
+                type: boolean
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+                objectId:
+                  type: string
+                  format: uuid
+                readStatus:
+                  type: boolean
+                updatedAt:
+                  type: string

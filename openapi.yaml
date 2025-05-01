@@ -115,6 +115,12 @@ paths:
   /api/internal/service-accounts:
     $ref: "./paths/service-account.yaml#/ServiceAccounts"
 
+  # Read
+  /api/read/issue/{issueId}:
+    $ref: "./paths/read.yaml#/ReadIssue"
+  /api/read/viewpoint/{viewpointId}:
+    $ref: "./paths/read.yaml#/ReadViewpoint"
+
   # Text-suggestion
   /api/text-suggestion:
     $ref: "./paths/text-suggestion.yaml#/TextSuggestion"
