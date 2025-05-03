@@ -223,11 +223,15 @@ ViewpointPreference:
       content:
         application/json:
           schema:
-            $ref: "../schemas/viewpoint.yaml#/ViewpointPreference"
+            type: array
+            items:
+              $ref: "../schemas/viewpoint.yaml#/ViewpointPreference"
     responses:
       '200':
         description: Successful response
         content:
           application/json:
             schema:
-              $ref: "../schemas/viewpoint.yaml#/ViewpointPreference"
+              type: array
+              items:
+                $ref: "../schemas/viewpoint.yaml#/ViewpointPreference"
