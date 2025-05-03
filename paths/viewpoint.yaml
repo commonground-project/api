@@ -226,6 +226,14 @@ ViewpointPreference:
             type: array
             items:
               $ref: "../schemas/viewpoint.yaml#/ViewpointPreference"
+          examples:
+            example1:
+              summary: Example of viewpoint preference
+              value:
+                - id: "704a1650-3f50-4bdc-b530-5fd59b8e80a6"
+                  preference: "INTEREST"
+                - id: "c7852a9e-187b-4f39-b11c-9437b29ecfc5"
+                  preference: "DISINTEREST"
     responses:
       '200':
         description: Successful response
@@ -235,3 +243,11 @@ ViewpointPreference:
               type: array
               items:
                 $ref: "../schemas/viewpoint.yaml#/ViewpointPreference"
+            examples:
+              example1:
+                summary: Example of viewpoint preference
+                value:
+                  - id: "704a1650-3f50-4bdc-b530-5fd59b8e80a6"
+                    preference: "INTEREST"
+                  - id: "c7852a9e-187b-4f39-b11c-9437b29ecfc5"
+                    preference: "DISINTEREST"
