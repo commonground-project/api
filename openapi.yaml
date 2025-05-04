@@ -82,6 +82,8 @@ paths:
     $ref: "./paths/user.yaml#/User"
   /api/users:
     $ref: "./paths/user.yaml#/Users"
+  /api/user/complete-onboarding/me:
+    $ref: "./paths/user.yaml#/UserCompleteOnboarding"
 
   # Internal
   /api/internal/issues:

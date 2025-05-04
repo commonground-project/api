@@ -74,6 +74,17 @@ UserSetup:
             schema:
               $ref: "../schemas/user.yaml#/User"
 
+UserCompleteOnboarding:
+  post:
+    summary: Complete onboarding
+    description: This endpoint is used to complete user onboarding
+    operationId: completeOnboarding
+    tags:
+      - Users
+    responses:
+      '204':
+        description: No content
+
 UserSettings:
   get:
     summary: Get user settings
