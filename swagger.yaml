@@ -1801,232 +1801,6 @@ paths:
               schema:
                 $ref: "#/paths/~1api~1internal~1viewpoints~1/get/responses/200/content/applicat\
                   ion~1json/schema/properties/content/items"
-  /api/internal/embeddings:
-    get:
-      summary: List internal embeddings
-      description: This endpoint returns all internal embeddings
-      operationId: getInternalEmbeddings
-      tags:
-        - Internal
-      parameters:
-        - name: type
-          in: query
-          required: false
-          description: The type of embedding
-          schema:
-            type: string
-            format: enum
-            enum:
-              - ISSUE
-              - VIEWPOINT
-              - FACT
-      responses:
-        "200":
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  content:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        embedding_type:
-                          type: string
-                          format: enum
-                          enum:
-                            - ISSUE
-                            - VIEWPOINT
-                            - FACT
-                        parent_id:
-                          type: string
-                          format: uuid
-                        embedding:
-                          type: array
-                          items:
-                            type: number
-                            format: float
-                        created_at:
-                          type: string
-                          format: date-time
-    post:
-      summary: Create a new embedding
-      description: This endpoint is used to create a new embedding
-      operationId: createInternalEmbedding
-      tags:
-        - Internal
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                type: object
-                properties:
-                  embedding_type:
-                    type: string
-                    format: enum
-                    enum:
-                      - ISSUE
-                      - VIEWPOINT
-                      - FACT
-                  parent_id:
-                    type: string
-                    format: uuid
-                  embedding:
-                    type: array
-                    items:
-                      type: number
-                      format: float
-      responses:
-        "200":
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  content:
-                    type: array
-                    items:
-                      $ref: "#/paths/~1api~1internal~1embeddings/get/responses/200/content/applicatio\
-                        n~1json/schema/properties/content/items"
-  /api/internal/similarities:
-    get:
-      summary: List internal user similarities
-      description: This endpoint returns all internal user similarities
-      operationId: getInternalUserSimilarities
-      tags:
-        - Internal
-      responses:
-        "200":
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  content:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        user_id:
-                          type: string
-                          format: uuid
-                        issue_list:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              issue_id:
-                                type: string
-                                format: uuid
-                              similarity:
-                                type: number
-                                format: float
-                        viewpoint_list:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              viewpoint_id:
-                                type: string
-                                format: uuid
-                              similarity:
-                                type: number
-                                format: float
-    post:
-      summary: Create or Update user similarity
-      description: This endpoint is used to create or update users similarity
-      operationId: createOrUpdateInternalUserSimilarity
-      tags:
-        - Internal
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: array
-              items:
-                $ref: "#/paths/~1api~1internal~1similarities/get/responses/200/content/applicat\
-                  ion~1json/schema/properties/content/items"
-      responses:
-        "200":
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  content:
-                    type: array
-                    items:
-                      $ref: "#/paths/~1api~1internal~1similarities/get/responses/200/content/applicat\
-                        ion~1json/schema/properties/content/items"
-  "/api/internal/similarity/{userId}":
-    get:
-      summary: Get internal user similarity
-      description: This endpoint returns the similarity between two users
-      operationId: getInternalUserSimilarity
-      tags:
-        - Internal
-      parameters:
-        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
-      responses:
-        "200":
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: "#/paths/~1api~1internal~1similarities/get/responses/200/content/applicat\
-                  ion~1json/schema/properties/content/items"
-    put:
-      summary: Update an user similarity
-      description: This endpoint is used to update an user similarity
-      operationId: updateInternalUserSimilarity
-      tags:
-        - Internal
-      requestBody:
-        required: true
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                issue_list:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      issue_id:
-                        type: string
-                        format: uuid
-                      similarity:
-                        type: number
-                        format: float
-                viewpoint_list:
-                  type: array
-                  items:
-                    type: object
-                    properties:
-                      viewpoint_id:
-                        type: string
-                        format: uuid
-                      similarity:
-                        type: number
-                        format: float
-      responses:
-        "200":
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                $ref: "#/paths/~1api~1internal~1similarities/get/responses/200/content/applicat\
-                  ion~1json/schema/properties/content/items"
   /api/internal/service-account/me:
     get:
       summary: Get Service Account Information
@@ -2476,6 +2250,7 @@ components:
             - LIKE
             - REASONABLE
             - DISLIKE
+    ViewPointPreference: {}
     Fact:
       type: object
       properties:
@@ -2715,6 +2490,37 @@ components:
         end:
           type: integer
           description: The end position of the content of the Reply
+    UpdateQuoteReply:
+      $ref: "#/components/schemas/QuoteReply"
+    ReplyContent:
+      type: object
+      properties:
+        user_id:
+          type: string
+          format: uuid
+          description: The unique identifier of the User
+        interaction_id:
+          type: string
+          format: uuid
+          description: The unique identifier of the Reply
+        content:
+          type: string
+          description: The content of the Reply
+          example: "[[Quote]](0) This is a reply [first imported fact](0) [second imported
+            fact](1,2) [[Quote]](1)"
+        like_count:
+          type: integer
+          description: The number of likes the Reply has
+        reasonable_count:
+          type: integer
+          description: The number of reasonables the Reply has
+        dislike_count:
+          type: integer
+          description: The number of dislikes the Reply has
+        timestamp:
+          type: string
+          format: date-time
+          description: The date and time the Reply was created
     User:
       type: object
       properties:
@@ -2818,6 +2624,30 @@ components:
               type: boolean
             newNodeOfTimelineToFollowedIssue:
               type: boolean
+    JWT:
+      type: object
+      properties:
+        accessToken:
+          type: string
+          description: The access token used to authenticate the user
+        expirationTime:
+          type: number
+          description: The expiration time of the access token in seconds
+        refreshToken:
+          type: string
+          description: The refresh token used to obtain a new access token
+    ServiceAccount:
+      type: object
+      properties:
+        id:
+          type: string
+          format: uuid
+        name:
+          type: string
+        role:
+          type: string
+          enum:
+            - ROLE_SERVICE_ACCOUNT_READ
     Subscribe:
       type: object
       properties:
@@ -2839,6 +2669,16 @@ components:
         endpoint:
           type: string
           description: The endpoint of push service
+    Follow:
+      type: object
+      properties:
+        follow:
+          type: boolean
+          description: Whether the user is following the issue
+        updated_at:
+          type: string
+          format: date-time
+          description: The last time the issue title, description, or insight was updated
     Pagination:
       type: object
       properties:
@@ -2971,98 +2811,6 @@ components:
         sentiment_score:
           type: number
           format: float
-    InternalEmbedding:
-      type: object
-      properties:
-        embedding_type:
-          type: string
-          format: enum
-          enum:
-            - ISSUE
-            - VIEWPOINT
-            - FACT
-        parent_id:
-          type: string
-          format: uuid
-        embedding:
-          type: array
-          items:
-            type: number
-            format: float
-        created_at:
-          type: string
-          format: date-time
-    UpdateInternalEmbedding:
-      type: object
-      properties:
-        embedding_type:
-          type: string
-          format: enum
-          enum:
-            - ISSUE
-            - VIEWPOINT
-            - FACT
-        parent_id:
-          type: string
-          format: uuid
-        embedding:
-          type: array
-          items:
-            type: number
-            format: float
-    InternalUserSimilarity:
-      type: object
-      properties:
-        user_id:
-          type: string
-          format: uuid
-        issue_list:
-          type: array
-          items:
-            type: object
-            properties:
-              issue_id:
-                type: string
-                format: uuid
-              similarity:
-                type: number
-                format: float
-        viewpoint_list:
-          type: array
-          items:
-            type: object
-            properties:
-              viewpoint_id:
-                type: string
-                format: uuid
-              similarity:
-                type: number
-                format: float
-    UpdateUserSimilarity:
-      type: object
-      properties:
-        issue_list:
-          type: array
-          items:
-            type: object
-            properties:
-              issue_id:
-                type: string
-                format: uuid
-              similarity:
-                type: number
-                format: float
-        viewpoint_list:
-          type: array
-          items:
-            type: object
-            properties:
-              viewpoint_id:
-                type: string
-                format: uuid
-              similarity:
-                type: number
-                format: float
     TextSuggestion:
       type: object
       properties:
