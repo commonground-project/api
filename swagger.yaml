@@ -1346,26 +1346,26 @@ paths:
                 occupation:
                   type: string
                   format: enum
-                enum:
-                  - STUDENTS
-                  - FREELANCERS_SELF_EMPLOYED
-                  - EDUCATION_ACADEMIA
-                  - HEALTHCARE_HEALTH
-                  - TECHNOLOGY_ENGINEERING
-                  - ARTS_DESIGN
-                  - FINANCE_LAW
-                  - PUBLIC_SERVICE
-                  - BUSINESS_SALES
-                  - MEDIA_COMMUNICATION
-                  - TRAVEL_HOSPITALITY
-                  - ENVIRONMENTAL_SCIENCE_POLICY
-                  - ENERGY_INFRASTRUCTURE
-                  - CONSTRUCTION_BUILDING
-                  - LOGISTICS_SUPPLY_CHAIN_MANAGEMENT
-                  - TRANSPORTATION_SERVICES
-                  - AGRICULTURAL_WORKERS
-                  - ENVIRONMENTAL_CONSERVATION_RESOURCE_MANAGEMENT
-                  - RETIRED_NOT_WORKING
+                  enum:
+                    - STUDENTS
+                    - FREELANCERS_SELF_EMPLOYED
+                    - EDUCATION_ACADEMIA
+                    - HEALTHCARE_HEALTH
+                    - TECHNOLOGY_ENGINEERING
+                    - ARTS_DESIGN
+                    - FINANCE_LAW
+                    - PUBLIC_SERVICE
+                    - BUSINESS_SALES
+                    - MEDIA_COMMUNICATION
+                    - TRAVEL_HOSPITALITY
+                    - ENVIRONMENTAL_SCIENCE_POLICY
+                    - ENERGY_INFRASTRUCTURE
+                    - CONSTRUCTION_BUILDING
+                    - LOGISTICS_SUPPLY_CHAIN_MANAGEMENT
+                    - TRANSPORTATION_SERVICES
+                    - AGRICULTURAL_WORKERS
+                    - ENVIRONMENTAL_CONSERVATION_RESOURCE_MANAGEMENT
+                    - RETIRED_NOT_WORKING
                 gender:
                   type: string
                   format: enum
@@ -2715,6 +2715,109 @@ components:
         end:
           type: integer
           description: The end position of the content of the Reply
+    User:
+      type: object
+      properties:
+        username:
+          type: string
+        nickname:
+          type: string
+        email:
+          type: string
+          format: email
+        role:
+          type: string
+          enum:
+            - ROLE_NOT_SETUP
+            - ROLE_USER
+            - ROLE_ADMIN
+        occupation:
+          type: string
+          format: enum
+          enum:
+            - STUDENTS
+            - FREELANCERS_SELF_EMPLOYED
+            - EDUCATION_ACADEMIA
+            - HEALTHCARE_HEALTH
+            - TECHNOLOGY_ENGINEERING
+            - ARTS_DESIGN
+            - FINANCE_LAW
+            - PUBLIC_SERVICE
+            - BUSINESS_SALES
+            - MEDIA_COMMUNICATION
+            - TRAVEL_HOSPITALITY
+            - ENVIRONMENTAL_SCIENCE_POLICY
+            - ENERGY_INFRASTRUCTURE
+            - CONSTRUCTION_BUILDING
+            - LOGISTICS_SUPPLY_CHAIN_MANAGEMENT
+            - TRANSPORTATION_SERVICES
+            - AGRICULTURAL_WORKERS
+            - ENVIRONMENTAL_CONSERVATION_RESOURCE_MANAGEMENT
+            - RETIRED_NOT_WORKING
+        gender:
+          type: string
+          format: enum
+          enum:
+            - MALE
+            - FEMALE
+            - NON_BINARY
+            - PREFER_NOT_TO_SAY
+        birthdate:
+          type: string
+          format: date
+    UserSetup:
+      type: object
+      properties:
+        username:
+          type: string
+        nickname:
+          type: string
+        occupation:
+          type: string
+          format: enum
+          enum:
+            - STUDENTS
+            - FREELANCERS_SELF_EMPLOYED
+            - EDUCATION_ACADEMIA
+            - HEALTHCARE_HEALTH
+            - TECHNOLOGY_ENGINEERING
+            - ARTS_DESIGN
+            - FINANCE_LAW
+            - PUBLIC_SERVICE
+            - BUSINESS_SALES
+            - MEDIA_COMMUNICATION
+            - TRAVEL_HOSPITALITY
+            - ENVIRONMENTAL_SCIENCE_POLICY
+            - ENERGY_INFRASTRUCTURE
+            - CONSTRUCTION_BUILDING
+            - LOGISTICS_SUPPLY_CHAIN_MANAGEMENT
+            - TRANSPORTATION_SERVICES
+            - AGRICULTURAL_WORKERS
+            - ENVIRONMENTAL_CONSERVATION_RESOURCE_MANAGEMENT
+            - RETIRED_NOT_WORKING
+        gender:
+          type: string
+          format: enum
+          enum:
+            - MALE
+            - FEMALE
+            - NON_BINARY
+            - PREFER_NOT_TO_SAY
+        birthdate:
+          type: string
+          format: date
+    UserSettings:
+      type: object
+      properties:
+        notification:
+          type: object
+          properties:
+            newReplyInMyViewpoint:
+              type: boolean
+            newReferenceToMyReply:
+              type: boolean
+            newNodeOfTimelineToFollowedIssue:
+              type: boolean
     Subscribe:
       type: object
       properties:
