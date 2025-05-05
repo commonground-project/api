@@ -163,6 +163,12 @@ components:
       $ref: "./schemas/reply.yaml#/ReplyReaction"
     QuoteReply:
       $ref: "./schemas/reply.yaml#/QuoteReply"
+    User:
+      $ref: "./schemas/user.yaml#/User"
+    UserSetup:
+      $ref: "./schemas/user.yaml#/UserSetup"
+    UserSettings:
+      $ref: "./schemas/user.yaml#/UserSettings"
     Subscribe:
       $ref: "./schemas/subscription.yaml#/Subscribe"
     Unsubscribe:
