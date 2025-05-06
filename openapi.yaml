@@ -94,6 +94,8 @@ paths:
     $ref: "./paths/internal.yaml#/InternalProfiles"
   /api/internal/users/profile/{userId}:
     $ref: "./paths/internal.yaml#/InternalProfile"
+  /api/internal/users/interaction:
+    $ref: "./paths/internal.yaml#/InternalInteractions"
   /api/internal/viewpoints/:
     $ref: "./paths/internal.yaml#/InternalViewpoints"
   /api/internal/viewpoints/{viewpointId}:
@@ -204,6 +206,8 @@ components:
       $ref: "./schemas/internal.yaml#/InternalIssue"
     InternalProfile:
       $ref: "./schemas/internal.yaml#/InternalProfile"
+    InternalInteraction:
+      $ref: "./schemas/internal.yaml#/InternalInteraction"
     InternalViewpoint:
       $ref: "./schemas/internal.yaml#/InternalViewpoint"
     
