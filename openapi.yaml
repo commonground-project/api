@@ -12,8 +12,6 @@ paths:
     $ref: "./paths/issue.yaml#/Issues"
   /api/issue/{id}:
     $ref: "./paths/issue.yaml#/Issue"
-  /api/issue/{id}/follow/me:
-    $ref: "./paths/issue.yaml#/IssueFollow"
   /api/issue/{id}/facts:
     $ref: "./paths/issue.yaml#/IssueFacts"
   /api/issue/{id}/viewpoints:
@@ -32,6 +30,8 @@ paths:
     $ref: "./paths/viewpoint.yaml#/ViewPointFact"
   /api/viewpoint/{id}/replies:
     $ref: "./paths/reply.yaml#/ViewpointReplies"
+  /api/viewpoints/preference/me:
+    $ref: "./paths/viewpoint.yaml#/ViewpointPreference"
 
   # Fact
   /api/facts:
@@ -82,6 +82,8 @@ paths:
     $ref: "./paths/user.yaml#/User"
   /api/users:
     $ref: "./paths/user.yaml#/Users"
+  /api/user/complete-onboarding/me:
+    $ref: "./paths/user.yaml#/UserCompleteOnboarding"
 
   # Internal
   /api/internal/issues:
@@ -127,8 +129,15 @@ paths:
   /api/edited-text-suggestion:
     $ref: "./paths/text-suggestion.yaml#/EditedTextSuggestion"
 
+  # Follow
+  /api/issue/{id}/follow/me:
+    $ref: "./paths/follow.yaml#/FollowObject"
+  /api/viewpoint/{id}/follow/me:
+    $ref: "./paths/follow.yaml#/FollowObject"
+
 components:
   schemas:
+    # Issue
     Issue:
       $ref: "./schemas/issue.yaml#/Issue"
     UpdateIssue:
@@ -139,20 +148,30 @@ components:
       $ref: "./schemas/issue.yaml#/IssueFollow"
     UpdateIssueFollow:
       $ref: "./schemas/issue.yaml#/UpdateIssueFollow"
+
+    # Viewpoint
     ViewPoint:
       $ref: "./schemas/viewpoint.yaml#/ViewPoint"
     UpdateViewPoint:
       $ref: "./schemas/viewpoint.yaml#/UpdateViewPoint"
     ViewPointReaction:
       $ref: "./schemas/viewpoint.yaml#/ViewPointReaction"
+    ViewPointPreference:
+        $ref: "./schemas/viewpoint.yaml#/ViewPointPreference"
+
+    # Fact
     Fact:
       $ref: "./schemas/fact.yaml#/Fact"
     UpdateFact:
       $ref: "./schemas/fact.yaml#/UpdateFact"
+
+    # Reference
     Reference:
       $ref: "./schemas/reference.yaml#/Reference"
     UpdateReference:
       $ref: "./schemas/reference.yaml#/UpdateReference"
+
+    # Reply
     Reply:
       $ref: "./schemas/reply.yaml#/Reply"
     UpdateReply:
@@ -161,12 +180,42 @@ components:
       $ref: "./schemas/reply.yaml#/ReplyReaction"
     QuoteReply:
       $ref: "./schemas/reply.yaml#/QuoteReply"
+    UpdateQuoteReply:
+      $ref: "./schemas/reply.yaml#/QuoteReply"
+    ReplyContent:
+      $ref: "./schemas/reply.yaml#/ReplyContent"
+
+    # User
+    User:
+      $ref: "./schemas/user.yaml#/User"
+    UserSetup:
+      $ref: "./schemas/user.yaml#/UserSetup"
+    UserSettings:
+      $ref: "./schemas/user.yaml#/UserSettings"
+      
+    # JWT
+    JWT:
+      $ref: "./schemas/jwt.yaml#/JWT"
+      
+    # ServiceAccount
+    ServiceAccount:
+      $ref: "./schemas/service-account.yaml#/ServiceAccount"
+
+    # Subscribe
     Subscribe:
       $ref: "./schemas/subscription.yaml#/Subscribe"
     Unsubscribe:
       $ref: "./schemas/subscription.yaml#/Unsubscribe"
+
+    # Follow
+    Follow:
+      $ref: "./schemas/follow.yaml#/Follow"
+
+    # Pagination
     Pagination:
       $ref: "./schemas/page.yaml#/Page"
+
+    # Internal
     InternalIssue:
       $ref: "./schemas/internal.yaml#/InternalIssue"
     InternalProfile:
@@ -185,6 +234,8 @@ components:
       $ref: "./schemas/internal.yaml#/InternalUserSimilarity"
     UpdateUserSimilarity:
       $ref: "./schemas/internal.yaml#/UpdateUserSimilarity"
+    
+    # TextSuggestion
     TextSuggestion:
       $ref: "./schemas/text-suggestion.yaml#/TextSuggestion"
     TextSuggestionResponse:
