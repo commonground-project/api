@@ -106,7 +106,6 @@ InternalViewpoint:
           application/json:
             schema:
               $ref: "../schemas/internal.yaml#/InternalViewpoint"
-
 InternalEmbeddings:
   get:
     summary: List internal embeddings
@@ -292,4 +291,3 @@ InternalDetailReference:
           application/json:
             schema:
               $ref: "../schemas/internal.yaml#/InternalDetailReference"
-

@@ -1,0 +1,12 @@
+JWT:
+  type: object
+  properties:
+    accessToken:
+      type: string
+      description: The access token used to authenticate the user
+    expirationTime:
+      type: number
+      description: The expiration time of the access token in seconds
+    refreshToken:
+      type: string
+      description: The refresh token used to obtain a new access token
