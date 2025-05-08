@@ -98,6 +98,10 @@ paths:
     $ref: "./paths/internal.yaml#/InternalViewpoints"
   /api/internal/viewpoints/{viewpointId}:
     $ref: "./paths/internal.yaml#/InternalViewpoint"
+  /api/internal//issue/detail/{issueId}":
+    $ref: "./paths/internal.yaml#/InternalDetailedIssue"
+  /api/internal/reference/detail/{referenceId}:
+    $ref: "./paths/internal.yaml#/InternalDetailedReference"
 
   #  ServiceAccount
   /api/internal/service-account/me:
@@ -141,7 +145,7 @@ components:
     ViewPointReaction:
       $ref: "./schemas/viewpoint.yaml#/ViewPointReaction"
     ViewPointPreference:
-        $ref: "./schemas/viewpoint.yaml#/ViewPointPreference"
+        $ref: "./schemas/viewpoint.yaml#/ViewpointPreference"
 
     # Fact
     Fact:
@@ -206,7 +210,11 @@ components:
       $ref: "./schemas/internal.yaml#/InternalProfile"
     InternalViewpoint:
       $ref: "./schemas/internal.yaml#/InternalViewpoint"
-    
+    InternalDetailedIssue:
+      $ref: "./schemas/internal.yaml#/InternalDetailedIssue"
+    InternalDetailedReference:
+      $ref: "./schemas/internal.yaml#/InternalDetailedReference"
+
     # TextSuggestion
     TextSuggestion:
       $ref: "./schemas/text-suggestion.yaml#/TextSuggestion"
