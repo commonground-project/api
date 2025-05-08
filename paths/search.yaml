@@ -1,0 +1,25 @@
+Search:
+  get:
+    summary: Search for relevant facts
+    description: Returns a list of fact IDs relevant to the search query, based on both fact and reference entity matching.
+    operationId: searchFacts
+    tags:
+      - Search
+    parameters:
+      - $ref: "../parameters/page.yaml#/Page"
+      - $ref: "../parameters/size.yaml#/Size"
+      - $ref: "../parameters/search.yaml#/Search"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                content:
+                  type: array
+                  items:
+                    $ref: "../schemas/search.yaml#/Search"
+                page:
+                  $ref: "../schemas/page.yaml#/Page"
