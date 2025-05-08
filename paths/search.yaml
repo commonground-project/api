@@ -6,9 +6,14 @@ Search:
     tags:
       - Search
     parameters:
+      - name: query
+        in: query
+        required: true
+        description: The search query string used to match facts and references.
+        schema:
+          type: string
       - $ref: "../parameters/page.yaml#/Page"
       - $ref: "../parameters/size.yaml#/Size"
-      - $ref: "../parameters/search.yaml#/Search"
     responses:
       '200':
         description: Successful response
