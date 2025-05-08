@@ -90,6 +90,8 @@ paths:
     $ref: "./paths/internal.yaml#/InternalIssues"
   /api/internal/issues/{issueId}:
     $ref: "./paths/internal.yaml#/InternalIssue"
+  /api/internal/issues/{issueId}/insight:
+    $ref: "./paths/internal.yaml#/InternalIssueInsight"
   /api/internal/users/profile:
     $ref: "./paths/internal.yaml#/InternalProfiles"
   /api/internal/users/profile/{userId}:
@@ -98,6 +100,8 @@ paths:
     $ref: "./paths/internal.yaml#/InternalViewpoints"
   /api/internal/viewpoints/{viewpointId}:
     $ref: "./paths/internal.yaml#/InternalViewpoint"
+  /api/internal/facts:
+    $ref: "./paths/internal.yaml#/InternalFacts"
 
   #  ServiceAccount
   /api/internal/service-account/me:
