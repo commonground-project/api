@@ -24,7 +24,8 @@ Search:
               properties:
                 content:
                   type: array
-                  items: # fact id
+                  items:
+                    description: List of matched fact IDs
                     type: string
                     format: uuid
                 page:
