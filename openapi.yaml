@@ -103,6 +103,10 @@ paths:
   /api/internal/facts:
     $ref: "./paths/internal.yaml#/InternalFacts"
 
+  # Search
+  /api/searchFact:
+    $ref: "./paths/search.yaml#/Search"
+
   #  ServiceAccount
   /api/internal/service-account/me:
     $ref: "./paths/service-account.yaml#/ServiceAccountMe"
@@ -185,6 +189,10 @@ components:
     JWT:
       $ref: "./schemas/jwt.yaml#/JWT"
       
+    # Search
+    Search:
+      $ref: "./schemas/search.yaml#/Search"
+    
     # ServiceAccount
     ServiceAccount:
       $ref: "./schemas/service-account.yaml#/ServiceAccount"
