@@ -1595,22 +1595,8 @@ paths:
       tags:
         - Users
       responses:
-        "200":
-          description: Successful response
-          content:
-            application/json:
-              schema:
-                type: object
-                properties:
-                  accessToken:
-                    type: string
-                    description: The access token used to authenticate the user
-                  expirationTime:
-                    type: number
-                    description: The expiration time of the access token in seconds
-                  refreshToken:
-                    type: string
-                    description: The refresh token used to obtain a new access token
+        "204":
+          description: No content
   /api/internal/issues:
     get:
       summary: List internal issues
