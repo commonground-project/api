@@ -188,11 +188,7 @@ components:
     # JWT
     JWT:
       $ref: "./schemas/jwt.yaml#/JWT"
-      
-    # Search
-    Search:
-      $ref: "./schemas/search.yaml#/Search"
-    
+
     # ServiceAccount
     ServiceAccount:
       $ref: "./schemas/service-account.yaml#/ServiceAccount"

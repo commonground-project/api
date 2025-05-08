@@ -24,7 +24,8 @@ Search:
               properties:
                 content:
                   type: array
-                  items:
-                    $ref: "../schemas/search.yaml#/Search"
+                  items: # fact id
+                    type: string
+                    format: uuid
                 page:
                   $ref: "../schemas/page.yaml#/Page"
