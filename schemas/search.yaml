@@ -1,0 +1,8 @@
+Search:
+  type: object
+  properties:
+    factIds:
+      type: array
+      items:
+        type: string
+        format: uuid
