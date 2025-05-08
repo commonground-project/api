@@ -82,12 +82,8 @@ UserCompleteOnboarding:
     tags:
       - Users
     responses:
-      '200':
-        description: Successful response
-        content:
-          application/json:
-            schema:
-              $ref: "../schemas/jwt.yaml#/JWT"
+      '204':
+        description: No content
 
 UserSettings:
   get:
