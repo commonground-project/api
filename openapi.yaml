@@ -103,6 +103,22 @@ paths:
   /api/internal/facts:
     $ref: "./paths/internal.yaml#/InternalFacts"
 
+  # Detail Reference
+  /api/internal/issue/detail/{issueId}:
+    $ref: "./paths/internal.yaml#/InternalDetailIssue"
+  /api/internal/reference/detail/{referenceId}:
+      $ref: "./paths/internal.yaml#/InternalDetailReference"
+
+  # Embedding
+  /api/internal/embeddings:
+    $ref: "./paths/internal.yaml#/InternalEmbeddings"
+
+  # Similarity
+  /api/internal/similarities:
+    $ref: "./paths/internal.yaml#/InternalUsersSimilarity"
+  /api/internal/similarity/{userId}:
+    $ref: "./paths/internal.yaml#/InternalUserSimilarity"
+
   #  ServiceAccount
   /api/internal/service-account/me:
     $ref: "./paths/service-account.yaml#/ServiceAccountMe"
@@ -210,6 +226,18 @@ components:
       $ref: "./schemas/internal.yaml#/InternalProfile"
     InternalViewpoint:
       $ref: "./schemas/internal.yaml#/InternalViewpoint"
+    InternalDetailIssue:
+        $ref: "./schemas/internal.yaml#/InternalDetailIssue"
+    InternalDetailReference:
+        $ref: "./schemas/internal.yaml#/InternalDetailReference"
+    InternalEmbedding:
+      $ref: "./schemas/internal.yaml#/InternalEmbedding"
+    UpdateInternalEmbedding:
+      $ref: "./schemas/internal.yaml#/UpdateInternalEmbedding"
+    InternalUserSimilarity:
+      $ref: "./schemas/internal.yaml#/InternalUserSimilarity"
+    UpdateUserSimilarity:
+      $ref: "./schemas/internal.yaml#/UpdateUserSimilarity"
     
     # TextSuggestion
     TextSuggestion:
