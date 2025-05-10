@@ -25,8 +25,7 @@ Search:
                 content:
                   type: array
                   items:
-                    description: List of matched fact IDs
-                    type: string
-                    format: uuid
+                    description: List of matched facts
+                    $ref: "../schemas/fact.yaml#/Fact"
                 page:
                   $ref: "../schemas/page.yaml#/Page"
