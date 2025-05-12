@@ -181,4 +181,3 @@ InternalFacts:
         application/json:
           schema:
             $ref: "../schemas/internal.yaml#/UpdateInternalFacts"
-              $ref: "../schemas/fact.yaml#/Fact"

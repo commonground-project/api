@@ -106,7 +106,6 @@ paths:
     $ref: "./paths/internal.yaml#/InternalDetailedIssue"
   /api/internal/reference/detail/{referenceId}:
     $ref: "./paths/internal.yaml#/InternalDetailedReference"
-  
 
   # Search
   /api/searchFact:
