@@ -1862,6 +1862,38 @@ paths:
             application/json:
               schema:
                 $ref: "#/components/schemas/Issue/properties/facts/items"
+  /api/searchFact:
+    get:
+      summary: Search for relevant facts
+      description: Returns a list of fact IDs relevant to the search query, based on
+        both fact and reference entity matching.
+      operationId: searchFacts
+      tags:
+        - Search
+      parameters:
+        - name: query
+          in: query
+          required: true
+          description: The search query string used to match facts and references.
+          schema:
+            type: string
+        - $ref: "#/paths/~1api~1issues/get/parameters/1"
+        - $ref: "#/paths/~1api~1issues/get/parameters/2"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  content:
+                    type: array
+                    items:
+                      $ref: "#/components/schemas/Issue/properties/facts/items"
+                  page:
+                    $ref: "#/paths/~1api~1issues/get/responses/200/content/application~1json/schema\
+                      /properties/page"
   /api/internal/service-account/me:
     get:
       summary: Get Service Account Information
