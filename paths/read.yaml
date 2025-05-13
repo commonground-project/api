@@ -1,7 +1,7 @@
 ReadIssue:
   post:
-    summary: Mark an issue as read or unread
-    description: When a user marks an issue as read or unread, this endpoint is used to update the read status of the issue
+    summary: Mark an issue as read
+    description: When a user clicks to browse an issue, this endpoint is used to mark the issue as read
     operationId: readIssue
     tags:
       - Read
@@ -13,15 +13,6 @@ ReadIssue:
         schema:
           type: string
           format: uuid
-    requestBody:
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              readStatus:
-                type: boolean
     responses:
       '200':
         description: Successful response
@@ -32,7 +23,7 @@ ReadIssue:
               properties:
                 userId:
                   type: integer
-                objectId:
+                issueId:
                   type: string
                   format: uuid
                 readStatus:
@@ -42,7 +33,7 @@ ReadIssue:
   get:
     summary: Get read status of an issue
     description: This endpoint returns the read status of an issue
-    operationId: getReadIssueStatus
+    operationId: getReadIssue
     tags:
       - Read
     parameters:
@@ -63,7 +54,7 @@ ReadIssue:
               properties:
                 userId:
                   type: integer
-                objectId:
+                issueId:
                   type: string
                   format: uuid
                 readStatus:
@@ -72,8 +63,10 @@ ReadIssue:
                   type: string
 ReadViewpoint:
   post:
-    summary: Mark a viewpoint as read or unread
-    description: When a user marks a viewpoint as read or unread, this endpoint is used to update the read status of the viewpoint
+    summary: Mark a viewpoint as read
+    description:  |
+      When a user clicks to browse a viewpoint, no matter the user read its reply or not, this endpoint 
+      is used to mark the viewpoint as read
     operationId: readViewpoint
     tags:
       - Read
@@ -85,15 +78,6 @@ ReadViewpoint:
         schema:
           type: string
           format: uuid
-    requestBody:
-      required: true
-      content:
-        application/json:
-          schema:
-            type: object
-            properties:
-              readStatus:
-                type: boolean
     responses:
       '200':
         description: Successful response
@@ -104,7 +88,7 @@ ReadViewpoint:
               properties:
                 userId:
                   type: integer
-                objectId:
+                viewpointId:
                   type: string
                   format: uuid
                 readStatus:
@@ -114,14 +98,14 @@ ReadViewpoint:
   get:
     summary: Get read status of a viewpoint
     description: This endpoint returns the read status of a viewpoint
-    operationId: getReadViewpointStatus
+    operationId: getReadViewpoint
     tags:
       - Read
     parameters:
       - name: id
         in: path
         required: true
-        description: The unique identifier of the issue
+        description: The unique identifier of the viewpoint
         schema:
           type: string
           format: uuid
@@ -135,7 +119,70 @@ ReadViewpoint:
               properties:
                 userId:
                   type: integer
-                objectId:
+                viewpointId:
+                  type: string
+                  format: uuid
+                readStatus:
+                  type: boolean
+                updatedAt:
+                  type: string
+ReadReply:
+  post:
+    summary: Mark a repl as read
+    description: When a user see a reply, this endpoint is used to mark the reply as read
+    operationId: readReply
+    tags:
+      - Read
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the reply
+        schema:
+          type: string
+          format: uuid
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+                replyId:
+                  type: string
+                  format: uuid
+                readStatus:
+                  type: boolean
+                updatedAt:
+                  type: string
+  get:
+    summary: Get read status of a reply
+    description: This endpoint returns the read status of a reply
+    operationId: getReadReply
+    tags:
+      - Read
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the reply
+        schema:
+          type: string
+          format: uuid
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                userId:
+                  type: integer
+                replyId:
                   type: string
                   format: uuid
                 readStatus:

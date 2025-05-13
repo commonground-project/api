@@ -112,6 +112,8 @@ paths:
     $ref: "./paths/read.yaml#/ReadIssue"
   /api/read/viewpoint/{viewpointId}:
     $ref: "./paths/read.yaml#/ReadViewpoint"
+  /api/read/reply/{replyId}:
+    $ref: "./paths/read.yaml#/ReadReply"
 
   # Text-suggestion
   /api/text-suggestion:
@@ -147,7 +149,7 @@ components:
     ViewPointReaction:
       $ref: "./schemas/viewpoint.yaml#/ViewPointReaction"
     ViewPointPreference:
-        $ref: "./schemas/viewpoint.yaml#/ViewPointPreference"
+        $ref: "./schemas/viewpoint.yaml#/ViewpointPreference"
 
     # Fact
     Fact:
