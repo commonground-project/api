@@ -16,7 +16,7 @@ InternalIssues:
                 content:
                   type: array
                   items:
-                    $ref: "../schemas/internal.yaml#/InternalProfile"
+                    $ref: "../schemas/internal.yaml#/InternalIssue"
 InternalProfiles:
   get:
     summary: List internal user profiles
@@ -70,6 +70,30 @@ InternalProfile:
           application/json:
             schema:
               $ref: "../schemas/internal.yaml#/InternalProfile"
+              
+InternalIssueInsight:
+  put:
+    summary: Update issue insight
+    description: This endpoint updates the insight of an issue
+    operationId: updateInternalIssueInsight
+    tags:
+      - Internal
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/internal.yaml#/UpdateIssueInsight"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/internal.yaml#/InternalIssue"
+              
 InternalViewpoints:
   get:
     summary: List internal viewpoints
@@ -123,3 +147,24 @@ InternalInteractions:
           application/json:
             schema:
               $ref: "../schemas/internal.yaml#/InternalInteraction"
+
+InternalFacts:
+  post:
+    summary: Create a new internal fact
+    description: This endpoint is used to create a new internal fact
+    operationId: createInternalFact
+    tags:
+      - Internal
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/internal.yaml#/UpdateInternalFacts"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/fact.yaml#/Fact"
