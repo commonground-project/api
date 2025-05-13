@@ -145,7 +145,7 @@ InternalDetailedFact:
         references:
           type: array
           items:
-            type: '#/InternalDetailedReference'
+            $ref: "#/InternalDetailedReference"
 
 InternalDetailedViewpoint:
     type: object
@@ -175,7 +175,7 @@ InternalDetailedViewpoint:
         facts:
             type: array
             items:
-                type: '#/InternalDetailedFact'
+              $ref: '#/InternalDetailedFact'
 
 InternalDetailedReference:
     type: object

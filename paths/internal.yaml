@@ -149,7 +149,6 @@ InternalDetailedIssue:
           application/json:
             schema:
               $ref: "../schemas/internal.yaml#/InternalDetailedIssue"
-
 InternalDetailedReference:
   get:
     summary: Get internal reference with description
