@@ -102,7 +102,7 @@ paths:
     $ref: "./paths/internal.yaml#/InternalViewpoint"
   /api/internal/facts:
     $ref: "./paths/internal.yaml#/InternalFacts"
-  /api/internal/issue/detail/{issueId}":
+  /api/internal/issue/detail/{issueId}:
     $ref: "./paths/internal.yaml#/InternalDetailedIssue"
   /api/internal/reference/detail/{referenceId}:
     $ref: "./paths/internal.yaml#/InternalDetailedReference"
