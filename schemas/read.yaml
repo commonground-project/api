@@ -1,0 +1,12 @@
+Read:
+  type: object
+  properties:
+    userId:
+      type: integer
+    objectId:
+      type: string
+      format: uuid
+    readStatus:
+      type: boolean
+    updatedAt:
+      type: string

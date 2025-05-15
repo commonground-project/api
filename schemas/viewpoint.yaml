@@ -43,6 +43,8 @@ ViewPoint:
     replyCount:
       type: integer
       description: The number of replies the ViewPoint has
+    readStatus:
+      type: boolean
     facts:
       type: array
       items:

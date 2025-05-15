@@ -1,0 +1,131 @@
+ReadIssue:
+  post:
+    summary: Mark an issue as read
+    description: When a user clicks to browse an issue, this endpoint is used to mark the issue as read
+    operationId: readIssue
+    tags:
+      - Read
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the issue
+        schema:
+          type: string
+          format: uuid
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/read.yaml#/Read"
+  get:
+    summary: Get read status of an issue
+    description: This endpoint returns the read status of an issue
+    operationId: getReadIssue
+    tags:
+      - Read
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the issue
+        schema:
+          type: string
+          format: uuid
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/read.yaml#/Read"
+ReadViewpoint:
+  post:
+    summary: Mark a viewpoint as read
+    description:  |
+      When a user clicks to browse a viewpoint, no matter the user read its reply or not, this endpoint 
+      is used to mark the viewpoint as read
+    operationId: readViewpoint
+    tags:
+      - Read
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the viewpoint
+        schema:
+          type: string
+          format: uuid
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/read.yaml#/Read"
+  get:
+    summary: Get read status of a viewpoint
+    description: This endpoint returns the read status of a viewpoint
+    operationId: getReadViewpoint
+    tags:
+      - Read
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the viewpoint
+        schema:
+          type: string
+          format: uuid
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/read.yaml#/Read"
+ReadReply:
+  post:
+    summary: Mark a repl as read
+    description: When a user see a reply, this endpoint is used to mark the reply as read
+    operationId: readReply
+    tags:
+      - Read
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the reply
+        schema:
+          type: string
+          format: uuid
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/read.yaml#/Read"
+  get:
+    summary: Get read status of a reply
+    description: This endpoint returns the read status of a reply
+    operationId: getReadReply
+    tags:
+      - Read
+    parameters:
+      - name: id
+        in: path
+        required: true
+        description: The unique identifier of the reply
+        schema:
+          type: string
+          format: uuid
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/read.yaml#/Read"

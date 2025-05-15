@@ -119,6 +119,14 @@ paths:
   /api/internal/service-accounts:
     $ref: "./paths/service-account.yaml#/ServiceAccounts"
 
+  # Read
+  /api/read/issue/{issueId}:
+    $ref: "./paths/read.yaml#/ReadIssue"
+  /api/read/viewpoint/{viewpointId}:
+    $ref: "./paths/read.yaml#/ReadViewpoint"
+  /api/read/reply/{replyId}:
+    $ref: "./paths/read.yaml#/ReadReply"
+
   # Text-suggestion
   /api/text-suggestion:
     $ref: "./paths/text-suggestion.yaml#/TextSuggestion"
@@ -196,6 +204,10 @@ components:
     # ServiceAccount
     ServiceAccount:
       $ref: "./schemas/service-account.yaml#/ServiceAccount"
+
+    # Read
+    Read:
+      $ref: "./schemas/read.yaml#/Read"
 
     # Subscribe
     Subscribe:

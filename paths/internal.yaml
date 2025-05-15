@@ -130,7 +130,6 @@ InternalViewpoint:
           application/json:
             schema:
               $ref: "../schemas/internal.yaml#/InternalViewpoint"
-
 InternalDetailedIssue:
   get:
     summary: Get internal issue with references with description
