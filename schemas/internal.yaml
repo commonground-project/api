@@ -95,6 +95,106 @@ InternalViewpoint:
       type: number
       format: float
 
+InternalDetailedIssue:
+    type: object
+    properties:
+        issue_id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        title:
+         type: string
+        description:
+          type: string
+        insight:
+          type: string
+        publisher_id:
+          type: string
+          format: uuid
+        facts:
+          type: array
+          items:
+              $ref: '#/InternalDetailedFact'
+        viewpoints:
+          type: array
+          items:
+            $ref: '#/InternalDetailedViewpoint'
+
+InternalDetailedFact:
+    type: object
+    properties:
+        id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        title:
+          type: string
+        publisher_id:
+          type: string
+          format: uuid
+        references:
+          type: array
+          items:
+            $ref: "#/InternalDetailedReference"
+
+InternalDetailedViewpoint:
+    type: object
+    properties:
+        id:
+          type: string
+          format: uuid
+        content:
+          type: string
+        like_count:
+          type: integer
+        dislike_count:
+          type: integer
+        reasonable_count:
+          type: integer
+        created_at:
+          type: string
+          format: date-time
+        updated_at:
+          type: string
+          format: date-time
+        title:
+          type: string
+        publisher_id:
+          type: string
+          format: uuid
+        facts:
+            type: array
+            items:
+              $ref: '#/InternalDetailedFact'
+
+InternalDetailedReference:
+    type: object
+    properties:
+        id:
+          type: string
+          format: uuid
+        created_at:
+          type: string
+          format: date-time
+        url:
+          type: string
+        icon:
+            type: string
+        title:
+          type: string
+        description: # description from crawler
+            type: string
+            
 UpdateIssueInsight:
   type: object
   properties:
