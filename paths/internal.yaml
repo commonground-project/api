@@ -122,4 +122,6 @@ InternalInteractions:
         content:
           application/json:
             schema:
-              $ref: "../schemas/internal.yaml#/InternalInteraction"
+              type: array
+              items:
+                  $ref: "../schemas/internal.yaml#/InternalInteraction"
