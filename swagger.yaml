@@ -1462,6 +1462,10 @@ paths:
                         type: boolean
                       newNodeOfTimelineToFollowedIssue:
                         type: boolean
+                      newEventInFollowedIssue:
+                        type: boolean
+                      newReplyInFollowedViewpoint:
+                        type: boolean
     put:
       summary: Update user settings
       description: This endpoint is used to update user settings
@@ -2720,6 +2724,10 @@ components:
             newReferenceToMyReply:
               type: boolean
             newNodeOfTimelineToFollowedIssue:
+              type: boolean
+            newEventInFollowedIssue:
+              type: boolean
+            newReplyInFollowedViewpoint:
               type: boolean
     JWT:
       type: object
