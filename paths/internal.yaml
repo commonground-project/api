@@ -16,7 +16,7 @@ InternalIssues:
                 content:
                   type: array
                   items:
-                    $ref: "../schemas/internal.yaml#/InternalProfile"
+                    $ref: "../schemas/internal.yaml#/InternalIssue"
 InternalProfiles:
   get:
     summary: List internal user profiles
@@ -70,6 +70,30 @@ InternalProfile:
           application/json:
             schema:
               $ref: "../schemas/internal.yaml#/InternalProfile"
+              
+InternalIssueInsight:
+  put:
+    summary: Update issue insight
+    description: This endpoint updates the insight of an issue
+    operationId: updateInternalIssueInsight
+    tags:
+      - Internal
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: "../schemas/internal.yaml#/UpdateIssueInsight"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/internal.yaml#/InternalIssue"
+              
 InternalViewpoints:
   get:
     summary: List internal viewpoints
@@ -106,42 +130,11 @@ InternalViewpoint:
           application/json:
             schema:
               $ref: "../schemas/internal.yaml#/InternalViewpoint"
-InternalEmbeddings:
-  get:
-    summary: List internal embeddings
-    description: This endpoint returns all internal embeddings
-    operationId: getInternalEmbeddings
-    tags:
-    - Internal
-    parameters:
-      - name: type
-        in: query
-        required: false
-        description: The type of embedding
-        schema:
-            type: string
-            format: enum
-            enum:
-            - ISSUE
-            - VIEWPOINT
-            - FACT
-    responses:
-      '200':
-        description: Successful response
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                content:
-                  type: array
-                  items:
-                    $ref: "../schemas/internal.yaml#/InternalEmbedding"
-
+InternalFacts:
   post:
-    summary: Create a new embedding
-    description: This endpoint is used to create a new embedding
-    operationId: createInternalEmbedding
+    summary: Create a new internal fact
+    description: This endpoint is used to create a new internal fact
+    operationId: createInternalFact
     tags:
       - Internal
     requestBody:
@@ -149,145 +142,10 @@ InternalEmbeddings:
       content:
         application/json:
           schema:
-            type: array
-            items:
-              $ref: "../schemas/internal.yaml#/UpdateInternalEmbedding"
     responses:
       '200':
         description: Successful response
         content:
           application/json:
             schema:
-              type: object
-              properties:
-                content:
-                  type: array
-                  items:
-                    $ref: "../schemas/internal.yaml#/InternalEmbedding"
-
-InternalUsersSimilarity:
-  get:
-    summary: List internal user similarities
-    description: This endpoint returns all internal user similarities
-    operationId: getInternalUserSimilarities
-    tags:
-      - Internal
-    responses:
-      '200':
-        description: Successful response
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                content:
-                  type: array
-                  items:
-                    $ref: "../schemas/internal.yaml#/InternalUserSimilarity"
-  post:
-    summary: Create or Update user similarity
-    description: This endpoint is used to create or update users similarity
-    operationId: createOrUpdateInternalUserSimilarity
-    tags:
-      - Internal
-    requestBody:
-      required: true
-      content:
-        application/json:
-          schema:
-            type: array
-            items:
-              $ref: "../schemas/internal.yaml#/InternalUserSimilarity"
-    responses:
-      '200':
-        description: Successful response
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                content:
-                  type: array
-                  items:
-                    $ref: "../schemas/internal.yaml#/InternalUserSimilarity"
-
-InternalUserSimilarity:
-  get:
-    summary: Get internal user similarity
-    description: This endpoint returns the similarity between two users
-    operationId: getInternalUserSimilarity
-    tags:
-      - Internal
-    parameters:
-      - $ref: "../parameters/requestId.yaml#/RequestUid"
-    responses:
-      '200':
-        description: Successful response
-        content:
-          application/json:
-            schema:
-              $ref: "../schemas/internal.yaml#/InternalUserSimilarity"
-  put:
-    summary: Update an user similarity
-    description: This endpoint is used to update an user similarity
-    operationId: updateInternalUserSimilarity
-    tags:
-      - Internal
-    requestBody:
-      required: true
-      content:
-        application/json:
-          schema:
-            $ref: "../schemas/internal.yaml#/UpdateUserSimilarity"
-    responses:
-      '200':
-        description: Successful response
-        content:
-          application/json:
-            schema:
-              $ref: "../schemas/internal.yaml#/InternalUserSimilarity"
-InternalDetailIssue:
-  get:
-    summary: Get detailed internal issue
-    description: This endpoint returns specific detailed issue information, including references with descriptions, by issue id
-    operationId: getDetailIssue
-    tags:
-      - Internal
-    parameters:
-      - name: issueId
-        in: path
-        required: true
-        description: The ID of the issue to retrieve
-        schema:
-          type: string
-          format: uuid
-    responses:
-      '200':
-        description: Successful response
-        content:
-          application/json:
-            schema:
-              $ref: "../schemas/internal.yaml#/InternalDetailIssue"
-
-InternalDetailReference:
-  get:
-    summary: Get detailed reference
-    description: This endpoint returns specific reference information by reference id
-    operationId: getDetailReference
-    tags:
-      - Internal
-    parameters:
-      - name: referenceId
-        in: path
-        required: true
-        description: The ID of the reference to retrieve
-        schema:
-          type: string
-          format: uuid
-    responses:
-      '200':
-        description: Successful response
-        content:
-          application/json:
-            schema:
-              $ref: "../schemas/internal.yaml#/InternalDetailReference"
+              $ref: "../schemas/fact.yaml#/Fact"
