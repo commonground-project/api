@@ -159,6 +159,8 @@ paths:
                         type: boolean
                   viewpointCount:
                     type: number
+                  readStatus:
+                    type: boolean
                   facts:
                     type: array
                     description: List of fact referenced by issue's insight, displayed in the
@@ -385,6 +387,8 @@ paths:
                         replyCount:
                           type: integer
                           description: The number of replies the ViewPoint has
+                        readStatus:
+                          type: boolean
                         facts:
                           type: array
                           items:
@@ -666,6 +670,8 @@ paths:
                                 - LIKE
                                 - REASONABLE
                                 - DISLIKE
+                        readStatus:
+                          type: boolean
                         likeCount:
                           type: integer
                           description: The number of likes the Reply has
@@ -2126,6 +2132,155 @@ paths:
                       token:
                         type: string
                         format: uuid
+  "/api/read/issue/{issueId}":
+    post:
+      summary: Mark an issue as read
+      description: When a user clicks to browse an issue, this endpoint is used to
+        mark the issue as read
+      operationId: readIssue
+      tags:
+        - Read
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The unique identifier of the issue
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  userId:
+                    type: integer
+                  objectId:
+                    type: string
+                    format: uuid
+                  readStatus:
+                    type: boolean
+                  updatedAt:
+                    type: string
+    get:
+      summary: Get read status of an issue
+      description: This endpoint returns the read status of an issue
+      operationId: getReadIssue
+      tags:
+        - Read
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The unique identifier of the issue
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/paths/~1api~1read~1issue~1%7BissueId%7D/post/responses/200/content/app\
+                  lication~1json/schema"
+  "/api/read/viewpoint/{viewpointId}":
+    post:
+      summary: Mark a viewpoint as read
+      description: >
+        When a user clicks to browse a viewpoint, no matter the user read its
+        reply or not, this endpoint 
+
+        is used to mark the viewpoint as read
+      operationId: readViewpoint
+      tags:
+        - Read
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The unique identifier of the viewpoint
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/paths/~1api~1read~1issue~1%7BissueId%7D/post/responses/200/content/app\
+                  lication~1json/schema"
+    get:
+      summary: Get read status of a viewpoint
+      description: This endpoint returns the read status of a viewpoint
+      operationId: getReadViewpoint
+      tags:
+        - Read
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The unique identifier of the viewpoint
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/paths/~1api~1read~1issue~1%7BissueId%7D/post/responses/200/content/app\
+                  lication~1json/schema"
+  "/api/read/reply/{replyId}":
+    post:
+      summary: Mark a repl as read
+      description: When a user see a reply, this endpoint is used to mark the reply as read
+      operationId: readReply
+      tags:
+        - Read
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The unique identifier of the reply
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/paths/~1api~1read~1issue~1%7BissueId%7D/post/responses/200/content/app\
+                  lication~1json/schema"
+    get:
+      summary: Get read status of a reply
+      description: This endpoint returns the read status of a reply
+      operationId: getReadReply
+      tags:
+        - Read
+      parameters:
+        - name: id
+          in: path
+          required: true
+          description: The unique identifier of the reply
+          schema:
+            type: string
+            format: uuid
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/paths/~1api~1read~1issue~1%7BissueId%7D/post/responses/200/content/app\
+                  lication~1json/schema"
   /api/text-suggestion:
     post:
       summary: Analyze the user's text input and provide suggestions
@@ -2325,6 +2480,8 @@ components:
               type: boolean
         viewpointCount:
           type: number
+        readStatus:
+          type: boolean
         facts:
           type: array
           description: List of fact referenced by issue's insight, displayed in the
@@ -2458,6 +2615,8 @@ components:
         replyCount:
           type: integer
           description: The number of replies the ViewPoint has
+        readStatus:
+          type: boolean
         facts:
           type: array
           items:
@@ -2544,6 +2703,8 @@ components:
                 format: byte
               title:
                 type: string
+              description:
+                type: string
     UpdateFact:
       type: object
       properties:
@@ -2573,6 +2734,8 @@ components:
           type: string
           format: byte
         title:
+          type: string
+        description:
           type: string
     UpdateReference:
       type: object
@@ -2622,6 +2785,8 @@ components:
                 - LIKE
                 - REASONABLE
                 - DISLIKE
+        readStatus:
+          type: boolean
         likeCount:
           type: integer
           description: The number of likes the Reply has
@@ -2904,6 +3069,18 @@ components:
           type: string
           enum:
             - ROLE_SERVICE_ACCOUNT_READ
+    Read:
+      type: object
+      properties:
+        userId:
+          type: integer
+        objectId:
+          type: string
+          format: uuid
+        readStatus:
+          type: boolean
+        updatedAt:
+          type: string
     Subscribe:
       type: object
       properties:
