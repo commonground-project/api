@@ -1799,6 +1799,8 @@ paths:
                         updated_at:
                           type: string
                           format: date-time
+                        title:
+                          type: string
                         content:
                           type: string
                         author_id:
@@ -3188,6 +3190,8 @@ components:
         updated_at:
           type: string
           format: date-time
+        title:
+          type: string
         content:
           type: string
         author_id:
