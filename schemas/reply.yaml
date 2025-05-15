@@ -39,6 +39,8 @@ Reply:
             - LIKE
             - REASONABLE
             - DISLIKE
+    readStatus:
+      type: boolean
     likeCount:
       type: integer
       description: The number of likes the Reply has
