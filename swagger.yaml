@@ -1770,6 +1770,57 @@ paths:
                     type: object
                   user_top_ip:
                     type: object
+  /api/internal/users/interaction:
+    get:
+      summary: Get internal interaction information
+      description: This endpoint returns specific interaction information by interaction id
+      operationId: getInternalInteraction
+      tags:
+        - Internal
+      parameters:
+        - $ref: "#/paths/~1api~1issue~1%7Bid%7D~1viewpoints/get/parameters/0"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  properties:
+                    interaction_id:
+                      type: string
+                      format: uuid
+                    user_id:
+                      type: string
+                      format: uuid
+                    type:
+                      type: string
+                      enum:
+                        - COMMENT
+                        - LIKE_COUNT
+                        - DISLIKE_COUNT
+                        - REASONABLE_COUNT
+                        - INTEREST
+                        - DISINTEREST
+                    timestamp:
+                      type: string
+                      format: date-time
+                    content:
+                      type: string
+                      description: This field only present when type is COMMENT
+                    related_object:
+                      type: object
+                      properties:
+                        type:
+                          type: string
+                          enum:
+                            - ISSUE
+                            - VIEWPOINT
+                            - REPLY
+                        id:
+                          type: string
+                          format: uuid
   /api/internal/viewpoints/:
     get:
       summary: List internal viewpoints
@@ -1867,6 +1918,13 @@ paths:
                   type: array
                   items:
                     $ref: "#/components/schemas/UpdateFact/properties/references/items"
+      responses:
+        "200":
+          description: Successful response
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/Issue/properties/facts/items"
   "/api/internal/issue/detail/{issueId}":
     get:
       summary: Get internal issue with references with description
@@ -1886,97 +1944,8 @@ paths:
           content:
             application/json:
               schema:
-                type: object
-                properties:
-                  issue_id:
-                    type: string
-                    format: uuid
-                  created_at:
-                    type: string
-                    format: date-time
-                  updated_at:
-                    type: string
-                    format: date-time
-                  title:
-                    type: string
-                  description:
-                    type: string
-                  insight:
-                    type: string
-                  publisher_id:
-                    type: string
-                    format: uuid
-                  facts:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                          format: uuid
-                        created_at:
-                          type: string
-                          format: date-time
-                        updated_at:
-                          type: string
-                          format: date-time
-                        title:
-                          type: string
-                        publisher_id:
-                          type: string
-                          format: uuid
-                        references:
-                          type: array
-                          items:
-                            type: object
-                            properties:
-                              id:
-                                type: string
-                                format: uuid
-                              created_at:
-                                type: string
-                                format: date-time
-                              url:
-                                type: string
-                              icon:
-                                type: string
-                              title:
-                                type: string
-                              description:
-                                type: string
-                  viewpoints:
-                    type: array
-                    items:
-                      type: object
-                      properties:
-                        id:
-                          type: string
-                          format: uuid
-                        content:
-                          type: string
-                        like_count:
-                          type: integer
-                        dislike_count:
-                          type: integer
-                        reasonable_count:
-                          type: integer
-                        created_at:
-                          type: string
-                          format: date-time
-                        updated_at:
-                          type: string
-                          format: date-time
-                        title:
-                          type: string
-                        publisher_id:
-                          type: string
-                          format: uuid
-                        facts:
-                          type: array
-                          items:
-                            $ref: "#/paths/~1api~1internal~1issue~1detail~1%7BissueId%7D/get/responses/200/\
-                              content/application~1json/schema/properties/facts\
-                              /items"
+                $ref: "#/paths/~1api~1internal~1users~1interaction/get/responses/200/content/ap\
+                  plication~1json/schema/items"
   "/api/internal/reference/detail/{referenceId}":
     get:
       summary: Get internal reference with description
@@ -3178,6 +3147,41 @@ components:
           type: object
         user_top_ip:
           type: object
+    InternalInteraction:
+      properties:
+        interaction_id:
+          type: string
+          format: uuid
+        user_id:
+          type: string
+          format: uuid
+        type:
+          type: string
+          enum:
+            - COMMENT
+            - LIKE_COUNT
+            - DISLIKE_COUNT
+            - REASONABLE_COUNT
+            - INTEREST
+            - DISINTEREST
+        timestamp:
+          type: string
+          format: date-time
+        content:
+          type: string
+          description: This field only present when type is COMMENT
+        related_object:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+                - ISSUE
+                - VIEWPOINT
+                - REPLY
+            id:
+              type: string
+              format: uuid
     InternalViewpoint:
       type: object
       properties:
