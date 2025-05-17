@@ -222,6 +222,42 @@ InternalViewpoint:
       type: number
       format: float
 
+InternalInteraction:
+  properties:
+    interaction_id:
+      type: string
+      format: uuid
+    user_id:
+      type: string
+      format: uuid
+    type:
+      type: string
+      enum:
+        - COMMENT
+        - LIKE_COUNT
+        - DISLIKE_COUNT
+        - REASONABLE_COUNT
+        - INTEREST
+        - DISINTEREST
+    timestamp:
+      type: string
+      format: date-time
+    content:
+      type: string
+      description: This field only present when type is COMMENT
+    related_object:
+      type: object
+      properties:
+        type:
+          type: string
+          enum:
+            - ISSUE
+            - VIEWPOINT
+            - REPLY
+        id:
+          type: string
+          format: uuid
+          
 InternalDetailedIssue:
     type: object
     properties:

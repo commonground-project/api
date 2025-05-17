@@ -130,6 +130,26 @@ InternalViewpoint:
           application/json:
             schema:
               $ref: "../schemas/internal.yaml#/InternalViewpoint"
+
+InternalInteractions:
+  get:
+    summary: Get internal interaction information
+    description: This endpoint returns specific interaction information by interaction id
+    operationId: getInternalInteraction
+    tags:
+      - Internal
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                  $ref: "../schemas/internal.yaml#/InternalInteraction"
+
 InternalDetailedIssue:
   get:
     summary: Get internal issue with references with description
@@ -147,7 +167,8 @@ InternalDetailedIssue:
         content:
           application/json:
             schema:
-              $ref: "../schemas/internal.yaml#/InternalDetailedIssue"
+              $ref: "../schemas/internal.yaml#/InternalInteraction"
+
 InternalDetailedReference:
   get:
     summary: Get internal reference with description
@@ -166,6 +187,7 @@ InternalDetailedReference:
           application/json:
             schema:
               $ref: "../schemas/internal.yaml#/InternalDetailedReference"
+
 InternalFacts:
   post:
     summary: Create a new internal fact
@@ -179,3 +201,10 @@ InternalFacts:
         application/json:
           schema:
             $ref: "../schemas/internal.yaml#/UpdateInternalFacts"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/fact.yaml#/Fact"
