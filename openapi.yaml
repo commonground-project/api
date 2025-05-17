@@ -104,6 +104,10 @@ paths:
     $ref: "./paths/internal.yaml#/InternalViewpoint"
   /api/internal/facts:
     $ref: "./paths/internal.yaml#/InternalFacts"
+  /api/internal/issue/detail/{issueId}:
+    $ref: "./paths/internal.yaml#/InternalDetailedIssue"
+  /api/internal/reference/detail/{referenceId}:
+    $ref: "./paths/internal.yaml#/InternalDetailedReference"
 
   # Search
   /api/searchFact:
@@ -116,6 +120,14 @@ paths:
     $ref: "./paths/service-account.yaml#/ServiceAccount"
   /api/internal/service-accounts:
     $ref: "./paths/service-account.yaml#/ServiceAccounts"
+
+  # Read
+  /api/read/issue/{issueId}:
+    $ref: "./paths/read.yaml#/ReadIssue"
+  /api/read/viewpoint/{viewpointId}:
+    $ref: "./paths/read.yaml#/ReadViewpoint"
+  /api/read/reply/{replyId}:
+    $ref: "./paths/read.yaml#/ReadReply"
 
   # Text-suggestion
   /api/text-suggestion:
@@ -151,7 +163,7 @@ components:
     ViewPointReaction:
       $ref: "./schemas/viewpoint.yaml#/ViewPointReaction"
     ViewPointPreference:
-        $ref: "./schemas/viewpoint.yaml#/ViewPointPreference"
+        $ref: "./schemas/viewpoint.yaml#/ViewpointPreference"
 
     # Fact
     Fact:
@@ -195,6 +207,10 @@ components:
     ServiceAccount:
       $ref: "./schemas/service-account.yaml#/ServiceAccount"
 
+    # Read
+    Read:
+      $ref: "./schemas/read.yaml#/Read"
+
     # Subscribe
     Subscribe:
       $ref: "./schemas/subscription.yaml#/Subscribe"
@@ -218,7 +234,11 @@ components:
       $ref: "./schemas/internal.yaml#/InternalInteraction"
     InternalViewpoint:
       $ref: "./schemas/internal.yaml#/InternalViewpoint"
-    
+    InternalDetailedIssue:
+      $ref: "./schemas/internal.yaml#/InternalDetailedIssue"
+    InternalDetailedReference:
+      $ref: "./schemas/internal.yaml#/InternalDetailedReference"
+
     # TextSuggestion
     TextSuggestion:
       $ref: "./schemas/text-suggestion.yaml#/TextSuggestion"

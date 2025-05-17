@@ -149,7 +149,44 @@ InternalInteractions:
               type: array
               items:
                   $ref: "../schemas/internal.yaml#/InternalInteraction"
+
+InternalDetailedIssue:
+  get:
+    summary: Get internal issue with references with description
+    description: |
+      This endpoint returns specific issue information with references with description that backend |
+      fetch by calling a crawler(crawl4ai) by issue id
+    operationId: getInternalDetailedIssue
+    tags:
+      - Internal
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
               $ref: "../schemas/internal.yaml#/InternalInteraction"
+
+InternalDetailedReference:
+  get:
+    summary: Get internal reference with description
+    description: |
+      This endpoint returns specific reference information with description that backend |
+      fetch by calling a crawler(crawl4ai) by reference id
+    operationId: getInternalDetailedReference
+    tags:
+      - Internal
+    parameters:
+      - $ref: "../parameters/requestId.yaml#/RequestUid"
+    responses:
+      '200':
+        description: Successful response
+        content:
+          application/json:
+            schema:
+              $ref: "../schemas/internal.yaml#/InternalDetailedReference"
 
 InternalFacts:
   post:

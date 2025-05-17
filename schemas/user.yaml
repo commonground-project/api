@@ -103,3 +103,7 @@ UserSettings:
           type: boolean
         newNodeOfTimelineToFollowedIssue:
           type: boolean
+        newEventInFollowedIssue:
+          type: boolean
+        newReplyInFollowedViewpoint:
+          type: boolean
